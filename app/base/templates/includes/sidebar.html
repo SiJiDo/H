@@ -3,79 +3,113 @@
         <div class="navbar-wrapper">
             <div class="navbar-brand header-logo">
                 <a target="_blank" 
-                   href="https://appseed.us/admin-dashboards/flask-dashboard-dattaable" class="b-brand">
+                   href="" class="b-brand">
                     <div class="b-bg">
                         <i class="feather icon-trending-up"></i>
                     </div>
-                    <span class="b-title">Flask Datta Able</span>
+                    <span class="b-title align-items-center">H</span>
                 </a>
                 <a class="mobile-menu" id="mobile-collapse" href="javascript:"><span></span></a>
             </div>
             <div class="navbar-content scroll-div">
                 <ul class="nav pcoded-inner-navbar">
-                    <li class="nav-item pcoded-menu-caption">
-                        <label>Navigation</label>
-                    </li>
                     <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" 
                         class="nav-item {% if 'index' in segment %} active {% endif %}">
-                        <a href="/" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
+                        <a href="/" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">首页</span></a>
                     </li>
+                    
                     <li class="nav-item pcoded-menu-caption">
-                        <label>UI Element</label>
+                        <label>资产管理</label>
                     </li>
-                    <li data-username="basic components Button Alert Badges breadcrumb Paggination progress Tooltip popovers Carousel Cards Collapse Tabs pills Modal Grid System Typography Extra Shadows Embeds" class="nav-item pcoded-hasmenu">
-                        <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i class="feather icon-box"></i></span><span class="pcoded-mtext">Components</span></a>
-                        <ul class="pcoded-submenu">
-                            <li class=""><a href="/ui-button.html" class="">Button</a></li>
-                            <li class=""><a href="/ui-badges.html" class="">Badges</a></li>
-                            <li class=""><a href="/ui-breadcrumb-pagination.html" class="">Breadcrumb & paggination</a></li>
-                            <li class=""><a href="/ui-collapse.html" class="">Collapse</a></li>
-                            <li class=""><a href="/ui-tabs.html" class="">Tabs & pills</a></li>
-                            <li class=""><a href="/ui-typography.html" class="">Typography</a></li>
-                            <li class=""><a href="/ui-icons.html" class="">Feather<span class="pcoded-badge label label-danger">NEW</span></a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item pcoded-menu-caption">
-                        <label>Forms & table</label>
-                    </li>
-                    <li data-username="form elements advance componant validation masking wizard picker select" 
-                        class="nav-item {% if 'ui-forms' in segment %} active {% endif %}">
-                        <a href="/ui-forms.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Form elements</span></a>
-                    </li>
-                    <li data-username="Table bootstrap datatable footable" 
-                        class="nav-item {% if 'ui-tables' in segment %} active {% endif %}">
-                        <a href="/ui-tables.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-server"></i></span><span class="pcoded-mtext">Table</span></a>
-                    </li>
-                    <li class="nav-item pcoded-menu-caption">
-                        <label>Chart & Maps</label>
-                    </li>
-                    <li data-username="Charts Morris" 
-                        class="nav-item {% if 'charts-morris' in segment %} active {% endif %}">
-                        <a href="/charts-morris.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">Chart</span></a></li>
-                    <li data-username="Maps Google" 
-                         class="nav-item {% if 'maps-google' in segment %} active {% endif %}">
-                        <a href="/maps-google.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-map"></i></span><span class="pcoded-mtext">Maps</span></a></li>
-                    <li class="nav-item pcoded-menu-caption">
-                        <label>Pages</label>
-                    </li>
-                    <li data-username="Authentication Sign up Sign in reset password Change password Personal information profile settings map form subscribe" class="nav-item pcoded-hasmenu">
-                        <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i class="feather icon-lock"></i></span><span class="pcoded-mtext">Authentication</span></a>
-                        <ul class="pcoded-submenu">
-                            <li class=""><a href="/auth-reset-pass.html" class="">Reset Pass</a></li>
-                            <li class=""><a href="/login.html" class="">Login (template)</a></li>
-                            <li class=""><a href="/register.html" class="">Register (template)</a></li>
-                        </ul>
-                    </li>
-                    <li data-username="Sample Page" 
-                        class="nav-item {% if 'page-blank' in segment %} active {% endif %}">
-                        <a href="/page-blank.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-sidebar"></i></span><span class="pcoded-mtext">Sample page</span></a></li>
-                    <li data-username="Sample Page" class="nav-item"><a href="/page-404.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-sidebar"></i></span><span class="pcoded-mtext">Error 404</span></a></li>
 
-                    <li data-username="Disabled Menu" class="nav-item">
-                        <a href="{{ url_for('base_blueprint.logout') }}" class="nav-link">
-                            <span class="pcoded-micon"><i class="feather icon-power"></i></span><span class="pcoded-mtext">Logout</span>
-                        </a>
+                    <li data-username="targetinfo" 
+                     class="nav-item {% if 'targetinfo' in segment %} active {% endif %}">
+                    <a href="/charts-morris.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">资产列表</span></a></li>
+
+                    <li data-username="targetadd" 
+                     class="nav-item {% if 'targetadd' in segment %} active {% endif %}">
+                    <a href="/charts-morris.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">添加资产</span></a></li>
+
+
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>扫描结果</label>
                     </li>
+                    <li data-username="subdomain" 
+                    class="nav-item {% if 'subdomain' in segment %} active {% endif %}">
+                    <a href="/charts-morris.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">子域名信息</span></a></li>
+                
+                
+                    <li data-username="port" 
+                     class="nav-item {% if 'port' in segment %} active {% endif %}">
+                    <a href="/maps-google.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-map"></i></span><span class="pcoded-mtext">端口信息</span></a></li>
+
+                    <li data-username="url" 
+                    class="nav-item {% if 'url' in segment %} active {% endif %}">
+                    <a href="/charts-morris.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">站点信息</span></a></li>
+                
+                
+                    <li data-username="dirb" 
+                     class="nav-item {% if 'dirb' in segment %} active {% endif %}">
+                    <a href="/maps-google.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-map"></i></span><span class="pcoded-mtext">目录信息</span></a></li>
+
+                    <li data-username="vuln" 
+                    class="nav-item {% if 'vuln' in segment %} active {% endif %}">
+                    <a href="/charts-morris.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">漏洞信息</span></a></li>
+                
+
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>扫描设置</label>
+                    </li>
+                    <li data-username="scanmethod" 
+                        class="nav-item {% if 'scanmethod' in segment %} active {% endif %}">
+                        <a href="/charts-morris.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">扫描模式配置</span></a></li>
+                    
+                    
+                        <li data-username="scancron" 
+                         class="nav-item {% if 'scancron' in segment %} active {% endif %}">
+                        <a href="/maps-google.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-map"></i></span><span class="pcoded-mtext">扫描周期配置</span></a></li>
+                    
+                        <li class="nav-item pcoded-menu-caption">
+                            <label>快捷插件</label>
+                        </li>
+                            <li data-username="beian" 
+                             class="nav-item {% if 'beian' in segment %} active {% endif %}">
+                            <a href="/charts-morris.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">备案信息查询</span></a></li>
+
+                            <li data-username="hostcrack" 
+                             class="nav-item {% if 'hostcrack' in segment %} active {% endif %}">
+                            <a href="/charts-morris.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">host碰撞</span></a></li>
+
+                            <li data-username="apkinfo" 
+                            class="nav-item {% if 'apkinfo' in segment %} active {% endif %}">
+                            <a href="/charts-morris.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">apk域名提取</span></a></li>
+    
+                            <li data-username="fofa" 
+                            class="nav-item {% if 'fofa' in segment %} active {% endif %}">
+                            <a href="/charts-morris.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">fofa查询</span></a></li>
+
+                            <li data-username="gitcollection" 
+                            class="nav-item {% if 'gitcollection' in segment %} active {% endif %}">
+                            <a href="/charts-morris.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">github查询</span></a></li>
+
+                        <li class="nav-item pcoded-menu-caption">
+                        <label>系统设置</label>
+                    </li>
+                    
+                    <li data-username="userlist" 
+                     class="nav-item {% if 'userlist' in segment %} active {% endif %}">
+                    <a href="/userlist.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-sidebar"></i></span><span class="pcoded-mtext">用户列表</span></a></li>
+
+                    <li data-username="changepassword" 
+                     class="nav-item {% if 'changepassword' in segment %} active {% endif %}">
+                    <a href="/changepassword" class="nav-link"><span class="pcoded-micon"><i class="feather icon-power"></i></span><span class="pcoded-mtext">修改密码</span></a></li>
+                    
+                    <li data-username="config" 
+                     class="nav-item {% if 'config' in segment %} active {% endif %}">
+                    <a href="/changepassword" class="nav-link"><span class="pcoded-micon"><i class="feather icon-power"></i></span><span class="pcoded-mtext">系统设置</span></a></li>
+
+                    <li data-username="退出登陆" class="nav-item">
+                    <a href="{{ url_for('base_blueprint.logout') }}" class="nav-link"><span class="pcoded-micon"><i class="feather icon-power"></i></span><span class="pcoded-mtext">登出</span></a></li>
                 </ul>
             </div>
         </div>

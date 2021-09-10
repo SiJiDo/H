@@ -5,19 +5,21 @@ Copyright (c) 2019 - present AppSeed.us
 
 from flask_login import UserMixin
 from sqlalchemy import Binary, Column, Integer, String
+from sqlalchemy.sql.sqltypes import Boolean
 
 from app import db, login_manager
 
 from app.base.util import hash_pass
 
 class User(db.Model, UserMixin):
-
+    __table_args__ = {'extend_existing': True}
     __tablename__ = 'User'
 
-    id = Column(Integer, primary_key=True)
-    username = Column(String, unique=True)
-    email = Column(String, unique=True)
+    id = Column(Integer, autoincrement=True, primary_key=True)
+    username = Column(String(128), unique=True)
     password = Column(Binary)
+    isadmin = Column(Boolean, default=False);
+    
 
     def __init__(self, **kwargs):
         for property, value in kwargs.items():
@@ -46,3 +48,7 @@ def request_loader(request):
     username = request.form.get('username')
     user = User.query.filter_by(username=username).first()
     return user if user else None
+
+if __name__ == '__main__':
+    db.create_all()
+    db.session.commit()
