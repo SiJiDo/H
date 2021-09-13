@@ -1,0 +1,178 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} 扫描模式设置 {% endblock %} 
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h5 class="m-b-10">扫描设置</h5>
+                        </div>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="javascript:">扫描设置</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:">扫描模式设置</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <div class="main-body">
+            <div class="page-wrapper">
+                <!-- [ Main Content ] start -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            
+                            <div class="card-body">
+                            <div class="row">
+                            <div class="col-sm-8">
+                            <form>
+                                <h5>扫描模式设置</h5>
+                                <hr>
+                                <div>
+                                    <label><h6>子域名扫描: </h6></label><br>
+                                <div class="form-group">
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input type="checkbox" class="custom-control-input" id="subfinder" name="subfinder" />
+                                    <label class="custom-control-label" for="subfinder" >subfinder</label>
+                                </div>
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input type="checkbox" class="custom-control-input" id="amass" name="amass" / >
+                                    <label class="custom-control-label" for="amass">amass</label>
+                                </div>
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input type="checkbox" class="custom-control-input" id="shuffledns" ame="shuffledns" />
+                                    <label class="custom-control-label" for="shuffledns">shuffledns</label>
+                                </div>
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input type="checkbox" class="custom-control-input" id="github" ame="github" />
+                                    <label class="custom-control-label" for="github">github</label>
+                                </div>
+                                </div>
+                                </div>
+                                <br>
+                                <div>
+                                    <label><h6>端口扫描: </h6></label><br>
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input type="checkbox" class="custom-control-input" id="naabu" name="naabu" />
+                                    <label class="custom-control-label" for="naabu" >naabu+nmap</label>
+                                </div>
+                                </div>
+                                </div>
+
+                                <br>
+                                <div>
+                                    <label><h6>web识别: </h6></label><br>
+                                <div class="form-group">
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input type="checkbox" class="custom-control-input" id="httpx" name="httpx" />
+                                    <label class="custom-control-label" for="httpx" >httpx(服务探测)</label>
+                                </div>
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input type="checkbox" class="custom-control-input" id="Ehole" name="Ehole" />
+                                    <label class="custom-control-label" for="Ehole" >Ehole(指纹识别)</label>
+                                </div>
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input type="checkbox" class="custom-control-input" id="screenshot" name="screenshot" />
+                                    <label class="custom-control-label" for="screenshot" >screenshot(截图功能)</label>
+                                </div>
+                                </div>
+                                </div>
+                                <br>
+                                <div>
+                                    <label><h6>路径扫描: </h6></label><br>
+                                <div class="form-group">
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input type="checkbox" class="custom-control-input" id="fileleak" name="fileleak" />
+                                    <label class="custom-control-label" for="fileleak" >fileleak(爆破)</label>
+                                </div>
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input type="checkbox" class="custom-control-input" id="jsfinder" name="jsfinder" />
+                                    <label class="custom-control-label" for="jsfinder" >jsfinder(js查询)</label>
+                                </div>
+                                </div>
+                                </div>
+                                <br>
+                                <div>
+                                    <label><h6>漏洞扫描: </h6></label><br>
+                                <div class="form-group">
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input type="checkbox" class="custom-control-input" id="xray" name="xray" />
+                                    <label class="custom-control-label" for="xray" >rad+xray</label>
+                                </div>
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input type="checkbox" class="custom-control-input" id="nuclei" name="nuclei" />
+                                    <label class="custom-control-label" for="nuclei" >nuclei</label>
+                                </div>
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input type="checkbox" class="custom-control-input" id="nuclei" name="nuclei" />
+                                    <label class="custom-control-label" for="nuclei" >nuclei(自定义脚本)</label>
+                                 </div>
+                                </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">端口扫描字典</label>
+                                        <select class="form-control" id="exampleFormControlSelect1">
+                                            <option>top100</option>
+                                            <option>top1000</option>
+                                            <option>all</option>
+                                            <option>自定义</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">目录爆破字典</label>
+                                        <select class="form-control" id="exampleFormControlSelect1">
+                                            <option>top100</option>
+                                            <option>top1000</option>
+                                            <option>top6000</option>
+                                        </select>
+                                    </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>自定义端口</label>
+                                            <input type="text" class="form-control" name="port_dict" />
+                                            <small id="emailHelp" class="form-text text-muted">格式如21,22,23,8000-9000,27017</small>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </form>
+                            </div>
+                            <div class="col-sm-4">
+
+
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+、
+                    </div>
+                </div>
+                <!-- [ Main Content ] end -->
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

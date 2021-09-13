@@ -1,0 +1,151 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} 资产管理 {% endblock %} 
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h5 class="m-b-10">资产列表</h5>
+                        </div>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index"><i class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="#!">资产管理</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:">资产列表</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <div class="main-body">
+            <div class="page-wrapper">
+                <!-- [ Main Content ] start -->
+                <div class="row">
+
+                    <!-- [ Hover-table ] start -->
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>资产列表</h5>
+                                <span class="d-block m-t-5">资产管理列表</span>
+                            </div>
+                            <div class="card-block table-border-style">
+                                <div class="table-responsive">
+                                    <table class="table table-hover text-center" style="vertical-align: middle;">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose">
+                                                </th>
+                                                <th>#</th>
+                                                <th>项目名称</th>
+                                                <th>监控域名数</th>
+                                                <th>项目状态</th>
+                                                <th>持续监控</th>
+                                                <th>添加用户</th>
+                                                <th>更新时间</th>
+                                                <th>详情</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for row in form.content %}
+                                            <tr class="unread">
+                                                <td style="vertical-align: middle !important;text-align: center;">
+                                                    <input type="checkbox" name="{{row.id}}" lay-skin="primary" lay-filter="allChoose">
+                                                </td>
+                                                <td style="vertical-align: middle !important;text-align: center;">{{row.id}}</td>
+                                                <td style="vertical-align: middle !important;text-align: center;">{{row.target_name}}</td>
+                                                <td style="vertical-align: middle !important;text-align: center;">{{row.domain_total_count}}</td>
+                                                <td style="vertical-align: middle !important;text-align: center;">
+                                                    <div class= "m-t-1 m-b-1 f-10" style="color:gray;">端口扫描</div>
+                                                    <div class="progress m-t-10 m-b-10" style="height: 10px;">
+                                                        <div class="progress-bar progress-c-theme" role="progressbar" style="width: 10%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </td>
+                                                <td style="vertical-align: middle !important;text-align: center;">{% if row.target_corn == true %}
+                                                    <i class="feather icon-alert-circle text-c-green"></i>
+                                                    {% else %}
+                                                    <i class="feather icon-alert-octagon text-c-red"></i>
+                                                    {% endif %}</td>
+                                                <td style="vertical-align: middle !important;text-align: center;">{{row.target_user}}</td>
+                                                <td style="vertical-align: middle !important;text-align: center;">{{row.target_time}}</td>
+                                                <td style="vertical-align: middle !important;text-align: center;"><a href="#!" class="label theme-bg text-white f-12">详细</a></td>
+                                            </tr>
+                                            {% endfor %}
+                                
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- [ Hover-table ] end -->
+
+                </div>
+                <!-- [ Main Content ] end -->
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script>
+
+    $(function () {
+        checkBox();
+ 
+        function checkBox() {
+            var $thr = $("table thead tr"); //表格头部的tr
+            var $checkAllTh = $("table thead tr").find('input').parent(); //表格头部的的全选按钮
+            var $tbr = $("table tbody tr"); //表格内容的tr
+ 
+            var $checkAll = $thr.find('input'); //表格头部的全选框
+            //全选
+            $checkAll.click(function (event) {
+                //根据表格头部（thead）的全选框的是否选中的状态（true或false）来设置表格内容（tbody）的选择框状态
+                $tbr.find('input').prop('checked', $(this).prop('checked'));
+                if ($(this).prop('checked')) {
+                    $tbr.find('input').parent().parent().addClass('danger');
+                } else {
+                    $tbr.find('input').parent().parent().removeClass('danger');
+                }
+                //防止点击事件向父元素冒泡    必须加阻止事件冒泡，不然会出现单击全选框按钮无作用的情况
+                event.stopPropagation();
+            });
+ 
+            //点击表格头部全选框所在的单元格时也触发全选框的点击操作
+            $checkAllTh.click(function () {
+                $(this).find('input').click();
+            });
+ 
+ 
+            //点击表格内容（tbody）下面的每一行的选择框
+            $tbr.find('input').click(function (event) {
+                //给选中和未选中，添加和删除样式
+                $(this).parent().parent().toggleClass('danger');
+                //判断tbody里面的已经选中的input长度和表格内容本有的input长度是有相等，如果相等，则把theard的选择框置为选中，
+                $checkAll.prop('checked', $tbr.find('input:checked').length == $tbr.find('input').length ?
+                    true : false);
+                event.stopPropagation(); //防止点击事件向父元素冒泡    必须加阻止事件冒泡，不然会出现单击每一行内容的选框按钮无作用的情况   
+            });
+            //点击tbody下面的每一行（非选择框）也能触发选择框的点击操作
+            $tbr.click(function () {
+                $(this).find('input').click();
+            });
+        }
+    })
+</script>
+{% endblock javascripts %}
