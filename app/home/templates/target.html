@@ -29,18 +29,40 @@
         <!-- [ breadcrumb ] end -->
         <div class="main-body">
             <div class="page-wrapper">
+                <div class="box-header with-border">
+                    {% include 'message.html' %}
+                </div>
                 <!-- [ Main Content ] start -->
                 <div class="row">
 
                     <!-- [ Hover-table ] start -->
                     <div class="col-xl-12">
-                        <div class="card">
+                        <div class="card Recent-Users">
                             <div class="card-header">
                                 <h5>资产列表</h5>
-                                <span class="d-block m-t-5">资产管理列表</span>
+                                <span class="d-block m-t-5">资产管理列表 </span>
                             </div>
                             <div class="card-block table-border-style">
                                 <div class="table-responsive">
+                                    <form>
+                                    <div class="row">
+                                        <div class="col-md-8"></div>
+                                        <div class="col-md-4 form-inline">
+                                            <div class="row">
+                                                <div class="col-md-7">
+                                                    <input type="text" class="form-control" style="width: 250px; height: 35px;" name="search" />
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <input type="submit" class="theme-bg btn text-white f-12" style="width: 65px; height: 35px; line-height: 10px; border:1px;" value="搜索" />
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <button type="submit" name="action" value="deleteall" class="theme-bg2 btn text-white f-12" style="width: 90px; height: 35px; line-width: 5px; line-height: 10px;  border:1px; float: right;">多选删除</button>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
                                     <table class="table table-hover text-center" style="vertical-align: middle;">
                                         <thead>
                                             <tr>
@@ -50,11 +72,12 @@
                                                 <th>#</th>
                                                 <th>项目名称</th>
                                                 <th>监控域名数</th>
+                                                <th>收集站点数</th>
                                                 <th>项目状态</th>
                                                 <th>持续监控</th>
                                                 <th>添加用户</th>
                                                 <th>更新时间</th>
-                                                <th>详情</th>
+                                                <th>操作</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -66,25 +89,90 @@
                                                 <td style="vertical-align: middle !important;text-align: center;">{{row.id}}</td>
                                                 <td style="vertical-align: middle !important;text-align: center;">{{row.target_name}}</td>
                                                 <td style="vertical-align: middle !important;text-align: center;">{{row.domain_total_count}}</td>
+                                                <td style="vertical-align: middle !important;text-align: center;">{{row.http_total_count}}</td>
                                                 <td style="vertical-align: middle !important;text-align: center;">
                                                     <div class= "m-t-1 m-b-1 f-10" style="color:gray;">端口扫描</div>
                                                     <div class="progress m-t-10 m-b-10" style="height: 10px;">
                                                         <div class="progress-bar progress-c-theme" role="progressbar" style="width: 10%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
                                                     </div>
                                                 </td>
-                                                <td style="vertical-align: middle !important;text-align: center;">{% if row.target_corn == true %}
+                                                <td style="vertical-align: middle !important;text-align: center;">{% if row.target_cron == true %}
                                                     <i class="feather icon-alert-circle text-c-green"></i>
                                                     {% else %}
                                                     <i class="feather icon-alert-octagon text-c-red"></i>
                                                     {% endif %}</td>
                                                 <td style="vertical-align: middle !important;text-align: center;">{{row.target_user}}</td>
                                                 <td style="vertical-align: middle !important;text-align: center;">{{row.target_time}}</td>
-                                                <td style="vertical-align: middle !important;text-align: center;"><a href="#!" class="label theme-bg text-white f-12">详细</a></td>
+                                                <td style="vertical-align: middle !important;text-align: center;"><a href="/tagetinfo?id={{row.id}}" class="label theme-bg text-white f-12">详情</a> <a href="/target?action=delete&id={{row.id}}" class="label theme-bg2 text-white f-12">删除</a></td>
                                             </tr>
                                             {% endfor %}
                                 
                                         </tbody>
                                     </table>
+                                        <div class="row">
+                                        <div class="col-md-10 form-inline">
+                                            <nav aria-label="Page navigation example ">
+                                                {% if form%}
+                                                <ul class="pagination">
+                                                    <li class="page-item"><a class="page-link" href="?page={{1}}&search={{form.search}}" aria-label="Previous"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
+                                                    
+                                                    {% if form.page <= 5 %}
+                                                        {% if form.total_page >= 10 %}
+                                                            {% for i in range(1, 11) %}
+                                                                {% if i == form.page %}
+                                                                    <li class="page-item active"><a class="page-link" href="?page={{i}}&search={{form.search}}">{{i}}</a></li>
+                                                                {% else %}
+                                                                    <li class="page-item"><a class="page-link" href="?page={{i}}&search={{form.search}}">{{i}}</a></li>
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        {% else %}
+                                                            {% for i in range(1, form.total_page + 1) %}
+                                                                {% if i == form.page %}
+                                                                    <li class="page-item active"><a class="page-link" href="?page={{i}}&search={{form.search}}">{{i}}</a></li>
+                                                                {% else %}
+                                                                    <li class="page-item"><a class="page-link" href="?page={{i}}&search={{form.search}}">{{i}}</a></li>
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        {% endif %}
+
+                                                    {% elif form.page <= form.total_page and form.page >= form.total_page - 5 %}
+                                                        {% for i in range(form.total_page - 10, form.total_page + 1) %}
+                                                            {% if i == form.page %}
+                                                                <li class="page-item active"><a class="page-link" href="?page={{i}}&search={{form.search}}">{{i}}</a></li>
+                                                            {% else %}
+                                                                <li class="page-item"><a class="page-link" href="?page={{i}}&search={{form.search}}">{{i}}</a></li>
+                                                            {% endif %}
+                                                        {% endfor %}
+    
+                                                    {% else %}
+                                                        {% for i in range(form.page - 5, form.page + 5) %}
+                                                            {% if i == form.page %}
+                                                                <li class="page-item active"><a class="page-link" href="?page={{i}}&search={{form.search}}">{{i}}</a></li>
+                                                            {% else %}
+                                                                <li class="page-item"><a class="page-link" href="?page={{i}}&search={{form.search}}">{{i}}</a></li>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                    <li class="page-item"><a class="page-link" href="?page={{form.total_page}}&search={{form.search}}" aria-label="Next"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
+                                                {% endif %}
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                            <div class="col-md-2 text-center">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                    <input type="text" class="form-control" id="name" name="page" style="width: 69px; height: 35px;" placeholder="页码">
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                    <input type="hidden" name="search" value="{{form.search}}" />
+                                                    <button type="submit" class="theme-bg btn text-white f-12" style="width: 65px; height: 35px; line-height: 10px; border:1px;" >跳转</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </form>
                                 </div>
                             </div>
                         </div>

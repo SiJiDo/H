@@ -1,37 +1,48 @@
 from app import db
 
 # 扫描引擎模式
-class scanmethod(db.Model):
+class Scanmethod(db.Model):
     __table_args__ = {'extend_existing': True}
-    __tablename__ = 'hhsrc_scanmethod'
+    __tablename__ = 'Scanmethod'
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     scanmethod_name = db.Column(db.String(128))   #扫描方式名
-    scanmethod_subdomain = db.Column(db.Boolean, default=True) #是否扫描子域名
-    scanmethod_port = db.Column(db.Boolean, default=True)  #是否扫描端口
+    scanmethod_subfinder = db.Column(db.Boolean, default=False) #是否扫描subfinder
+    scanmethod_amass = db.Column(db.Boolean, default=False) #是否扫描amass
+    scanmethod_shuffledns = db.Column(db.Boolean, default=False) #是否扫描amass
+    scanmethod_github = db.Column(db.Boolean, default=False) #是否扫描amass
+    scanmethod_port = db.Column(db.Boolean, default=False)  #是否扫描端口
     scanmethod_port_portlist = db.Column(db.String(128))  #扫描端口类型选择
-    scanmethod_url = db.Column(db.Boolean, default=True) #是否扫描http
+    scanmethod_port_dfportlist = db.Column(db.String(255))  #自定义端口
+    scanmethod_httpx = db.Column(db.Boolean, default=False) #是否扫描http
+    scanmethod_ehole = db.Column(db.Boolean, default=False) #是否扫描指纹
+    scanmethod_screenshot = db.Column(db.Boolean, default=False) #是否截图
+    scanmethod_jsfinder = db.Column(db.Boolean, default=False) #是否扫描js中的路径
     scanmethod_dirb = db.Column(db.Boolean, default=False)   #是否扫描目录
     scanmethod_dirb_wordlist = db.Column(db.String(128))  #扫描字典选择
-    scanmethod_vuln = db.Column(db.Boolean, default=False)    #是否扫描指纹
+    scanmethod_xray = db.Column(db.Boolean, default=False)    #是否xray扫描漏洞
+    scanmethod_nuclei = db.Column(db.Boolean, default=False)    #是否nuclei扫描漏洞
+    scanmethod_nuclei_my = db.Column(db.Boolean, default=False)    #是否nuclei自定义脚本扫描漏洞
     scanmethod_time = db.Column(db.String(128))   #修改时间
 
+
 # 定时引擎模式
-class scancorn(db.Model):
+class Scancron(db.Model):
     __table_args__ = {'extend_existing': True}
-    __tablename__ = 'hhsrc_scancorn'
+    __tablename__ = 'Scancron'
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    scancorn_name = db.Column(db.String(20))   #定时名
-    scancorn_month = db.Column(db.String(20)) #定时月
-    scancorn_week = db.Column(db.String(20))  #定时周
-    scancorn_day = db.Column(db.String(20))  #定时天
-    scancorn_hour = db.Column(db.String(20)) #定时小时
-    scancorn_min = db.Column(db.String(20)) #定时分钟
-    scancorn_time = db.Column(db.String(20))   #修改时间
+    scancron_name = db.Column(db.String(20))   #定时名
+    scancron_month = db.Column(db.String(20)) #定时月
+    scancron_week = db.Column(db.String(20))  #定时周
+    scancron_day = db.Column(db.String(20))  #定时天
+    scancron_hour = db.Column(db.String(20)) #定时小时
+    scancron_min = db.Column(db.String(20)) #定时分钟
+    scancron_time = db.Column(db.String(20))   #修改时间
 
 # 记录计划任务
-class cornjob(db.Model):
+class Cornjob(db.Model):
     __table_args__ = {'extend_existing': True}
-    __tablename__ = 'hhsrc_cornjob'
+    __tablename__ = 'Cronjob'
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     cornjob_name = db.Column(db.String(128))  #计划任务名字
     cornjob_time = db.Column(db.String(128))  #计划任务时间
+

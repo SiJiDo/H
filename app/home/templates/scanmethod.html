@@ -27,148 +27,188 @@
             </div>
         </div>
         <!-- [ breadcrumb ] end -->
+
+
+
         <div class="main-body">
             <div class="page-wrapper">
+
                 <!-- [ Main Content ] start -->
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="card">
                             
                             <div class="card-body">
-                            <div class="row">
-                            <div class="col-sm-8">
-                            <form>
-                                <h5>扫描模式设置</h5>
-                                <hr>
-                                <div>
-                                    <label><h6>子域名扫描: </h6></label><br>
-                                <div class="form-group">
-                                <div class="custom-control custom-checkbox custom-control-inline">
-                                    <input type="checkbox" class="custom-control-input" id="subfinder" name="subfinder" />
-                                    <label class="custom-control-label" for="subfinder" >subfinder</label>
-                                </div>
-                                <div class="custom-control custom-checkbox custom-control-inline">
-                                    <input type="checkbox" class="custom-control-input" id="amass" name="amass" / >
-                                    <label class="custom-control-label" for="amass">amass</label>
-                                </div>
-                                <div class="custom-control custom-checkbox custom-control-inline">
-                                    <input type="checkbox" class="custom-control-input" id="shuffledns" ame="shuffledns" />
-                                    <label class="custom-control-label" for="shuffledns">shuffledns</label>
-                                </div>
-                                <div class="custom-control custom-checkbox custom-control-inline">
-                                    <input type="checkbox" class="custom-control-input" id="github" ame="github" />
-                                    <label class="custom-control-label" for="github">github</label>
-                                </div>
-                                </div>
-                                </div>
-                                <br>
-                                <div>
-                                    <label><h6>端口扫描: </h6></label><br>
-                                <div class="form-group">
-                                    <div class="custom-control custom-checkbox custom-control-inline">
-                                    <input type="checkbox" class="custom-control-input" id="naabu" name="naabu" />
-                                    <label class="custom-control-label" for="naabu" >naabu+nmap</label>
-                                </div>
-                                </div>
-                                </div>
-
-                                <br>
-                                <div>
-                                    <label><h6>web识别: </h6></label><br>
-                                <div class="form-group">
-                                <div class="custom-control custom-checkbox custom-control-inline">
-                                    <input type="checkbox" class="custom-control-input" id="httpx" name="httpx" />
-                                    <label class="custom-control-label" for="httpx" >httpx(服务探测)</label>
-                                </div>
-                                <div class="custom-control custom-checkbox custom-control-inline">
-                                    <input type="checkbox" class="custom-control-input" id="Ehole" name="Ehole" />
-                                    <label class="custom-control-label" for="Ehole" >Ehole(指纹识别)</label>
-                                </div>
-                                <div class="custom-control custom-checkbox custom-control-inline">
-                                    <input type="checkbox" class="custom-control-input" id="screenshot" name="screenshot" />
-                                    <label class="custom-control-label" for="screenshot" >screenshot(截图功能)</label>
-                                </div>
-                                </div>
-                                </div>
-                                <br>
-                                <div>
-                                    <label><h6>路径扫描: </h6></label><br>
-                                <div class="form-group">
-                                <div class="custom-control custom-checkbox custom-control-inline">
-                                    <input type="checkbox" class="custom-control-input" id="fileleak" name="fileleak" />
-                                    <label class="custom-control-label" for="fileleak" >fileleak(爆破)</label>
-                                </div>
-                                <div class="custom-control custom-checkbox custom-control-inline">
-                                    <input type="checkbox" class="custom-control-input" id="jsfinder" name="jsfinder" />
-                                    <label class="custom-control-label" for="jsfinder" >jsfinder(js查询)</label>
-                                </div>
-                                </div>
-                                </div>
-                                <br>
-                                <div>
-                                    <label><h6>漏洞扫描: </h6></label><br>
-                                <div class="form-group">
-                                <div class="custom-control custom-checkbox custom-control-inline">
-                                    <input type="checkbox" class="custom-control-input" id="xray" name="xray" />
-                                    <label class="custom-control-label" for="xray" >rad+xray</label>
-                                </div>
-                                <div class="custom-control custom-checkbox custom-control-inline">
-                                    <input type="checkbox" class="custom-control-input" id="nuclei" name="nuclei" />
-                                    <label class="custom-control-label" for="nuclei" >nuclei</label>
-                                </div>
-                                <div class="custom-control custom-checkbox custom-control-inline">
-                                    <input type="checkbox" class="custom-control-input" id="nuclei" name="nuclei" />
-                                    <label class="custom-control-label" for="nuclei" >nuclei(自定义脚本)</label>
-                                 </div>
-                                </div>
-                                </div>
-                                <br>
+                                <h5>扫描模式设置</h5><hr/>
                                 <div class="row">
-                                    <div class="col-sm-3">
-                                    <div class="form-group">
-                                        <label for="exampleFormControlSelect1">端口扫描字典</label>
-                                        <select class="form-control" id="exampleFormControlSelect1">
-                                            <option>top100</option>
-                                            <option>top1000</option>
-                                            <option>all</option>
-                                            <option>自定义</option>
-                                        </select>
-                                    </div>
+                                    <div class="col-md-1"></div>
+                                    <div class="col-sm-6">
+                                        <form method="POST">  
+                                            <div class="form-group">
+                                                <label><h6>名称:</h6></label>
+                                                {{ form.scanmethod_name(class="form-control col-sm-5") }}
+                                            </div>
+                                            <div>
+                                                <label><h6>子域名扫描: </h6></label><br>
+                                            <div class="form-group">
+                                            <div class="custom-control custom-checkbox custom-control-inline">
+                                                {{form.scanmethod_subfinder(class="custom-control-input",id="scanmethod_subfinder")}}
+                                                <label class="custom-control-label" for="scanmethod_subfinder" >subfinder</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox custom-control-inline">
+                                                {{form.scanmethod_amass(class="custom-control-input",id="scanmethod_amass")}}
+                                                <label class="custom-control-label" for="scanmethod_amass">amass</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox custom-control-inline"> 
+                                                {{form.scanmethod_shuffledns(class="custom-control-input",id="scanmethod_shuffledns")}}
+                                                <label class="custom-control-label" for="scanmethod_shuffledns">shuffledns</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox custom-control-inline">
+                                                {{form.scanmethod_github(class="custom-control-input",id="scanmethod_github")}}
+                                                <label class="custom-control-label" for="scanmethod_github">github</label>
+                                            </div>
+                                            </div>
+                                            </div>
+                                            <br>
+                                            <div>
+                                                <label><h6>端口扫描: </h6></label><br>
+                                            <div class="form-group">
+                                                <div class="custom-control custom-checkbox custom-control-inline">
+                                                {{form.scanmethod_port(class="custom-control-input",id="scanmethod_port")}}
+                                                <label class="custom-control-label" for="scanmethod_port" >naabu+nmap</label>
+                                            </div>
+                                            </div>
+                                            </div>
 
-                                    <div class="form-group">
-                                        <label for="exampleFormControlSelect1">目录爆破字典</label>
-                                        <select class="form-control" id="exampleFormControlSelect1">
-                                            <option>top100</option>
-                                            <option>top1000</option>
-                                            <option>top6000</option>
-                                        </select>
+                                            <br>
+                                            <div>
+                                                <label><h6>web识别: </h6></label><br>
+                                            <div class="form-group">
+                                            <div class="custom-control custom-checkbox custom-control-inline">                                               
+                                                {{form.scanmethod_httpx(class="custom-control-input",id="scanmethod_httpx")}}
+                                                <label class="custom-control-label" for="scanmethod_httpx" >httpx(服务探测)</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox custom-control-inline">
+                                                {{form.scanmethod_ehole(class="custom-control-input",id="scanmethod_ehole")}}
+                                                <label class="custom-control-label" for="scanmethod_ehole" >Ehole(指纹识别)</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox custom-control-inline">                                               
+                                                {{form.scanmethod_screenshot(class="custom-control-input",id="scanmethod_screenshot")}}
+                                                <label class="custom-control-label" for="scanmethod_screenshot" >screenshot(截图功能)</label>
+                                            </div>
+                                            </div>
+                                            </div>
+                                            <br>
+                                            <div>
+                                                <label><h6>路径扫描: </h6></label><br>
+                                            <div class="form-group">
+                                            <div class="custom-control custom-checkbox custom-control-inline">
+                                                {{form.scanmethod_dirb(class="custom-control-input",id="scanmethod_dirb")}}
+                                                <label class="custom-control-label" for="scanmethod_dirb" >fileleak(爆破)</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox custom-control-inline">
+                                                {{form.scanmethod_jsfinder(class="custom-control-input",id="scanmethod_jsfinder")}}
+                                                <label class="custom-control-label" for="scanmethod_jsfinder" >jsfinder(js查询)</label>
+                                            </div>
+                                            </div>
+                                            </div>
+                                            <br>
+                                            <div>
+                                                <label><h6>漏洞扫描: </h6></label><br>
+                                            <div class="form-group">
+                                            <div class="custom-control custom-checkbox custom-control-inline">                                             
+                                                {{form.scanmethod_xray(class="custom-control-input",id="scanmethod_xray")}}
+                                                <label class="custom-control-label" for="scanmethod_xray" >rad+xray</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox custom-control-inline">  
+                                                {{form.scanmethod_nuclei(class="custom-control-input",id="scanmethod_nuclei")}}
+                                                <label class="custom-control-label" for="scanmethod_nuclei" >nuclei</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox custom-control-inline">  
+                                                {{form.scanmethod_nuclei_my(class="custom-control-input",id="scanmethod_nuclei_my")}}
+                                                <label class="custom-control-label" for="scanmethod_nuclei_my" >nuclei(自定义脚本)</label>
+                                            </div>
+                                            </div>
+                                            </div>
+                                            <br>
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <label for="exampleFormControlSelect1">端口扫描字典</label>
+                                                    {{form.scanmethod_port_portlist(class="form-control",placeholder="请选择")}}
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="exampleFormControlSelect2">目录爆破字典</label>
+                                                    {{form.scanmethod_dirb_wordlist(class="form-control", placeholder="请选择")}}
+                                                </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div class="form-group">
+                                                        <label>自定义端口</label> 
+                                                        {{form.scanmethod_port_dfportlist(class="form-control")}}
+                                                        <small id="scanmethod_port_dfportlist" class="form-text text-muted">格式如21,22,23,8000-9000,27017</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="text-right">
+                                                {% if flag == True %}
+                                                <button type="submit" name="change" value="change" class="btn btn-primary">修改</button>
+                                                <button type="submit" name="delete" value="delete" class="btn btn-danger">删除</button>
+                                                {% else %}
+                                                {{form.submit(class_="btn btn-primary")}}
+                                                {% endif %}
+
+                                            </div>
+                                        </form>
                                     </div>
-                                    </div>
+                                    <div class="col-sm-1"></div>
                                     <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label>自定义端口</label>
-                                            <input type="text" class="form-control" name="port_dict" />
-                                            <small id="emailHelp" class="form-text text-muted">格式如21,22,23,8000-9000,27017</small>
+
+                                        <div class="col-xl-12">
+                                            <div class="card">
+                                                <div class="card-header text-center">
+                                                    <h5 >扫描模式配置列表</h5>
+                                                </div>
+                                                <div class="card-block table-border-style">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-hover">
+                                                            <tbody>                                                              
+                                                                <tr>
+                                                                    {% if id %}
+                                                                    <th style="vertical-align: middle !important;text-align: center;" onclick="window.location.href='/scanmethod'" >新增扫描模式</td>
+                                                                    {% else %}
+                                                                    <th style="vertical-align: middle !important;text-align: center; background-color:lightgray;" onclick="window.location.href='/scanmethod'" >新增扫描模式</td>
+                                                                    {% endif %}
+                                                                </tr>
+                                                                    {% for row in dict.content %}
+                                                                    <tr>
+                                                                        {% if id == row.id %}
+                                                                        <th style="vertical-align: middle !important;text-align: center;background-color:lightgray" onclick="window.location.href='#'"">{{row.scanmethod_name}}</td>
+                                                                        {% else %}
+                                                                        <th style="vertical-align: middle !important;text-align: center;" onclick="window.location.href='/scanmethod?id={{row.id}}'"">{{row.scanmethod_name}}</td>
+                                                                        {% endif %}
+                                                                    </tr>
+                                                                    {% endfor %}
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
+
+
                                     </div>
                                 </div>
-
-
-                            </form>
-                            </div>
-                            <div class="col-sm-4">
-
-
-                            </div>
-                            </div>
                             </div>
                         </div>
-、
                     </div>
                 </div>
                 <!-- [ Main Content ] end -->
             </div>
         </div>
+
     </div>
 </div>
 

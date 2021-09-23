@@ -29,6 +29,9 @@
         <!-- [ breadcrumb ] end -->
         <div class="main-body">
             <div class="page-wrapper">
+                <div class="box-header with-border">
+                    {% include 'message.html' %}
+                </div>
                 <!-- [ Main Content ] start -->
                 <div class="row">
                     <div class="col-sm-12">
@@ -39,30 +42,31 @@
                             <div class="card-body">
                                 <h5>添加</h5>
                                 <hr>
-                                <form>
+                                <form method="POST">
                                 <div class="row">
                                     <div class="col-md-6">
                                         
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">项目名</label>
-                                                <input type="text" class="form-control" id="target_name">
-                                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                                {{ form.target_name(class="form-control col-sm-10") }}
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleFormControlTextarea1">描述</label>
-                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                                {{form.target_description(style="resize:none;", rows="4",class=" col-sm-10 form-control",placeholder="")}}
                                             </div>
+                                            <br>
                                             <div class="row">
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="exampleFormControlSelect1">扫描周期</label>
-                                                    <select class="form-control" id="exampleFormControlSelect1">
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                        <option>4</option>
-                                                        <option>5</option>
-                                                    </select>
+                                                    {{form.target_cron_id(class="form-control", placeholder="请选择")}}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="exampleFormControlSelect1">是否持续监控</label>
+                                                    {{form.target_cron(class="form-control", placeholder="请选择")}}
+                                                    
                                                 </div>
                                             </div>
                                             </div>
@@ -70,39 +74,34 @@
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="exampleFormControlSelect1">扫描模式</label>
-                                                        <select class="form-control" id="exampleFormControlSelect1">
-                                                            <option>1</option>
-                                                            <option>2</option>
-                                                            <option>3</option>
-                                                            <option>4</option>
-                                                            <option>5</option>
-                                                        </select>
+                                                        {{form.target_method(class="form-control", placeholder="请选择")}}
                                                     </div>
                                                 </div>
                                             </div>
-                                           
-
                                         
                                     </div>
                                     <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="target_domain">主域名资产</label>
-                                                <textarea class="form-control" id="target_domain" rows="4"></textarea>
+                                                {{form.domain_name(style="resize:none;", rows="4",class_="form-control",placeholder="")}}
                                             </div>
                                             <div class="form-group">
                                                 <label for="target_subdomain">精准资产</label>
-                                                <textarea class="form-control" id="target_subdomain" rows="3"></textarea>
+                                                {{form.subdomain_name(style="resize:none;", rows="3",class_="form-control",placeholder="")}}
+                                                <small id="scanmethod_port_dfportlist" class="form-text text-muted">精准资产支持ip，ip段，域名</small>
                                             </div>
                                             
                                             <div class="form-group">
                                                 <label for="blacklist">黑名单</label>
-                                                <textarea class="form-control" id="blacklist" rows="3"></textarea>
+                                                {{form.black_name(style="resize:none;", rows="3",class_="form-control",placeholder="")}}
+                                                
+                                                <small id="scanmethod_port_dfportlist" class="form-text text-muted">黑名单支持三种格式，例如:<br/>domain:www.taobao.com<br/>ip:127.0.0.1<br/>title:淘宝店铺</small>
                                             </div>
                                             
                                     </div>
                                 </div>
                                 <div class="text-right">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary">创建</button>
                                 </div>
                             </form>
                                 
@@ -123,14 +122,13 @@
 <script>
     function initPage() {
 
-        switch_value = $('#target_corn')[0].checked
+        switch_value = $('#target_cron')[0].checked
         $('#target_corn').bootstrapSwitch("size","small",{
             state: switch_value,
             onText: '监控',
             offText: '未监控',
         });
 
-        $(".select2").select2();
     }
 </script>
 {% endblock javascripts %}

@@ -1,0 +1,141 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} 扫描模式设置 {% endblock %} 
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h5 class="m-b-10">扫描设置</h5>
+                        </div>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="javascript:">扫描设置</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:">扫描周期设置</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+
+
+
+        <div class="main-body">
+            <div class="page-wrapper">
+
+                <!-- [ Main Content ] start -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            
+                            <div class="card-body">
+                                <h5>扫描模式设置</h5><hr/>
+                                <div class="row">
+                                    <div class="col-md-1"></div>
+                                    <div class="col-sm-6">
+                                        <form method="POST">  
+                                            <div class="form-group">
+                                                <label><h6>名称:</h6></label>
+                                                {{ form.scancron_name(class="form-control col-sm-5") }}
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlSelect1">月设置</label>
+                                                        {{form.scancron_month(class="form-control",placeholder="请选择")}}
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlSelect2">日设置</label>
+                                                        {{form.scancron_day(class="form-control",placeholder="请选择")}}
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlSelect3">周设置</label>
+                                                        {{form.scancron_week(class="form-control",placeholder="请选择")}}
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlSelect3">小时设置</label>
+                                                        {{form.scancron_hour(class="form-control",placeholder="请选择")}}
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlSelect3">分钟设置</label>
+                                                        {{form.scancron_min(class="form-control",placeholder="请选择")}}
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="text-right">
+                                                {% if flag == True %}
+                                                <button type="submit" name="change" value="change" class="btn btn-primary">修改</button>
+                                                <button type="submit" name="delete" value="delete" class="btn btn-danger">删除</button>
+                                                {% else %}
+                                                {{form.submit(class_="btn btn-primary")}}
+                                                {% endif %}
+
+                                            </div>
+
+
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-4">
+
+                                        <div class="col-xl-12">
+                                            <div class="card">
+                                                <div class="card-header text-center">
+                                                    <h5 >扫描周期配置列表</h5>
+                                                </div>
+                                                <div class="card-block table-border-style">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-hover">
+                                                            <tbody>                                                              
+                                                                <tr>
+                                                                    {% if id %}
+                                                                    <th style="vertical-align: middle !important;text-align: center;" onclick="window.location.href='/scancron'" >新增扫描周期</td>
+                                                                    {% else %}
+                                                                    <th style="vertical-align: middle !important;text-align: center; background-color:lightgray;" onclick="window.location.href='/scancron'" >新增扫描周期</td>
+                                                                    {% endif %}
+                                                                </tr>
+                                                                    {% for row in dict.content %}
+                                                                    <tr>
+                                                                        {% if id == row.id %}
+                                                                        <th style="vertical-align: middle !important;text-align: center;background-color:lightgray" onclick="window.location.href='#'"">{{row.scancron_name}}</td>
+                                                                        {% else %}
+                                                                        <th style="vertical-align: middle !important;text-align: center;" onclick="window.location.href='/scancron?id={{row.id}}'"">{{row.scancron_name}}</td>
+                                                                        {% endif %}
+                                                                    </tr>
+                                                                    {% endfor %}
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- [ Main Content ] end -->
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

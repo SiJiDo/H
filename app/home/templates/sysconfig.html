@@ -1,0 +1,140 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} 扫描模式设置 {% endblock %} 
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h5 class="m-b-10">系统设置</h5>
+                        </div>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="javascript:">系统设置</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:">系统设置</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+
+
+
+        <div class="main-body">
+            <div class="page-wrapper">
+
+                <!-- [ Main Content ] start -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            
+                            <div class="card-body">
+                                <h5>扫描模式设置</h5><hr/>
+                                <div class="row">
+                                    <div class="col-md-3"></div>
+                                    <div class="col-sm-6">
+                                        <form method="POST">  
+                                            <div>
+                                                <label><h6>基本配置: </h6></label><br>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>同时扫描任务上限设置</label> 
+                                                {{form.config_count(class="form-control")}}
+                                            </div>
+                                            <div class="form-group">
+                                                <label>{{form.config_vuln_github.label}}</label> 
+                                                {{form.config_vuln_github(class="form-control")}}
+                                            </div>
+                                            <hr/>
+                                            <div>
+                                                <label><h6>信息推送配置: </h6></label><br>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>{{form.config_email_username.label}}</label> 
+                                                {{form.config_email_username(class="form-control")}}
+                                            </div>
+                                            <div class="form-group">
+                                                <label>{{form.config_email_password.label}}</label> 
+                                                {{form.config_email_password(class="form-control",placeholder="*******************")}}
+                                            </div>
+                                            <div class="form-group">
+                                                <label>{{form.config_email_server.label}}</label> 
+                                                {{form.config_email_server(class="form-control")}}
+                                            </div>
+                                            <div class="form-group">
+                                                <label>{{form.config_email_get.label}}</label> 
+                                                {{form.config_email_get(class="form-control",style="resize:none;", rows="4",placeholder="")}}
+                                                <small id="scanmethod_port_dfportlist" class="form-text text-muted">接受推送邮箱账号一行一个</small>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>{{form.config_push_hour.label}}</label> 
+                                                {{form.config_push_hour(class="form-control")}}
+                                            </div>
+                                            <br>
+                                            <hr/>
+                                            <div>
+                                                <label><h6>每日推送内容选择: </h6></label><br>
+                                            </div>
+                                            <div class="custom-control custom-checkbox custom-control-inline">  
+                                                {{form.config_subdomain(class="custom-control-input",id="config_subdomain")}}
+                                                <label class="custom-control-label" for="config_subdomain" >{{form.config_subdomain.label}}</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox custom-control-inline">  
+                                                {{form.config_port(class="custom-control-input",id="config_port")}}
+                                                <label class="custom-control-label" for="config_port" >{{form.config_port.label}}</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox custom-control-inline">  
+                                                {{form.config_http(class="custom-control-input",id="config_http")}}
+                                                <label class="custom-control-label" for="config_http" >{{form.config_http.label}}</label>
+                                            </div>
+                                            <hr/>
+                                            <div>
+                                                <label><h6>实时推送内容选择(中危以上): </h6></label><br>
+                                            </div>
+                                            <div class="custom-control custom-checkbox custom-control-inline">  
+                                                {{form.config_vuln(class="custom-control-input",id="config_vuln")}}
+                                                <label class="custom-control-label" for="config_vuln" >{{form.config_vuln.label}}</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox custom-control-inline">  
+                                                {{form.config_xray(class="custom-control-input",id="config_xray")}}
+                                                <label class="custom-control-label" for="config_xray" >{{form.config_xray.label}}</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox custom-control-inline">  
+                                                {{form.config_vuln_my(class="custom-control-input",id="config_vuln_my")}}
+                                                <label class="custom-control-label" for="config_vuln_my" >{{form.config_vuln_my.label}}</label>
+                                            </div>
+
+                                            
+                                            <br>
+                                            <br>
+                                            <div class="text-right">
+                                                {{form.submit(class_="btn btn-primary")}}
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- [ Main Content ] end -->
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

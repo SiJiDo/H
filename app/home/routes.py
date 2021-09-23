@@ -10,6 +10,7 @@ from app import login_manager
 from jinja2 import TemplateNotFound
 from app.home.target.view import *
 from app.home.scanconfig.view import *
+from app.home.sysconfig.view import *
 
 @blueprint.route('/index')
 @login_required
@@ -21,15 +22,31 @@ def index():
 def targetroute():
     return target();
 
-@blueprint.route('/targetadd')
+@blueprint.route('/targetadd', methods=['GET', 'POST'])
 @login_required
 def targetaddroute():
     return targetadd();
 
-@blueprint.route('/scanmethod')
+@blueprint.route('/tagetinfo', methods=['GET', 'POST'])
+@login_required
+def targetinforoute():
+    return targetinfo();
+
+@blueprint.route('/scanmethod', methods=['GET', 'POST'])
 @login_required
 def scanmethodroute():
     return scanmethod();
+
+@blueprint.route('/scancron', methods=['GET', 'POST'])
+@login_required
+def scancronroute():
+    return scancron();
+
+@blueprint.route('/sysconfig', methods=['GET', 'POST'])
+@login_required
+def sysconfigroute():
+    return sysconfig();
+
 
 
 

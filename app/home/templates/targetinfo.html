@@ -1,0 +1,406 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="pcoded-content">
+        <div class="pcoded-inner-content">
+            <!-- [ breadcrumb ] start -->
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h5 class="m-b-10">资产详细</h5>
+                            </div>
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index"><i class="feather icon-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="#!">资产管理</a></li>
+                                <li class="breadcrumb-item"><a href="javascript:">资产详细</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-header with-border">
+                {% include 'message.html' %}
+            </div>
+            <!-- [ breadcrumb ] end -->
+            <div class="main-body">
+                <div class="page-wrapper">
+                    <!-- [ Main Content ] start -->
+                    <div class="row">
+                        <!-- [list Content] start -->
+                        <div class="col-xl-8 col-md-12 m-b-30">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false">监控域名信息</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active show" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">黑名单信息</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>User</th>
+                                                <th>Activity</th>
+                                                <th>Time</th>
+                                                <th>Status</th>
+                                                <th class="text-right"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <h6 class="m-0"><img class="rounded-circle m-r-10" style="width:40px;" src="/static/assets/images/user/avatar-1.jpg" alt="activity-user">Ida Jorgensen</h6>
+                                                </td>
+                                                <td>
+                                                    <h6 class="m-0">The quick brown fox</h6>
+                                                </td>
+                                                <td>
+                                                    <h6 class="m-0">3:28 PM</h6>
+                                                </td>
+                                                <td>
+                                                    <h6 class="m-0 text-c-green">Done</h6>
+                                                </td>
+                                                <td class="text-right"><i class="fas fa-circle text-c-green f-10"></i></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <h6 class="m-0"><img class="rounded-circle  m-r-10" style="width:40px;" src="/static/assets/images/user/avatar-2.jpg" alt="activity-user">Albert Andersen</h6>
+                                                </td>
+                                                <td>
+                                                    <h6 class="m-0">Jumps over the lazy</h6>
+                                                </td>
+                                                <td>
+                                                    <h6 class="m-0">2:37 PM</h6>
+                                                </td>
+                                                <td>
+                                                    <h6 class="m-0 text-c-red">Missed</h6>
+                                                </td>
+                                                <td class="text-right"><i class="fas fa-circle text-c-red f-10"></i></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <h6 class="m-0"><img class="rounded-circle  m-r-10" style="width:40px;" src="/static/assets/images/user/avatar-3.jpg" alt="activity-user">Silje Larsen</h6>
+                                                </td>
+                                                <td>
+                                                    <h6 class="m-0">Dog the quick brown</h6>
+                                                </td>
+                                                <td>
+                                                    <h6 class="m-0">10:23 AM</h6>
+                                                </td>
+                                                <td>
+                                                    <h6 class="m-0 text-c-purple">Delayed</h6>
+                                                </td>
+                                                <td class="text-right"><i class="fas fa-circle text-c-purple f-10"></i></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <h6 class="m-0"><img class="rounded-circle  m-r-10" style="width:40px;" src="/static/assets/images/user/avatar-1.jpg" alt="activity-user">Ida Jorgensen</h6>
+                                                </td>
+                                                <td>
+                                                    <h6 class="m-0">The quick brown fox</h6>
+                                                </td>
+                                                <td>
+                                                    <h6 class="m-0">4:28 PM</h6>
+                                                </td>
+                                                <td>
+                                                    <h6 class="m-0 text-c-green">Done</h6>
+                                                </td>
+                                                <td class="text-right"><i class="fas fa-circle text-c-green f-10"></i></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <div class="tab-pane fade active show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>User</th>
+                                                <th>Activity</th>
+                                                <th>Time</th>
+                                                <th>Status</th>
+                                                <th class="text-right"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <h6 class="m-0"><img class="rounded-circle  m-r-10" style="width:40px;" src="/static/assets/images/user/avatar-2.jpg" alt="activity-user">Albert Andersen</h6>
+                                                </td>
+                                                <td>
+                                                    <h6 class="m-0">Jumps over the lazy</h6>
+                                                </td>
+                                                <td>
+                                                    <h6 class="m-0">2:37 PM</h6>
+                                                </td>
+                                                <td>
+                                                    <h6 class="m-0 text-c-red">Missed</h6>
+                                                </td>
+                                                <td class="text-right"><i class="fas fa-circle text-c-red f-10"></i></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <h6 class="m-0"><img class="rounded-circle m-r-10" style="width:40px;" src="/static/assets/images/user/avatar-1.jpg" alt="activity-user">Ida Jorgensen</h6>
+                                                </td>
+                                                <td>
+                                                    <h6 class="m-0">The quick brown fox</h6>
+                                                </td>
+                                                <td>
+                                                    <h6 class="m-0">3:28 PM</h6>
+                                                </td>
+                                                <td>
+                                                    <h6 class="m-0 text-c-green">Done</h6>
+                                                </td>
+                                                <td class="text-right"><i class="fas fa-circle text-c-green f-10"></i></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <h6 class="m-0"><img class="rounded-circle  m-r-10" style="width:40px;" src="/static/assets/images/user/avatar-1.jpg" alt="activity-user">Ida Jorgensen</h6>
+                                                </td>
+                                                <td>
+                                                    <h6 class="m-0">The quick brown fox</h6>
+                                                </td>
+                                                <td>
+                                                    <h6 class="m-0">4:28 PM</h6>
+                                                </td>
+                                                <td>
+                                                    <h6 class="m-0 text-c-green">Done</h6>
+                                                </td>
+                                                <td class="text-right"><i class="fas fa-circle text-c-green f-10"></i></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <h6 class="m-0"><img class="rounded-circle  m-r-10" style="width:40px;" src="/static/assets/images/user/avatar-3.jpg" alt="activity-user">Silje Larsen</h6>
+                                                </td>
+                                                <td>
+                                                    <h6 class="m-0">Dog the quick brown</h6>
+                                                </td>
+                                                <td>
+                                                    <h6 class="m-0">10:23 AM</h6>
+                                                </td>
+                                                <td>
+                                                    <h6 class="m-0 text-c-purple">Delayed</h6>
+                                                </td>
+                                                <td class="text-right"><i class="fas fa-circle text-c-purple f-10"></i></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <!-- [list Content] end -->
+                        <!-- [ statistics year chart ] start -->
+                        <div class="col-xl-4 col-md-6">
+                            <div class="card card-event">
+                                <div class="card-block">
+                                    <div class="row align-items-center justify-content-center">
+                                        <div class="col">
+                                            <h5 class="m-0">项目详细</h5>
+                                        </div>
+                                        <div class="col-auto row">
+                                            <div class="col-xl-4">
+                                                <label class="label theme-bg text-white f-14 f-w-400 float-right"><a href="startscan?id={{id}}" class="label theme-bg text-white f-12">开始扫描</a></label>
+                                            </div>
+                                            <div class="col-xl-4">
+                                                <label class="label theme-bg2 text-white f-14 f-w-400 float-right"><a href="stopscan?id={{id}}" class="label theme-bg2 text-white f-12">暂停扫描</a></label>
+                                            </div>
+                                            <div class="col-xl-4">
+                                            <label class="label theme-bg2 text-white f-14 f-w-400 float-right"><a href="export?id={{id}}" class="label theme-bg2 text-white f-12">导出项目</a></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr/>
+                                    <h2 class="mt-3 f-w-300"><b>{{form.content.target_name}}</b></h2>
+                                    <h5 class="text-muted mt-4 mb-0">项目描述:<br><br>{{form.content.target_description}}</h5>
+                                    <i class="fab fa-angellist text-c-purple f-50"></i>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-block border-bottom">
+                                    <div class="row d-flex align-items-center">
+                                        <div class="col-auto">
+                                            <i class="feather icon-airplay f-30 text-c-green"></i>
+                                        </div>
+                                        <div class="col">
+                                            <h3 class="f-w-300">235</h3>
+                                            <span class="d-block text-uppercase">WEB站点数</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-block">
+                                    <div class="row d-flex align-items-center">
+                                        <div class="col-auto">
+                                            <i class="feather icon-bell f-30 text-c-red"></i>
+                                        </div>
+                                        <div class="col">
+                                            <h3 class="f-w-300">26</h3>
+                                            <span class="d-block text-uppercase">中危以上漏洞数</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- [ statistics year chart ] end -->
+
+                        <div class="col-xl-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>域名信息</h5>
+                                </div>
+                                <input type="hidden" id="test1" value={{233}} />
+                                <div class="card-block">
+                                    <div id="morris-donut-chart1" style="height:300px"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>ip分布信息</h5>
+                                </div>
+                                <div class="card-block">
+                                    <div id="morris-donut-chart2" style="height:300px"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>站点信息</h5>
+                                </div>
+                                <div class="card-block">
+                                    <div id="morris-donut-chart3" style="height:300px"></div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <!-- [ Main Content ] end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script src="/static/assets/plugins/chart-morris/js/raphael.min.js"></script>
+<script src="/static/assets/plugins/chart-morris/js/morris.min.js"></script>
+<script>
+    var test  = document.getElementById("test1").value
+$(document).ready(function() {
+    setTimeout(function() {
+    // [ Donut-chart ] Start
+    var graph = Morris.Donut({
+        element: 'morris-donut-chart1',
+        data: [{
+                value: test,
+                label: 'baidu.com'
+            },
+            {
+                value: 20,
+                label: 'Data 1'
+            },
+            {
+                value: 10,
+                label: 'Data 1'
+            },
+            {
+                value: 5,
+                label: 'Data 1'
+            }
+        ],
+        colors: [
+            '#1de9b6',
+            '#A389D4',
+            '#04a9f5',
+            '#1dc4e9',
+        ],
+        resize: true,
+        formatter: function(x) {
+            return "val : " + x
+        }
+    });
+    var graph = Morris.Donut({
+        element: 'morris-donut-chart2',
+        data: [{
+                value: 60,
+                label: '127.0.0.0/24'
+            },
+            {
+                value: 20,
+                label: 'Data 1'
+            },
+            {
+                value: 10,
+                label: 'Data 1'
+            },
+            {
+                value: 5,
+                label: 'Data 1'
+            }
+        ],
+        colors: [
+            '#1de9b6',
+            '#A389D4',
+            '#04a9f5',
+            '#1dc4e9',
+        ],
+        resize: true,
+        formatter: function(x) {
+            return "val : " + x
+        }
+    });
+    var graph = Morris.Donut({
+        element: 'morris-donut-chart3',
+        data: [{
+                value: 610,
+                label: '200'
+            },
+            {
+                value: 20,
+                label: '404'
+            },
+            {
+                value: 10,
+                label: '403'
+            },
+            {
+                value: 5,
+                label: '302'
+            }
+        ],
+        colors: [
+            '#1de9b6',
+            '#A389D4',
+            '#04a9f5',
+            '#1dc4e9',
+        ],
+        resize: true,
+        formatter: function(x) {
+            return "val : " + x
+        }
+    });    
+    // [ Donut-chart ] end
+        }, 700);
+});
+
+</script>
+{% endblock javascripts %}
