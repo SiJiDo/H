@@ -1,6 +1,6 @@
 {% extends "layouts/base.html" %}
 
-{% block title %} 资产管理 {% endblock %} 
+{% block title %} 资产列表 {% endblock %} 
 
 <!-- Specific CSS goes HERE -->
 {% block stylesheets %}{% endblock stylesheets %}
@@ -103,7 +103,7 @@
                                                     {% endif %}</td>
                                                 <td style="vertical-align: middle !important;text-align: center;">{{row.target_user}}</td>
                                                 <td style="vertical-align: middle !important;text-align: center;">{{row.target_time}}</td>
-                                                <td style="vertical-align: middle !important;text-align: center;"><a href="/tagetinfo?id={{row.id}}" class="label theme-bg text-white f-12">详情</a> <a href="/target?action=delete&id={{row.id}}" class="label theme-bg2 text-white f-12">删除</a></td>
+                                                <td style="vertical-align: middle !important;text-align: center;"><a href="/targetinfo?id={{row.id}}" class="label theme-bg text-white f-12">详情</a> <a href="/target?action=delete&id={{row.id}}" class="label theme-bg2 text-white f-12">删除</a></td>
                                             </tr>
                                             {% endfor %}
                                 

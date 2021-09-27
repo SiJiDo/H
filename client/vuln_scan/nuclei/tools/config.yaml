@@ -1,0 +1,20 @@
+# Headers to include with each request.
+header:
+  - 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:87.0) Gecko/20100101 Firefox/87.0'
+
+
+# Templates with tags to exclude
+exclude-tags: 
+
+# Templates to scan
+templates:
+  - nuclei-templates/
+
+# Templates to exclude scan
+exclude:
+
+
+# Rate limit configuration for scan
+rate-limit: 500
+bulk-size: 50
+concurrency: 50

@@ -9,6 +9,7 @@ from flask_login import current_user
 import math
 import time
 
+#target目录总览
 def target(DynamicModel = Target):
     # 接收参数
     action = request.args.get('action')
@@ -116,6 +117,7 @@ def target(DynamicModel = Target):
             'total_page': math.ceil(total_count / length), 'page': page, 'length': length, 'search': search}
     return render_template('target.html',form = dict)
 
+#target添加
 def targetadd(DynamicModel = Target, form = TargetForm):
     form = TargetForm()
     #定义扫描模式下拉框
@@ -141,6 +143,7 @@ def targetadd(DynamicModel = Target, form = TargetForm):
         target.target_time = time.strftime('%Y-%m-%d  %H:%M:%S', time.localtime(time.time()))
         target.target_status = 0
         target.target_user = str(current_user)
+        target.target_pid = 0
         db.session.add(target)
         db.session.commit()
         #设置blacklist的其他属性
@@ -153,7 +156,9 @@ def targetadd(DynamicModel = Target, form = TargetForm):
 
     return render_template('targetadd.html', form=form)
 
-def targetinfo(DynamicModel = Target, form = TargetForm):
+#target详细
+def targetinfo(DynamicModel = Target, DynamicFrom = TargetForm):
+    DynamicFrom = TargetForm()
     # 接收参数
     action = request.args.get('action')
     id = request.args.get('id')
@@ -166,7 +171,59 @@ def targetinfo(DynamicModel = Target, form = TargetForm):
         query = DynamicModel.query.filter(DynamicModel.id == id).first()
     else:
         query = DynamicModel.query.filter(DynamicModel.id == id).filter(DynamicModel.target_user == str(current_user)).order_by(DynamicModel.id).first()
-    print(query)
     dict = {'content': query, 
             }
     return render_template('targetinfo.html', form=dict, id=id)
+
+#target修改
+def targetedit(DynamicModel = Target, DynamicFrom = TargetForm):
+    DynamicFrom = TargetForm()
+    # 接收参数
+    id = request.args.get('id')
+
+    #定义扫描模式下拉框
+    model = Scanmethod.query.all()
+    model = queryToDict(model)
+    list = [(c['id'],c['scanmethod_name']) for c in model]
+    DynamicFrom.target_method.choices = list
+
+    #定义扫描周期下拉框
+    model = Scancron.query.all()
+    model = queryToDict(model)
+    list_cron = [(c['id'],c['scancron_name']) for c in model]
+    DynamicFrom.target_cron_id.choices = list_cron
+    
+    count  = DynamicModel.query.filter(DynamicModel.target_user == str(current_user), DynamicModel.id == id).count()
+    if(not is_admin() and count == 0 ):
+        flash("该资产不是你添加的")
+        return render_template('page-500.html')
+
+    nowstarget = db.session.query(DynamicModel).filter(DynamicModel.id == id).first()
+    nowstarget = queryToDict(nowstarget)
+    dict_to_form(nowstarget, DynamicFrom)
+
+    #处理发送添加请求
+    if request.method == 'POST':
+        print()
+        tmpform = request.form.to_dict()
+        target = form_to_model(tmpform, DynamicModel())
+        
+        #设置target的其他属性
+        target.target_cron = True if  target.target_cron == "True" else False
+        target.target_time = time.strftime('%Y-%m-%d  %H:%M:%S', time.localtime(time.time()))
+        target.target_status = 0
+        target.target_user = str(current_user)
+        target.target_pid = 0
+        target.id = id
+        dic = model_to_dict_2(target)
+        db.session.query(DynamicModel).filter(DynamicModel.id == id).update(dic)
+        db.session.commit()
+        #设置blacklist的其他属性
+        saveblacklist(target.black_name, target.id)
+        #设置domain的其他属性
+        savedomain(target.domain_name, target.id, current_user)
+        #设置subdomain的其他属性
+        savesubdomain(target.subdomain_name, target.id, current_user)
+        flash("修改成功")
+
+    return render_template('targetedit.html', form=DynamicFrom, id=id)

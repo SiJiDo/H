@@ -10,8 +10,6 @@ class Subdomain(db.Model):
     subdomain_name = Column(String(128), unique=True)   #子域名
     subdomain_ip = Column(String(128))   #子域ip
     subdomain_info = Column(String(128))   #子域解析信息
-    subdomain_port_status = Column(Boolean, default=False)   #端口扫描状态
-    subdomain_http_status = Column(Boolean, default=False)   #http扫描状态
     subdomain_tool = Column(String(128))   #通过何种工具收集到的
     subdomain_user = Column(String(128))   #添加用户
     subdomain_new = Column(Integer) #是否是新增

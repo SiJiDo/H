@@ -1,0 +1,122 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} 资产修改 {% endblock %} 
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h5 class="m-b-10">资产修改</h5>
+                        </div>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="javascript:">资产管理</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:">资产修改</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <div class="main-body">
+            <div class="page-wrapper">
+                <div class="box-header with-border">
+                    {% include 'message.html' %}
+                </div>
+                <!-- [ Main Content ] start -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>扫描资产修改</h5>
+                            </div>
+                            <div class="card-body">
+                                <h5>添加</h5>
+                                <hr>
+                                <form method="POST">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">项目名</label>
+                                                {{ form.target_name(class="form-control col-sm-10") }}
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleFormControlTextarea1">描述</label>
+                                                {{form.target_description(style="resize:none;", rows="4",class=" col-sm-10 form-control",placeholder="")}}
+                                            </div>
+                                            <br>
+                                            <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="exampleFormControlSelect1">扫描周期</label>
+                                                    {{form.target_cron_id(class="form-control", placeholder="请选择")}}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="exampleFormControlSelect1">是否持续监控</label>
+                                                    {{form.target_cron(class="form-control", placeholder="请选择")}}
+                                                    
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlSelect1">扫描模式</label>
+                                                        {{form.target_method(class="form-control", placeholder="请选择")}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        
+                                    </div>
+                                    <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="target_domain">添加新的主域名资产</label>
+                                                {{form.domain_name(style="resize:none;", rows="4",class_="form-control",placeholder="")}}
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="target_subdomain">添加新的精准资产</label>
+                                                {{form.subdomain_name(style="resize:none;", rows="3",class_="form-control",placeholder="")}}
+                                                <small id="scanmethod_port_dfportlist" class="form-text text-muted">精准资产支持ip，ip段，域名</small>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label for="blacklist">添加新的黑名单</label>
+                                                {{form.black_name(style="resize:none;", rows="3",class_="form-control",placeholder="")}}
+                                                
+                                                <small id="scanmethod_port_dfportlist" class="form-text text-muted">黑名单支持三种格式，例如:<br/>domain:www.taobao.com<br/>ip:127.0.0.1<br/>title:淘宝店铺</small>
+                                            </div>
+                                            
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <button type="submit" class="btn btn-primary">修改</button>
+                                </div>
+                            </form>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- [ Main Content ] end -->
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+{% endblock javascripts %}

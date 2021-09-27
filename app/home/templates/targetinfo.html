@@ -1,6 +1,6 @@
 {% extends "layouts/base.html" %}
 
-{% block title %} Dashboard {% endblock %} 
+{% block title %} 资产详情 {% endblock %} 
 
 <!-- Specific CSS goes HERE -->
 {% block stylesheets %}{% endblock stylesheets %}
@@ -15,12 +15,12 @@
                     <div class="row align-items-center">
                         <div class="col-md-12">
                             <div class="page-header-title">
-                                <h5 class="m-b-10">资产详细</h5>
+                                <h5 class="m-b-10">资产详情</h5>
                             </div>
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index"><i class="feather icon-home"></i></a></li>
                                 <li class="breadcrumb-item"><a href="#!">资产管理</a></li>
-                                <li class="breadcrumb-item"><a href="javascript:">资产详细</a></li>
+                                <li class="breadcrumb-item"><a href="javascript:">资产详情</a></li>
                             </ul>
                         </div>
                     </div>
@@ -36,169 +36,72 @@
                     <div class="row">
                         <!-- [list Content] start -->
                         <div class="col-xl-8 col-md-12 m-b-30">
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false">监控域名信息</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active show" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">黑名单信息</a>
-                                </li>
-                            </ul>
-                            <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>User</th>
-                                                <th>Activity</th>
-                                                <th>Time</th>
-                                                <th>Status</th>
-                                                <th class="text-right"></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <h6 class="m-0"><img class="rounded-circle m-r-10" style="width:40px;" src="/static/assets/images/user/avatar-1.jpg" alt="activity-user">Ida Jorgensen</h6>
-                                                </td>
-                                                <td>
-                                                    <h6 class="m-0">The quick brown fox</h6>
-                                                </td>
-                                                <td>
-                                                    <h6 class="m-0">3:28 PM</h6>
-                                                </td>
-                                                <td>
-                                                    <h6 class="m-0 text-c-green">Done</h6>
-                                                </td>
-                                                <td class="text-right"><i class="fas fa-circle text-c-green f-10"></i></td>
-                                            </tr>
+                            <div class="card Recent-Users">
 
-                                            <tr>
-                                                <td>
-                                                    <h6 class="m-0"><img class="rounded-circle  m-r-10" style="width:40px;" src="/static/assets/images/user/avatar-2.jpg" alt="activity-user">Albert Andersen</h6>
-                                                </td>
-                                                <td>
-                                                    <h6 class="m-0">Jumps over the lazy</h6>
-                                                </td>
-                                                <td>
-                                                    <h6 class="m-0">2:37 PM</h6>
-                                                </td>
-                                                <td>
-                                                    <h6 class="m-0 text-c-red">Missed</h6>
-                                                </td>
-                                                <td class="text-right"><i class="fas fa-circle text-c-red f-10"></i></td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>
-                                                    <h6 class="m-0"><img class="rounded-circle  m-r-10" style="width:40px;" src="/static/assets/images/user/avatar-3.jpg" alt="activity-user">Silje Larsen</h6>
-                                                </td>
-                                                <td>
-                                                    <h6 class="m-0">Dog the quick brown</h6>
-                                                </td>
-                                                <td>
-                                                    <h6 class="m-0">10:23 AM</h6>
-                                                </td>
-                                                <td>
-                                                    <h6 class="m-0 text-c-purple">Delayed</h6>
-                                                </td>
-                                                <td class="text-right"><i class="fas fa-circle text-c-purple f-10"></i></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h6 class="m-0"><img class="rounded-circle  m-r-10" style="width:40px;" src="/static/assets/images/user/avatar-1.jpg" alt="activity-user">Ida Jorgensen</h6>
-                                                </td>
-                                                <td>
-                                                    <h6 class="m-0">The quick brown fox</h6>
-                                                </td>
-                                                <td>
-                                                    <h6 class="m-0">4:28 PM</h6>
-                                                </td>
-                                                <td>
-                                                    <h6 class="m-0 text-c-green">Done</h6>
-                                                </td>
-                                                <td class="text-right"><i class="fas fa-circle text-c-green f-10"></i></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-
-                                </div>
-                                <div class="tab-pane fade active show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>User</th>
-                                                <th>Activity</th>
-                                                <th>Time</th>
-                                                <th>Status</th>
-                                                <th class="text-right"></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <h6 class="m-0"><img class="rounded-circle  m-r-10" style="width:40px;" src="/static/assets/images/user/avatar-2.jpg" alt="activity-user">Albert Andersen</h6>
-                                                </td>
-                                                <td>
-                                                    <h6 class="m-0">Jumps over the lazy</h6>
-                                                </td>
-                                                <td>
-                                                    <h6 class="m-0">2:37 PM</h6>
-                                                </td>
-                                                <td>
-                                                    <h6 class="m-0 text-c-red">Missed</h6>
-                                                </td>
-                                                <td class="text-right"><i class="fas fa-circle text-c-red f-10"></i></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h6 class="m-0"><img class="rounded-circle m-r-10" style="width:40px;" src="/static/assets/images/user/avatar-1.jpg" alt="activity-user">Ida Jorgensen</h6>
-                                                </td>
-                                                <td>
-                                                    <h6 class="m-0">The quick brown fox</h6>
-                                                </td>
-                                                <td>
-                                                    <h6 class="m-0">3:28 PM</h6>
-                                                </td>
-                                                <td>
-                                                    <h6 class="m-0 text-c-green">Done</h6>
-                                                </td>
-                                                <td class="text-right"><i class="fas fa-circle text-c-green f-10"></i></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h6 class="m-0"><img class="rounded-circle  m-r-10" style="width:40px;" src="/static/assets/images/user/avatar-1.jpg" alt="activity-user">Ida Jorgensen</h6>
-                                                </td>
-                                                <td>
-                                                    <h6 class="m-0">The quick brown fox</h6>
-                                                </td>
-                                                <td>
-                                                    <h6 class="m-0">4:28 PM</h6>
-                                                </td>
-                                                <td>
-                                                    <h6 class="m-0 text-c-green">Done</h6>
-                                                </td>
-                                                <td class="text-right"><i class="fas fa-circle text-c-green f-10"></i></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h6 class="m-0"><img class="rounded-circle  m-r-10" style="width:40px;" src="/static/assets/images/user/avatar-3.jpg" alt="activity-user">Silje Larsen</h6>
-                                                </td>
-                                                <td>
-                                                    <h6 class="m-0">Dog the quick brown</h6>
-                                                </td>
-                                                <td>
-                                                    <h6 class="m-0">10:23 AM</h6>
-                                                </td>
-                                                <td>
-                                                    <h6 class="m-0 text-c-purple">Delayed</h6>
-                                                </td>
-                                                <td class="text-right"><i class="fas fa-circle text-c-purple f-10"></i></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active show" id="subdomain-tab" data-toggle="tab" href="#subdomain" role="tab" aria-controls="subdomain" aria-selected="true">监控域名信息</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">黑名单信息</a>
+                                    </li>
+                                </ul>
                                 
+
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade active show" id="subdomain" role="tabpanel" aria-labelledby="subdomain-tab">
+                                        <!-- 域名列表 start -->
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th style="vertical-align: middle !important;text-align: center;">域名</th>
+                                                    <th style="vertical-align: middle !important;text-align: center;">子域名数</th>
+                                                    <th style="vertical-align: middle !important;text-align: center;">端口数</th>
+                                                    <th style="vertical-align: middle !important;text-align: center;">操作</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td style="vertical-align: middle !important;text-align: center;">
+                                                        <h6 class="m-0">oppo.com</h6>
+                                                    </td>
+                                                    <td style="vertical-align: middle !important;text-align: center;">
+                                                        <h6 class="m-0">123</h6>
+                                                    </td>
+                                                    <td style="vertical-align: middle !important;text-align: center;">
+                                                        <h6 class="m-0">256</h6>
+                                                    </td>
+                                                    <td style="vertical-align: middle !important;text-align: center;"><a href="/targetinfo?action=delete&id=" class="label theme-bg2 text-white f-12">删除</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <!-- 域名列表 end -->
+
+                                    </div>
+                                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th style="vertical-align: middle !important;text-align: center;">类型</th>
+                                                    <th style="vertical-align: middle !important;text-align: center;">黑名单</th>
+                                                    <th style="vertical-align: middle !important;text-align: center;">操作</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td style="vertical-align: middle !important;text-align: center;"> 
+                                                        <h6 class="m-0">subdomain</h6>
+                                                    </td>
+                                                    <td style="vertical-align: middle !important;text-align: center;">
+                                                        <h6 class="m-0">www.oppo.com</h6>
+                                                    </td style="vertical-align: middle !important;text-align: center;">
+                                                    <td style="vertical-align: middle !important;text-align: center;"><a href="/targetinfo?action=delete&id=" class="label theme-bg2 text-white f-12">删除</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
+                                </div>
                             </div>
                         </div>
                         <!-- [list Content] end -->
@@ -225,14 +128,14 @@
                                     <hr/>
                                     <h2 class="mt-3 f-w-300"><b>{{form.content.target_name}}</b></h2>
                                     <h5 class="text-muted mt-4 mb-0">项目描述:<br><br>{{form.content.target_description}}</h5>
-                                    <i class="fab fa-angellist text-c-purple f-50"></i>
+                                    <a href="targetedit?id={{id}}"><i class="feather icon-settings fab text-c-purple f-50"></i></a>
                                 </div>
                             </div>
                             <div class="card">
                                 <div class="card-block border-bottom">
                                     <div class="row d-flex align-items-center">
                                         <div class="col-auto">
-                                            <i class="feather icon-airplay f-30 text-c-green"></i>
+                                            <i class="feather icon-airplay f-50 text-c-green"></i>
                                         </div>
                                         <div class="col">
                                             <h3 class="f-w-300">235</h3>
@@ -243,7 +146,7 @@
                                 <div class="card-block">
                                     <div class="row d-flex align-items-center">
                                         <div class="col-auto">
-                                            <i class="feather icon-bell f-30 text-c-red"></i>
+                                            <i class="feather icon-bell f-50 text-c-red"></i>
                                         </div>
                                         <div class="col">
                                             <h3 class="f-w-300">26</h3>

@@ -45,7 +45,10 @@ def scanmethod(DynamicModel = Scanmethod, DynamicFrom = ScanmethodForm):
         nowscanmethod = utils.queryToDict(nowscanmethod)
         utils.dict_to_form(nowscanmethod, DynamicFrom)
         flag = True
-    dict = {'content': utils.queryToDict(result)}
+    if(result):
+        dict = {'content': utils.queryToDict(result)}
+    else:
+        dict = {'content':{}}
     return render_template('scanmethod.html',form=DynamicFrom, dict = dict, id = id, flag=flag)
 
 
@@ -84,5 +87,8 @@ def scancron(DynamicModel = Scancron, DynamicFrom = ScancronFrom):
         nowscanmethod = utils.queryToDict(nowscanmethod)
         utils.dict_to_form(nowscanmethod, DynamicFrom)
         flag = True
-    dict = {'content': utils.queryToDict(result)}
+    if(result):
+        dict = {'content': utils.queryToDict(result)}
+    else:
+        dict = {'content':{}}
     return render_template('scancron.html',form=DynamicFrom, dict = dict, id = id, flag=flag)

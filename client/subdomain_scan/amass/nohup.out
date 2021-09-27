@@ -1,0 +1,2157 @@
+/Library/Python/3.8/site-packages/celery/backends/amqp.py:65: CPendingDeprecationWarning: 
+    The AMQP result backend is scheduled for deprecation in     version 4.0 and removal in version v5.0.     Please use RPC backend or a persistent backend.
+
+  deprecated.warn(
+[2021-07-05 16:37:09,602: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:09,616: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:09,628: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:09,641: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:09,654: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:09,668: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:09,668: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:10,701: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:10,715: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:10,728: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:10,743: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:10,758: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:10,773: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:10,774: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:11,798: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:11,813: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:11,826: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:11,839: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:11,852: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:11,866: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:11,866: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:12,891: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:12,906: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:12,921: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:12,936: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:12,951: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:12,965: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:12,966: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:13,989: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:14,004: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:14,017: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:14,031: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:14,044: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:14,057: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:14,058: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:15,085: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:15,104: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:15,120: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:15,134: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:15,148: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:15,162: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:15,162: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:16,185: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:16,201: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:16,216: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:16,230: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:16,242: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:16,256: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:16,256: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:17,279: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:17,293: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:17,305: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:17,327: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:17,342: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:17,355: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:17,355: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:18,380: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:18,396: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:18,412: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:18,427: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:18,442: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:18,458: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:18,458: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:19,477: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:19,491: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:19,505: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:19,518: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:19,531: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:19,544: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:19,544: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:20,567: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:20,581: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:20,593: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:20,606: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:20,619: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:20,633: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:20,633: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:21,657: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:21,672: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:21,686: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:21,700: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:21,714: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:21,729: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:21,729: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:22,752: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:22,767: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:22,781: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:22,795: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:22,809: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:22,822: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:22,822: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:23,847: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:23,860: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:23,873: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:23,885: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:23,900: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:23,916: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:23,916: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:24,940: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:24,955: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:24,969: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:24,984: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:24,999: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:25,013: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:25,014: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:26,040: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:26,055: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:26,069: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:26,083: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:26,097: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:26,112: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:26,112: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:27,139: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:27,156: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:27,173: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:27,189: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:27,205: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:27,221: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:27,222: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:28,243: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:28,257: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:28,270: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:28,284: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:28,298: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:28,311: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:28,312: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:29,335: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:29,349: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:29,361: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:29,374: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:29,387: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:29,400: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:29,400: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:30,425: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:30,440: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:30,453: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:30,466: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:30,479: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:30,496: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:30,496: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:31,519: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:31,533: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:31,546: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:31,559: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:31,573: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:31,586: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:31,586: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:32,610: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:32,624: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:32,638: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:32,655: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:32,671: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:32,688: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:32,688: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:33,712: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:33,725: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:33,737: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:33,751: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:33,765: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:33,778: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:33,778: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:34,803: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:34,818: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:34,835: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:34,851: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:34,867: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:34,883: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:34,884: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:35,909: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:35,924: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:35,938: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:35,951: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:35,963: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:35,976: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:35,977: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:36,999: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:37,012: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:37,024: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:37,037: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:37,051: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:37,065: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:37,065: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:38,088: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:38,103: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:38,117: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:38,131: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:38,145: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:38,160: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:38,160: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:39,182: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:39,195: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:39,209: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:39,223: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:39,237: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:39,251: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:39,251: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:40,277: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:40,292: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:40,305: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:40,317: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:40,331: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:40,343: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:40,344: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:41,364: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:41,377: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:41,389: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:41,401: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:41,413: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:41,425: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:41,425: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:42,447: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:42,460: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:42,472: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:42,486: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:42,500: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:42,513: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:42,513: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:43,537: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:43,550: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:43,563: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:43,576: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:43,589: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:43,603: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:43,603: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:44,624: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:44,640: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:44,655: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:44,669: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:44,685: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:44,699: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:44,700: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:45,722: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:45,736: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:45,750: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:45,763: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:45,776: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:45,788: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:45,788: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:46,809: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:46,823: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:46,836: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:46,849: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:46,862: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:46,876: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:46,876: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:47,899: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:47,914: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:47,929: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:47,943: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:47,957: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:47,970: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:47,971: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+[2021-07-05 16:37:48,988: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:49,003: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:49,017: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:49,029: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:49,043: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:49,056: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker: Connection.open: (530) NOT_ALLOWED - vhost unicorn_broker not found.
+Trying to reconnect...
+
+[2021-07-05 16:37:49,056: CRITICAL/MainProcess] Frequent restarts detected: RestartFreqExceeded('5 in 1s')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 312, in start
+    self._restart_state.step()
+  File "/Library/Python/3.8/site-packages/billiard/common.py", line 165, in step
+    raise self.RestartFreqExceeded("%r in %rs" % (R, self.maxT))
+billiard.exceptions.RestartFreqExceeded: 5 in 1s
+
+worker: Hitting Ctrl+C again will terminate all running tasks!
+
+worker: Warm shutdown (MainProcess)
+
+worker: Cold shutdown (MainProcess)
+
+worker: Cold shutdown (MainProcess)
+Exception ignored in: <Finalize object, dead>
+Traceback (most recent call last):
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/multiprocessing/util.py", line 201, in __call__
+  File "/Library/Python/3.8/site-packages/billiard/heap.py", line 233, in free
+AttributeError: 'NoneType' object has no attribute 'getpid'
+ 
+ -------------- celery@amass_1 v4.4.7 (cliffs)
+--- ***** ----- 
+-- ******* ---- macOS-11.2.3-x86_64-i386-64bit 2021-07-05 16:37:09
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         hhsrc.amass:0x10c5c07f0
+- ** ---------- .> transport:   amqp://hhsrc:**@127.0.0.1:5672/unicorn_broker
+- ** ---------- .> results:     amqp://
+- *** --- * --- .> concurrency: 1 (prefork)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> amass            exchange=amass(direct) key=amass
+                
+
+[tasks]
+  . amass.run
+
+/Library/Python/3.8/site-packages/celery/backends/amqp.py:65: CPendingDeprecationWarning: 
+    The AMQP result backend is scheduled for deprecation in     version 4.0 and removal in version v5.0.     Please use RPC backend or a persistent backend.
+
+  deprecated.warn(
+[2021-07-07 13:12:28,318: INFO/MainProcess] Connected to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker
+[2021-07-07 13:12:28,361: INFO/MainProcess] mingle: searching for neighbors
+[2021-07-07 13:12:29,454: INFO/MainProcess] mingle: all alone
+[2021-07-07 13:12:29,500: INFO/MainProcess] celery@amass_1625634746.948791 ready.
+[2021-07-07 13:12:34,291: INFO/MainProcess] Events of group {task} enabled by remote.
+/Library/Python/3.8/site-packages/celery/backends/amqp.py:65: CPendingDeprecationWarning: 
+    The AMQP result backend is scheduled for deprecation in     version 4.0 and removal in version v5.0.     Please use RPC backend or a persistent backend.
+
+  deprecated.warn(
+[2021-07-07 13:14:00,263: INFO/MainProcess] Connected to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker
+[2021-07-07 13:14:00,300: INFO/MainProcess] mingle: searching for neighbors
+[2021-07-07 13:14:01,371: INFO/MainProcess] mingle: all alone
+[2021-07-07 13:14:01,427: INFO/MainProcess] celery@amass_1625634839.330644 ready.
+[2021-07-07 13:14:06,251: INFO/MainProcess] Events of group {task} enabled by remote.
+/Library/Python/3.8/site-packages/celery/backends/amqp.py:65: CPendingDeprecationWarning: 
+    The AMQP result backend is scheduled for deprecation in     version 4.0 and removal in version v5.0.     Please use RPC backend or a persistent backend.
+
+  deprecated.warn(
+[2021-07-07 13:14:40,063: INFO/MainProcess] Connected to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker
+[2021-07-07 13:14:40,152: INFO/MainProcess] mingle: searching for neighbors
+[2021-07-07 13:14:41,284: INFO/MainProcess] mingle: all alone
+[2021-07-07 13:14:41,344: INFO/MainProcess] celery@amass_1625634878.3006752 ready.
+[2021-07-07 13:14:46,012: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-07-07 13:16:00,014: INFO/MainProcess] Received task: amass.run[e4078a28-b33a-4521-a9e7-84a77ccbd2c7]  
+vds.vivo.com
+vivo.com
+asia-expweb.vivo.com
+sg-exstpay.vivo.com
+asia-ali-cname-www.vivo.com
+domaincfg.vivo.com
+zs.vivo.com
+mshop.vivo.com
+shop.vivo.com
+es.vivo.com
+th-passport.vivo.com
+bs.vivo.com
+as.vivo.com
+hr.vivo.com
+zhaopin.vivo.com
+devissue.vivo.com
+identity.vivo.com
+pc.vivo.com
+asia-exstatic-vivofs.vivo.com
+asia-exstatic.vivo.com
+faq.vivo.com
+mshopstatic-in.vivo.com
+/Library/Python/3.8/site-packages/celery/backends/amqp.py:65: CPendingDeprecationWarning: 
+    The AMQP result backend is scheduled for deprecation in     version 4.0 and removal in version v5.0.     Please use RPC backend or a persistent backend.
+
+  deprecated.warn(
+[2021-07-07 13:17:51,136: INFO/ForkPoolWorker-1] Task amass.run[e4078a28-b33a-4521-a9e7-84a77ccbd2c7] succeeded in 111.116217011s: {'tool': 'amass', 'result': ['vds.vivo.com', 'vivo.com', 'asia-expweb.vivo.com', 'sg-exstpay.vivo.com', 'asia-ali-cname-www.vivo.com', 'domaincfg.vivo.com', 'zs.vivo.com', 'mshop.vivo.com', 'shop.vivo.com', 'es.vivo.com', 'th-passport.vivo.com', 'bs.vivo.com', 'as.vivo.com', 'hr.vivo.com', 'zhaopin.vivo.com', 'devissue.vivo.com', 'identity.vivo.com', 'pc.vivo.com', 'asia-exstatic-vivofs.vivo.com', 'asia-exstatic.vivo.com', 'faq.vivo.com', 'mshopstatic-in.vivo.com']}
+[2021-07-07 13:20:05,992: INFO/MainProcess] Received task: amass.run[21e8369d-a3ce-4945-aed6-06e4c3ae54e1]  
+vivo.com
+zs.vivo.com
+mshopstatic-in.vivo.com
+asia-exstatic.vivo.com
+hr.vivo.com
+zhaopin.vivo.com
+faq.vivo.com
+th-passport.vivo.com
+vsin.vivo.com
+mshop.vivo.com
+as.vivo.com
+www.vivo.com
+developer.vivo.com
+bs.vivo.com
+shop.vivo.com
+es.vivo.com
+passport.vivo.com
+devissue.vivo.com
+homepage.vivo.com
+asia-exstatic-vivofs.vivo.com
+[2021-07-07 13:22:16,040: INFO/ForkPoolWorker-1] Task amass.run[21e8369d-a3ce-4945-aed6-06e4c3ae54e1] succeeded in 130.043170735s: {'tool': 'amass', 'result': ['vivo.com', 'zs.vivo.com', 'mshopstatic-in.vivo.com', 'asia-exstatic.vivo.com', 'hr.vivo.com', 'zhaopin.vivo.com', 'faq.vivo.com', 'th-passport.vivo.com', 'vsin.vivo.com', 'mshop.vivo.com', 'as.vivo.com', 'www.vivo.com', 'developer.vivo.com', 'bs.vivo.com', 'shop.vivo.com', 'es.vivo.com', 'passport.vivo.com', 'devissue.vivo.com', 'homepage.vivo.com', 'asia-exstatic-vivofs.vivo.com']}
+/Library/Python/3.8/site-packages/celery/backends/amqp.py:65: CPendingDeprecationWarning: 
+    The AMQP result backend is scheduled for deprecation in     version 4.0 and removal in version v5.0.     Please use RPC backend or a persistent backend.
+
+  deprecated.warn(
+[2021-07-07 13:45:39,660: INFO/MainProcess] Connected to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker
+[2021-07-07 13:45:39,701: INFO/MainProcess] mingle: searching for neighbors
+[2021-07-07 13:45:40,776: INFO/MainProcess] mingle: all alone
+[2021-07-07 13:45:40,834: INFO/MainProcess] celery@amass_1625636738.182301 ready.
+[2021-07-07 13:45:46,179: INFO/MainProcess] Events of group {task} enabled by remote.
+/Library/Python/3.8/site-packages/celery/backends/amqp.py:65: CPendingDeprecationWarning: 
+    The AMQP result backend is scheduled for deprecation in     version 4.0 and removal in version v5.0.     Please use RPC backend or a persistent backend.
+
+  deprecated.warn(
+[2021-07-07 14:49:56,552: INFO/MainProcess] Connected to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker
+[2021-07-07 14:49:56,625: INFO/MainProcess] mingle: searching for neighbors
+[2021-07-07 14:49:57,831: INFO/MainProcess] mingle: all alone
+[2021-07-07 14:49:57,948: INFO/MainProcess] celery@amass_1625640593.531957 ready.
+[2021-07-07 14:50:02,419: INFO/MainProcess] Events of group {task} enabled by remote.
+/Library/Python/3.8/site-packages/celery/backends/amqp.py:65: CPendingDeprecationWarning: 
+    The AMQP result backend is scheduled for deprecation in     version 4.0 and removal in version v5.0.     Please use RPC backend or a persistent backend.
+
+  deprecated.warn(
+[2021-07-07 18:54:35,257: INFO/MainProcess] Connected to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker
+[2021-07-07 18:54:35,315: INFO/MainProcess] mingle: searching for neighbors
+[2021-07-07 18:54:36,397: INFO/MainProcess] mingle: all alone
+[2021-07-07 18:54:36,453: INFO/MainProcess] celery@amass_1625655273.507039 ready.
+[2021-07-07 18:54:47,412: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-07-07 19:49:01,984: INFO/MainProcess] Received task: amass.run[4722a280-904e-46a4-bf49-b3715b9e51ad]  
+shop.vivo.com
+asia-expweb.vivo.com
+sg-exstpay.vivo.com
+domaincfg.vivo.com
+asia-ali-cname-www.vivo.com
+th-passport.vivo.com
+es.vivo.com
+zs.vivo.com
+identity.vivo.com
+bs.vivo.com
+vsin.vivo.com
+homepage.vivo.com
+mshop.vivo.com
+zhaopin.vivo.com
+hr.vivo.com
+as.vivo.com
+pc.vivo.com
+mshopstatic-in.vivo.com
+developer.vivo.com
+asia-exstatic.vivo.com
+devissue.vivo.com
+faq.vivo.com
+/Library/Python/3.8/site-packages/celery/backends/amqp.py:65: CPendingDeprecationWarning: 
+    The AMQP result backend is scheduled for deprecation in     version 4.0 and removal in version v5.0.     Please use RPC backend or a persistent backend.
+
+  deprecated.warn(
+[2021-07-07 19:50:20,046: INFO/ForkPoolWorker-1] Task amass.run[4722a280-904e-46a4-bf49-b3715b9e51ad] succeeded in 78.06447868199984s: {'tool': 'amass', 'result': ['shop.vivo.com', 'asia-expweb.vivo.com', 'sg-exstpay.vivo.com', 'domaincfg.vivo.com', 'asia-ali-cname-www.vivo.com', 'th-passport.vivo.com', 'es.vivo.com', 'zs.vivo.com', 'identity.vivo.com', 'bs.vivo.com', 'vsin.vivo.com', 'homepage.vivo.com', 'mshop.vivo.com', 'zhaopin.vivo.com', 'hr.vivo.com', 'as.vivo.com', 'pc.vivo.com', 'mshopstatic-in.vivo.com', 'developer.vivo.com', 'asia-exstatic.vivo.com', 'devissue.vivo.com', 'faq.vivo.com']}
+/Library/Python/3.8/site-packages/celery/backends/amqp.py:65: CPendingDeprecationWarning: 
+    The AMQP result backend is scheduled for deprecation in     version 4.0 and removal in version v5.0.     Please use RPC backend or a persistent backend.
+
+  deprecated.warn(
+[2021-07-07 21:20:24,763: INFO/MainProcess] Connected to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker
+[2021-07-07 21:20:24,813: INFO/MainProcess] mingle: searching for neighbors
+[2021-07-07 21:20:25,995: INFO/MainProcess] mingle: all alone
+[2021-07-07 21:20:26,181: INFO/MainProcess] celery@amass_1625664021.9295502 ready.
+[2021-07-07 21:20:30,694: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-07-07 21:23:08,826: WARNING/MainProcess] consumer: Connection to broker lost. Trying to re-establish the connection...
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 318, in start
+    blueprint.start(self)
+  File "/Library/Python/3.8/site-packages/celery/bootsteps.py", line 119, in start
+    step.start(parent)
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 599, in start
+    c.loop(*c.loop_args())
+  File "/Library/Python/3.8/site-packages/celery/worker/loops.py", line 83, in asynloop
+    next(loop)
+  File "/Library/Python/3.8/site-packages/kombu/asynchronous/hub.py", line 364, in create_loop
+    cb(*cbargs)
+  File "/Library/Python/3.8/site-packages/kombu/transport/base.py", line 238, in on_readable
+    reader(loop)
+  File "/Library/Python/3.8/site-packages/kombu/transport/base.py", line 220, in _read
+    drain_events(timeout=0)
+  File "/Library/Python/3.8/site-packages/amqp/connection.py", line 508, in drain_events
+    while not self.blocking_read(timeout):
+  File "/Library/Python/3.8/site-packages/amqp/connection.py", line 514, in blocking_read
+    return self.on_inbound_frame(frame)
+  File "/Library/Python/3.8/site-packages/amqp/method_framing.py", line 55, in on_frame
+    callback(channel, method_sig, buf, None)
+  File "/Library/Python/3.8/site-packages/amqp/connection.py", line 520, in on_inbound_method
+    return self.channels[channel_id].dispatch_method(
+  File "/Library/Python/3.8/site-packages/amqp/abstract_channel.py", line 145, in dispatch_method
+    listener(*args)
+  File "/Library/Python/3.8/site-packages/amqp/connection.py", line 650, in _on_close
+    raise error_for_code(reply_code, reply_text,
+amqp.exceptions.ConnectionForced: (0, 0): (320) CONNECTION_FORCED - broker forced connection closure with reason 'shutdown'
+[2021-07-07 21:23:08,889: WARNING/MainProcess] /Library/Python/3.8/site-packages/amqp/connection.py:327: AMQPDeprecationWarning: The .transport attribute on the connection was accessed before
+the connection was established.  This is supported for now, but will
+be deprecated in amqp 2.2.0.
+
+Since amqp 2.0 you have to explicitly call Connection.connect()
+before using the connection.
+
+  warnings.warn(AMQPDeprecationWarning(
+[2021-07-07 21:23:08,989: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: Server unexpectedly closed connection.
+Trying again in 2.00 seconds... (1/100)
+
+[2021-07-07 21:23:11,000: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 4.00 seconds... (2/100)
+
+[2021-07-07 21:23:15,023: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 6.00 seconds... (3/100)
+
+[2021-07-07 21:23:21,054: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 8.00 seconds... (4/100)
+
+[2021-07-07 21:23:29,096: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 10.00 seconds... (5/100)
+
+[2021-07-07 21:23:39,148: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 12.00 seconds... (6/100)
+
+[2021-07-07 21:23:51,204: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 14.00 seconds... (7/100)
+
+[2021-07-07 21:24:05,264: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 16.00 seconds... (8/100)
+
+[2021-07-07 21:24:21,337: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 18.00 seconds... (9/100)
+
+[2021-07-07 21:24:39,420: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 20.00 seconds... (10/100)
+
+[2021-07-07 21:24:59,538: INFO/MainProcess] Connected to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker
+[2021-07-07 21:24:59,575: INFO/MainProcess] mingle: searching for neighbors
+[2021-07-07 21:25:00,694: INFO/MainProcess] mingle: all alone
+[2021-07-07 21:38:26,875: WARNING/MainProcess] consumer: Connection to broker lost. Trying to re-establish the connection...
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 318, in start
+    blueprint.start(self)
+  File "/Library/Python/3.8/site-packages/celery/bootsteps.py", line 119, in start
+    step.start(parent)
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 599, in start
+    c.loop(*c.loop_args())
+  File "/Library/Python/3.8/site-packages/celery/worker/loops.py", line 83, in asynloop
+    next(loop)
+  File "/Library/Python/3.8/site-packages/kombu/asynchronous/hub.py", line 364, in create_loop
+    cb(*cbargs)
+  File "/Library/Python/3.8/site-packages/kombu/transport/base.py", line 238, in on_readable
+    reader(loop)
+  File "/Library/Python/3.8/site-packages/kombu/transport/base.py", line 220, in _read
+    drain_events(timeout=0)
+  File "/Library/Python/3.8/site-packages/amqp/connection.py", line 508, in drain_events
+    while not self.blocking_read(timeout):
+  File "/Library/Python/3.8/site-packages/amqp/connection.py", line 514, in blocking_read
+    return self.on_inbound_frame(frame)
+  File "/Library/Python/3.8/site-packages/amqp/method_framing.py", line 55, in on_frame
+    callback(channel, method_sig, buf, None)
+  File "/Library/Python/3.8/site-packages/amqp/connection.py", line 520, in on_inbound_method
+    return self.channels[channel_id].dispatch_method(
+  File "/Library/Python/3.8/site-packages/amqp/abstract_channel.py", line 145, in dispatch_method
+    listener(*args)
+  File "/Library/Python/3.8/site-packages/amqp/connection.py", line 650, in _on_close
+    raise error_for_code(reply_code, reply_text,
+amqp.exceptions.ConnectionForced: (0, 0): (320) CONNECTION_FORCED - broker forced connection closure with reason 'shutdown'
+[2021-07-07 21:38:26,915: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: Server unexpectedly closed connection.
+Trying again in 2.00 seconds... (1/100)
+
+[2021-07-07 21:38:28,934: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 4.00 seconds... (2/100)
+
+[2021-07-07 21:38:32,957: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 6.00 seconds... (3/100)
+
+[2021-07-07 21:38:38,992: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 8.00 seconds... (4/100)
+
+[2021-07-07 21:38:47,041: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 10.00 seconds... (5/100)
+
+[2021-07-07 21:38:57,099: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 12.00 seconds... (6/100)
+
+[2021-07-07 21:39:09,162: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 14.00 seconds... (7/100)
+
+[2021-07-07 21:39:23,230: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 16.00 seconds... (8/100)
+
+[2021-07-07 21:39:39,296: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 18.00 seconds... (9/100)
+
+[2021-07-07 21:39:57,351: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 20.00 seconds... (10/100)
+
+[2021-07-07 21:40:17,430: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 22.00 seconds... (11/100)
+
+[2021-07-07 21:40:39,506: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 24.00 seconds... (12/100)
+
+[2021-07-07 21:41:03,576: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: Server unexpectedly closed connection.
+Trying again in 26.00 seconds... (13/100)
+
+[2021-07-07 21:41:29,730: INFO/MainProcess] Connected to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker
+[2021-07-07 21:41:29,787: INFO/MainProcess] mingle: searching for neighbors
+[2021-07-07 21:41:30,943: INFO/MainProcess] mingle: all alone
+/Library/Python/3.8/site-packages/celery/backends/amqp.py:65: CPendingDeprecationWarning: 
+    The AMQP result backend is scheduled for deprecation in     version 4.0 and removal in version v5.0.     Please use RPC backend or a persistent backend.
+
+  deprecated.warn(
+[2021-07-07 22:50:40,044: INFO/MainProcess] Connected to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker
+[2021-07-07 22:50:40,080: INFO/MainProcess] mingle: searching for neighbors
+[2021-07-07 22:50:41,275: INFO/MainProcess] mingle: all alone
+[2021-07-07 22:50:41,341: INFO/MainProcess] celery@amass_1625669437.711484 ready.
+[2021-07-07 22:50:47,551: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-07-08 00:18:07,006: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-08 00:18:08,049: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-08 00:18:08,050: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-08 00:18:08,050: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-08 00:18:08,050: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-08 00:18:08,050: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-08 00:18:08,050: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-08 00:18:08,050: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-08 00:18:08,050: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-08 00:39:48,323: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-08 00:39:49,072: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-08 00:39:49,072: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-08 00:39:49,072: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-08 00:39:49,072: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-08 00:39:49,073: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-08 00:39:49,073: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-08 00:39:49,073: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-08 00:39:49,073: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-08 09:52:10,514: WARNING/MainProcess] Substantial drift from celery@shuffledns_1625669437.7158852 may mean clocks are out of sync.  Current drift is
+889 seconds.  [orig: 2021-07-08 09:52:10.513978 recv: 2021-07-08 09:37:21.552143]
+
+[2021-07-08 09:52:11,270: WARNING/MainProcess] Substantial drift from celery@fileleak_1625669437.771729 may mean clocks are out of sync.  Current drift is
+890 seconds.  [orig: 2021-07-08 09:52:11.269938 recv: 2021-07-08 09:37:21.561424]
+
+[2021-07-08 09:52:11,270: WARNING/MainProcess] Substantial drift from celery@naabu_1625669437.72945 may mean clocks are out of sync.  Current drift is
+890 seconds.  [orig: 2021-07-08 09:52:11.270423 recv: 2021-07-08 09:37:21.552434]
+
+[2021-07-08 09:52:11,270: WARNING/MainProcess] Substantial drift from celery@jsfinder_1625669437.761764 may mean clocks are out of sync.  Current drift is
+890 seconds.  [orig: 2021-07-08 09:52:11.270848 recv: 2021-07-08 09:37:21.556316]
+
+[2021-07-08 09:52:11,271: WARNING/MainProcess] Substantial drift from celery@nuclei_1625669437.781174 may mean clocks are out of sync.  Current drift is
+890 seconds.  [orig: 2021-07-08 09:52:11.271868 recv: 2021-07-08 09:37:21.561725]
+
+[2021-07-08 09:56:08,569: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-08 09:56:08,569: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-08 09:56:08,569: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-08 09:56:08,569: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-08 09:56:08,569: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-08 09:56:08,569: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-08 09:56:08,570: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-08 09:56:08,570: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-08 09:56:08,570: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-08 10:52:39,063: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-08 10:52:39,820: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-08 10:52:39,825: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-08 10:52:39,861: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-08 10:52:39,865: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-08 10:52:39,865: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-08 10:52:39,865: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-08 10:52:39,865: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-08 10:52:39,865: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-08 10:53:56,680: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-08 10:53:56,680: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-08 10:53:56,680: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-08 10:53:56,680: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-08 10:53:56,680: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-08 10:53:56,681: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-08 10:53:56,681: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-08 10:53:56,681: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-08 10:53:56,681: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-08 15:07:21,456: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-08 15:07:21,467: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-08 15:07:21,467: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-08 15:07:21,467: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-08 15:07:21,467: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-08 15:07:21,468: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-08 15:07:21,468: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-08 15:07:21,468: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-08 15:07:21,468: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-08 15:38:10,121: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-08 15:38:10,873: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-08 15:38:10,873: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-08 15:38:10,873: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-08 15:38:10,873: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-08 15:38:10,873: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-08 15:38:10,873: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-08 15:38:10,873: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-08 15:38:10,873: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-08 17:49:51,257: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-08 17:49:52,014: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-08 17:49:52,015: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-08 17:49:52,015: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-08 17:49:52,015: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-08 17:49:52,015: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-08 17:49:52,015: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-08 17:49:52,015: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-08 17:49:52,015: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-08 18:04:52,256: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-08 18:04:52,256: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-08 18:04:52,256: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-08 18:04:52,256: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-08 18:04:52,257: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-08 18:04:52,257: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-08 18:04:52,257: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-08 18:04:52,257: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-08 18:04:52,257: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-08 18:34:55,260: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-08 18:34:55,260: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-08 18:34:55,260: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-08 18:34:55,260: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-08 18:34:55,260: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-08 18:34:55,261: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-08 18:34:55,261: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-08 18:34:55,261: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-08 18:34:55,261: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-08 18:40:26,113: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-08 18:40:26,113: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-08 18:40:26,114: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-08 18:40:26,114: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-08 18:40:26,114: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-08 18:40:26,114: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-08 18:40:26,114: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-08 18:40:26,114: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-08 18:40:26,114: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-08 18:41:04,767: WARNING/MainProcess] Substantial drift from celery@subfinder_1625669437.707307 may mean clocks are out of sync.  Current drift is
+20 seconds.  [orig: 2021-07-08 18:41:04.020910 recv: 2021-07-08 18:40:44.230907]
+
+[2021-07-08 18:41:04,768: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-08 18:41:04,768: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-08 18:41:04,768: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-08 18:41:04,768: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-08 18:41:04,768: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-08 18:41:04,769: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-08 18:41:04,769: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-08 18:41:04,769: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-08 18:41:04,770: WARNING/MainProcess] Substantial drift from celery@screenshot_1625669437.7520761 may mean clocks are out of sync.  Current drift is
+20 seconds.  [orig: 2021-07-08 18:41:04.770900 recv: 2021-07-08 18:40:44.229963]
+
+[2021-07-08 18:41:04,772: WARNING/MainProcess] Substantial drift from celery@httpx_1625669437.740661 may mean clocks are out of sync.  Current drift is
+20 seconds.  [orig: 2021-07-08 18:41:04.772314 recv: 2021-07-08 18:40:44.247300]
+
+[2021-07-08 18:41:04,773: WARNING/MainProcess] Substantial drift from celery@domaininfo_1625669437.721663 may mean clocks are out of sync.  Current drift is
+20 seconds.  [orig: 2021-07-08 18:41:04.773269 recv: 2021-07-08 18:40:44.246080]
+
+[2021-07-08 23:39:11,559: ERROR/MainProcess] Error cleaning up after event loop: RecoverableConnectionError(None, 'Socket was disconnected', None, '')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/loops.py", line 83, in asynloop
+    next(loop)
+  File "/Library/Python/3.8/site-packages/kombu/asynchronous/hub.py", line 364, in create_loop
+    cb(*cbargs)
+  File "/Library/Python/3.8/site-packages/kombu/transport/base.py", line 238, in on_readable
+    reader(loop)
+  File "/Library/Python/3.8/site-packages/kombu/transport/base.py", line 220, in _read
+    drain_events(timeout=0)
+  File "/Library/Python/3.8/site-packages/amqp/connection.py", line 508, in drain_events
+    while not self.blocking_read(timeout):
+  File "/Library/Python/3.8/site-packages/amqp/connection.py", line 513, in blocking_read
+    frame = self.transport.read_frame()
+  File "/Library/Python/3.8/site-packages/amqp/transport.py", line 253, in read_frame
+    frame_header = read(7, True)
+  File "/Library/Python/3.8/site-packages/amqp/transport.py", line 467, in _read
+    raise IOError('Server unexpectedly closed connection')
+OSError: Server unexpectedly closed connection
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/loops.py", line 88, in asynloop
+    hub.reset()
+  File "/Library/Python/3.8/site-packages/kombu/asynchronous/hub.py", line 112, in reset
+    self.close()
+  File "/Library/Python/3.8/site-packages/kombu/asynchronous/hub.py", line 265, in close
+    item()
+  File "/Library/Python/3.8/site-packages/vine/promises.py", line 170, in __call__
+    return self.throw()
+  File "/Library/Python/3.8/site-packages/vine/promises.py", line 167, in __call__
+    retval = fun(*final_args, **final_kwargs)
+  File "/Library/Python/3.8/site-packages/kombu/transport/base.py", line 218, in _read
+    raise RecoverableConnectionError('Socket was disconnected')
+amqp.exceptions.RecoverableConnectionError: Socket was disconnected
+[2021-07-08 23:39:11,802: WARNING/MainProcess] consumer: Connection to broker lost. Trying to re-establish the connection...
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 318, in start
+    blueprint.start(self)
+  File "/Library/Python/3.8/site-packages/celery/bootsteps.py", line 119, in start
+    step.start(parent)
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 599, in start
+    c.loop(*c.loop_args())
+  File "/Library/Python/3.8/site-packages/celery/worker/loops.py", line 83, in asynloop
+    next(loop)
+  File "/Library/Python/3.8/site-packages/kombu/asynchronous/hub.py", line 364, in create_loop
+    cb(*cbargs)
+  File "/Library/Python/3.8/site-packages/kombu/transport/base.py", line 238, in on_readable
+    reader(loop)
+  File "/Library/Python/3.8/site-packages/kombu/transport/base.py", line 220, in _read
+    drain_events(timeout=0)
+  File "/Library/Python/3.8/site-packages/amqp/connection.py", line 508, in drain_events
+    while not self.blocking_read(timeout):
+  File "/Library/Python/3.8/site-packages/amqp/connection.py", line 513, in blocking_read
+    frame = self.transport.read_frame()
+  File "/Library/Python/3.8/site-packages/amqp/transport.py", line 253, in read_frame
+    frame_header = read(7, True)
+  File "/Library/Python/3.8/site-packages/amqp/transport.py", line 467, in _read
+    raise IOError('Server unexpectedly closed connection')
+OSError: Server unexpectedly closed connection
+[2021-07-08 23:39:11,821: WARNING/MainProcess] /Library/Python/3.8/site-packages/amqp/connection.py:327: AMQPDeprecationWarning: The .transport attribute on the connection was accessed before
+the connection was established.  This is supported for now, but will
+be deprecated in amqp 2.2.0.
+
+Since amqp 2.0 you have to explicitly call Connection.connect()
+before using the connection.
+
+  warnings.warn(AMQPDeprecationWarning(
+[2021-07-08 23:39:11,945: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 2.00 seconds... (1/100)
+
+[2021-07-08 23:39:13,953: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 4.00 seconds... (2/100)
+
+[2021-07-08 23:39:17,965: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 6.00 seconds... (3/100)
+
+[2021-07-08 23:39:23,983: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 8.00 seconds... (4/100)
+
+[2021-07-08 23:39:32,000: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 10.00 seconds... (5/100)
+
+[2021-07-08 23:39:42,040: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 12.00 seconds... (6/100)
+
+[2021-07-08 23:39:54,125: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 14.00 seconds... (7/100)
+
+[2021-07-08 23:40:08,219: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: Server unexpectedly closed connection.
+Trying again in 16.00 seconds... (8/100)
+
+[2021-07-08 23:40:24,387: INFO/MainProcess] Connected to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker
+[2021-07-08 23:40:24,419: INFO/MainProcess] mingle: searching for neighbors
+[2021-07-09 00:17:21,634: INFO/MainProcess] mingle: all alone
+[2021-07-09 07:30:49,352: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-09 07:30:49,353: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-09 07:30:49,353: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-09 07:30:49,353: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-09 07:30:49,353: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-09 07:30:49,354: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-09 07:30:49,354: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-09 07:30:49,354: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-09 07:30:49,354: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-09 09:04:15,456: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-09 09:04:15,457: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-09 09:04:15,457: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-09 09:04:15,457: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-09 09:04:15,457: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-09 09:04:15,458: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-09 09:04:15,458: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-09 09:04:15,459: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-09 09:19:17,425: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-09 09:19:17,425: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-09 09:19:17,425: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-09 09:19:17,425: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-09 09:19:17,426: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-09 09:19:17,426: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-09 09:19:17,426: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-09 09:19:17,426: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-09 09:19:17,426: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-09 10:03:41,687: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-09 10:03:41,687: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-09 10:03:41,688: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-09 10:03:41,688: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-09 10:03:41,688: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-09 10:03:41,688: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-09 10:03:41,688: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-09 10:03:41,688: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-09 10:03:41,689: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-09 12:19:07,802: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-09 12:19:08,697: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-09 12:19:08,697: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-09 12:19:08,697: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-09 12:19:08,697: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-09 12:19:08,697: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-09 12:19:08,697: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-09 12:19:08,697: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-09 12:19:08,697: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-09 14:18:29,842: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-09 14:18:29,942: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-09 14:18:29,943: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-09 14:18:29,944: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-09 14:18:29,959: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-09 14:28:05,653: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-09 14:28:05,657: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-09 14:28:05,670: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-09 14:28:05,672: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-09 14:28:05,673: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-09 14:28:05,674: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-09 14:28:05,685: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-09 14:28:05,687: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-09 18:39:19,213: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-09 18:39:19,958: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-09 18:39:19,959: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-09 18:39:19,959: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-09 18:39:19,959: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-09 18:39:19,959: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-09 18:39:19,959: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-09 18:39:19,959: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-09 18:39:19,959: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-09 18:54:21,211: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-09 18:54:21,211: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-09 18:54:21,970: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-09 18:54:21,971: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-09 18:54:21,971: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-09 18:54:21,971: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-09 18:54:21,971: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-09 18:54:21,971: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-09 18:54:21,971: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-09 19:05:49,459: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-09 19:05:49,459: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-09 19:05:49,459: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-09 19:05:49,460: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-09 19:05:49,460: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-09 19:05:49,460: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-09 19:05:49,460: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-09 19:05:50,213: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-09 19:05:50,213: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-09 19:22:48,401: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-09 19:22:48,402: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-09 19:22:48,402: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-09 19:22:48,402: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-09 19:22:48,403: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-09 19:22:48,403: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-09 19:22:48,403: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-09 19:22:48,403: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-09 19:22:48,403: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-09 19:23:38,200: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-09 19:23:38,205: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-09 19:23:38,205: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-09 19:23:38,206: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-09 19:23:38,209: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-09 19:23:38,209: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-09 19:23:38,210: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-09 19:23:38,210: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-09 19:23:38,210: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-09 20:55:50,876: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-09 20:55:50,911: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-09 20:55:50,918: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-09 20:55:50,918: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-09 20:55:51,015: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-09 20:55:51,015: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-09 20:55:51,015: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-09 20:55:51,015: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-09 20:55:51,016: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-09 22:43:59,070: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-09 22:43:59,087: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-09 22:43:59,089: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-09 22:43:59,098: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-09 22:43:59,099: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-09 22:43:59,099: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-09 22:43:59,111: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-09 22:43:59,112: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-09 22:43:59,112: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-10 05:23:53,457: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-10 05:23:53,462: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-10 05:23:53,463: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-10 05:23:53,464: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-10 05:23:53,465: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-10 05:23:53,465: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-10 05:23:53,465: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-10 05:23:53,465: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-10 05:23:53,465: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-10 08:30:07,564: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-10 08:30:07,567: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-10 08:30:07,568: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-10 08:30:07,569: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-10 08:30:07,569: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-10 08:30:07,569: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-10 08:30:07,569: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-10 08:30:07,569: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-10 08:30:07,569: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-10 08:45:08,761: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-10 08:45:08,761: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-10 08:45:08,761: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-10 08:45:08,762: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-10 08:45:08,762: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-10 08:45:08,762: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-10 08:45:08,763: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-10 08:45:08,763: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-10 08:45:08,763: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-10 19:30:09,391: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-10 19:30:09,437: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-10 19:30:09,437: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-10 19:30:09,437: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-10 19:30:09,437: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-10 19:30:09,623: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-10 19:30:09,624: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-10 19:30:09,624: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-10 19:30:09,627: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-10 19:45:17,470: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-10 19:45:17,475: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-10 19:45:17,476: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-10 19:45:17,476: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-10 19:45:17,478: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-10 19:45:17,479: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-10 19:45:17,481: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-10 19:45:17,481: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-10 19:45:17,481: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-11 03:27:18,365: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-11 03:27:18,399: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-11 03:27:18,420: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-11 03:27:18,632: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-11 03:27:18,633: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-11 03:27:18,636: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-11 03:27:18,639: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-11 03:27:18,640: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-11 03:27:18,641: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-11 07:01:16,049: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-11 07:01:16,057: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-11 07:01:16,057: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-11 07:01:16,057: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-11 07:01:16,057: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-11 07:01:16,058: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-11 07:01:16,058: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-11 07:01:16,058: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-11 07:01:16,058: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-11 09:15:08,229: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-11 09:15:08,240: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-11 09:15:08,240: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-11 09:15:08,241: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-11 09:15:08,241: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-11 09:15:08,243: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-11 09:15:08,244: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-11 09:15:08,244: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-11 09:15:08,244: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-11 09:30:09,148: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-11 09:30:09,148: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-11 09:30:09,149: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-11 09:30:09,149: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-11 09:30:09,151: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-11 09:30:09,151: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-11 09:30:09,151: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-11 09:30:09,152: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-11 09:30:09,152: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-11 10:03:53,671: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-11 10:03:53,671: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-11 10:03:53,671: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-11 10:03:53,671: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-11 10:03:53,672: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-11 10:03:53,672: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-11 10:03:53,672: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-11 10:03:53,673: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-11 10:03:53,673: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-11 18:59:02,236: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-11 18:59:02,244: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-11 18:59:02,244: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-11 18:59:02,245: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-11 18:59:02,246: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-11 18:59:02,246: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-11 18:59:02,246: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-11 18:59:02,246: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-11 18:59:02,246: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-11 20:28:28,562: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-11 20:28:28,727: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-11 20:28:28,732: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-11 20:28:28,750: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-11 20:28:28,751: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-11 20:28:28,759: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-11 20:28:28,759: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-11 20:28:28,760: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-11 20:28:28,760: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-12 03:42:24,678: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-12 03:42:25,376: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-12 03:42:25,376: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-12 03:42:25,376: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-12 03:42:25,377: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-12 03:42:25,377: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-12 03:42:25,377: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-12 03:42:25,377: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-12 03:42:25,377: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-12 05:30:26,631: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-12 05:30:27,389: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-12 05:30:27,389: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-12 05:30:27,389: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-12 05:30:27,390: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-12 05:30:27,390: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-12 05:30:27,390: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-12 05:30:27,390: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-12 05:30:27,390: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-12 07:18:28,668: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-12 07:18:29,454: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-12 07:18:29,454: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-12 07:18:29,454: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-12 09:39:58,274: INFO/MainProcess] missed heartbeat from celery@screenshot_1625669437.7520761
+[2021-07-12 09:39:58,274: INFO/MainProcess] missed heartbeat from celery@subfinder_1625669437.707307
+[2021-07-12 09:39:58,274: INFO/MainProcess] missed heartbeat from celery@domaininfo_1625669437.721663
+[2021-07-12 09:39:58,274: INFO/MainProcess] missed heartbeat from celery@shuffledns_1625669437.7158852
+[2021-07-12 09:39:58,275: INFO/MainProcess] missed heartbeat from celery@naabu_1625669437.72945
+[2021-07-12 09:39:58,275: INFO/MainProcess] missed heartbeat from celery@fileleak_1625669437.771729
+[2021-07-12 09:39:58,275: INFO/MainProcess] missed heartbeat from celery@jsfinder_1625669437.761764
+[2021-07-12 09:39:58,275: INFO/MainProcess] missed heartbeat from celery@httpx_1625669437.740661
+[2021-07-12 09:39:58,275: INFO/MainProcess] missed heartbeat from celery@nuclei_1625669437.781174
+[2021-07-12 12:29:04,077: WARNING/MainProcess] consumer: Connection to broker lost. Trying to re-establish the connection...
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 318, in start
+    blueprint.start(self)
+  File "/Library/Python/3.8/site-packages/celery/bootsteps.py", line 119, in start
+    step.start(parent)
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 599, in start
+    c.loop(*c.loop_args())
+  File "/Library/Python/3.8/site-packages/celery/worker/loops.py", line 83, in asynloop
+    next(loop)
+  File "/Library/Python/3.8/site-packages/kombu/asynchronous/hub.py", line 364, in create_loop
+    cb(*cbargs)
+  File "/Library/Python/3.8/site-packages/kombu/transport/base.py", line 238, in on_readable
+    reader(loop)
+  File "/Library/Python/3.8/site-packages/kombu/transport/base.py", line 220, in _read
+    drain_events(timeout=0)
+  File "/Library/Python/3.8/site-packages/amqp/connection.py", line 508, in drain_events
+    while not self.blocking_read(timeout):
+  File "/Library/Python/3.8/site-packages/amqp/connection.py", line 513, in blocking_read
+    frame = self.transport.read_frame()
+  File "/Library/Python/3.8/site-packages/amqp/transport.py", line 253, in read_frame
+    frame_header = read(7, True)
+  File "/Library/Python/3.8/site-packages/amqp/transport.py", line 467, in _read
+    raise IOError('Server unexpectedly closed connection')
+OSError: Server unexpectedly closed connection
+[2021-07-12 12:29:04,186: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 2.00 seconds... (1/100)
+
+[2021-07-12 12:29:06,203: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 4.00 seconds... (2/100)
+
+[2021-07-12 12:29:10,230: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 6.00 seconds... (3/100)
+
+[2021-07-12 12:29:16,267: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 8.00 seconds... (4/100)
+
+[2021-07-12 12:29:24,301: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 10.00 seconds... (5/100)
+
+[2021-07-12 12:29:34,355: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 12.00 seconds... (6/100)
+
+[2021-07-12 12:29:46,409: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 14.00 seconds... (7/100)
+
+[2021-07-12 12:30:00,472: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 16.00 seconds... (8/100)
+
+[2021-07-12 12:30:16,574: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 18.00 seconds... (9/100)
+
+[2021-07-12 12:30:34,663: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 20.00 seconds... (10/100)
+
+[2021-07-12 12:30:54,778: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 22.00 seconds... (11/100)
+
+[2021-07-12 12:31:16,879: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 24.00 seconds... (12/100)
+
+[2021-07-12 12:31:40,991: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 26.00 seconds... (13/100)
+
+[2021-07-12 12:32:07,107: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 28.00 seconds... (14/100)
+
+[2021-07-12 12:32:35,230: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 30.00 seconds... (15/100)
+
+[2021-07-12 12:33:05,389: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:33:37,531: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:34:09,664: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:34:41,809: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:35:13,993: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:35:46,142: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:36:18,281: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:36:50,408: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:37:22,534: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:37:54,686: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:38:26,804: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:38:58,949: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:39:31,091: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:40:03,233: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:40:35,365: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:41:07,504: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:41:39,636: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:42:11,769: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:42:43,897: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:43:15,963: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:43:48,096: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:44:20,239: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:44:52,371: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:45:24,508: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:45:56,640: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:46:28,769: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:47:00,894: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:47:33,040: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:48:05,289: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:48:37,496: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:49:09,650: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:49:41,830: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:50:14,002: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:50:46,161: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:51:18,377: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:51:50,568: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:52:22,726: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:52:54,860: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:53:27,016: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:53:59,163: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:54:31,348: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:55:03,509: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:55:35,635: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:56:07,762: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:56:39,895: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:57:12,023: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:57:44,145: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:58:16,280: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:58:48,445: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:59:20,593: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 12:59:52,731: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 13:00:24,874: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 13:00:57,192: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 13:01:29,282: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 13:02:01,387: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 13:02:33,518: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 13:03:05,635: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 13:03:37,751: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 13:04:09,878: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 13:04:42,013: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 13:05:14,123: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 13:05:46,240: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 13:06:18,359: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 13:06:50,486: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 13:07:22,629: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 13:07:54,764: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 13:08:26,873: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 13:08:58,972: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 13:09:31,103: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 13:10:03,205: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 13:10:35,318: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 13:11:07,449: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 13:11:39,572: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 13:12:11,695: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 13:12:43,811: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 13:13:15,924: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 13:13:48,059: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 13:14:20,173: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 13:14:52,285: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 13:15:24,416: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 13:15:56,537: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 13:16:28,648: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 13:17:00,756: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 13:17:32,877: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 13:18:04,984: ERROR/MainProcess] consumer: Cannot connect to amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker: [Errno 61] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-07-12 13:18:37,102: CRITICAL/MainProcess] Unrecoverable error: OperationalError('[Errno 61] Connection refused')
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/kombu/connection.py", line 454, in _reraise_as_library_errors
+    yield
+  File "/Library/Python/3.8/site-packages/kombu/connection.py", line 441, in _ensure_connection
+    return retry_over_time(
+  File "/Library/Python/3.8/site-packages/kombu/utils/functional.py", line 344, in retry_over_time
+    return fun(*args, **kwargs)
+  File "/Library/Python/3.8/site-packages/kombu/connection.py", line 874, in _connection_factory
+    self._connection = self._establish_connection()
+  File "/Library/Python/3.8/site-packages/kombu/connection.py", line 809, in _establish_connection
+    conn = self.transport.establish_connection()
+  File "/Library/Python/3.8/site-packages/kombu/transport/pyamqp.py", line 130, in establish_connection
+    conn.connect()
+  File "/Library/Python/3.8/site-packages/amqp/connection.py", line 314, in connect
+    self.transport.connect()
+  File "/Library/Python/3.8/site-packages/amqp/transport.py", line 78, in connect
+    self._connect(self.host, self.port, self.connect_timeout)
+  File "/Library/Python/3.8/site-packages/amqp/transport.py", line 162, in _connect
+    self.sock.connect(sa)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/celery/worker/worker.py", line 208, in start
+    self.blueprint.start(self)
+  File "/Library/Python/3.8/site-packages/celery/bootsteps.py", line 119, in start
+    step.start(parent)
+  File "/Library/Python/3.8/site-packages/celery/bootsteps.py", line 369, in start
+    return self.obj.start()
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 318, in start
+    blueprint.start(self)
+  File "/Library/Python/3.8/site-packages/celery/bootsteps.py", line 119, in start
+    step.start(parent)
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/connection.py", line 23, in start
+    c.connection = c.connect()
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 405, in connect
+    conn = self.connection_for_read(heartbeat=self.amqheartbeat)
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 411, in connection_for_read
+    return self.ensure_connected(
+  File "/Library/Python/3.8/site-packages/celery/worker/consumer/consumer.py", line 437, in ensure_connected
+    conn = conn.ensure_connection(
+  File "/Library/Python/3.8/site-packages/kombu/connection.py", line 389, in ensure_connection
+    self._ensure_connection(*args, **kwargs)
+  File "/Library/Python/3.8/site-packages/kombu/connection.py", line 441, in _ensure_connection
+    return retry_over_time(
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/contextlib.py", line 131, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/Library/Python/3.8/site-packages/kombu/connection.py", line 458, in _reraise_as_library_errors
+    reraise(ConnectionError, ConnectionError(text_t(exc)),
+  File "/Library/Python/3.8/site-packages/vine/five.py", line 194, in reraise
+    raise value.with_traceback(tb)
+  File "/Library/Python/3.8/site-packages/kombu/connection.py", line 454, in _reraise_as_library_errors
+    yield
+  File "/Library/Python/3.8/site-packages/kombu/connection.py", line 441, in _ensure_connection
+    return retry_over_time(
+  File "/Library/Python/3.8/site-packages/kombu/utils/functional.py", line 344, in retry_over_time
+    return fun(*args, **kwargs)
+  File "/Library/Python/3.8/site-packages/kombu/connection.py", line 874, in _connection_factory
+    self._connection = self._establish_connection()
+  File "/Library/Python/3.8/site-packages/kombu/connection.py", line 809, in _establish_connection
+    conn = self.transport.establish_connection()
+  File "/Library/Python/3.8/site-packages/kombu/transport/pyamqp.py", line 130, in establish_connection
+    conn.connect()
+  File "/Library/Python/3.8/site-packages/amqp/connection.py", line 314, in connect
+    self.transport.connect()
+  File "/Library/Python/3.8/site-packages/amqp/transport.py", line 78, in connect
+    self._connect(self.host, self.port, self.connect_timeout)
+  File "/Library/Python/3.8/site-packages/amqp/transport.py", line 162, in _connect
+    self.sock.connect(sa)
+kombu.exceptions.OperationalError: [Errno 61] Connection refused
+ 
+ -------------- celery@amass_1625669437.711484 v4.4.7 (cliffs)
+--- ***** ----- 
+-- ******* ---- macOS-11.2.3-x86_64-i386-64bit 2021-07-07 22:50:39
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         hhsrc.amass:0x108a44d00
+- ** ---------- .> transport:   amqp://hhsrc:**@127.0.0.1:5672/hhsrc_broker
+- ** ---------- .> results:     amqp://
+- *** --- * --- .> concurrency: 1 (prefork)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> amass            exchange=amass(direct) key=amass
+                
+
+[tasks]
+  . amass.run
+

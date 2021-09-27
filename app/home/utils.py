@@ -207,3 +207,47 @@ def black_list_query(target_id, domain, ip):
             if(b in ip):
                 return True
     return False
+
+#过滤(扫描时专用)
+def black_list_query_scan(target_id, domain, ip, cursor, conn):
+    #获取黑名单
+    sql = "SELECT * FROM Blacklist WHERE black_target=%s"
+    cursor.execute(sql,(target_id))
+    blacklist_query = cursor.fetchall()
+    blacklist_list = []
+    for i in blacklist_query:
+        temp = ""
+        if 'domain:' in i[1]:
+            temp = i[1].split("domain:")[1]
+        if 'ip:' in i[1]:
+            temp = i[1].split("ip:")[1]
+        if(temp != ""):
+            blacklist_list.append(temp)
+    for b in blacklist_list:
+        if(domain):
+            if(b in domain):
+                return True
+        if(ip):
+            if(b in ip):
+                return True
+    return False
+
+#过滤title
+def black_list_title_query(target_id, http_title, cursor, conn):
+    #获取黑名单
+    sql = "SELECT * FROM Blacklist WHERE black_target=%s"
+    cursor.execute(sql,(target_id,))
+    blacklist_query = cursor.fetchall()
+    blacklist_list = []
+    for i in blacklist_query:
+        temp = ''
+        if 'title:' in i[1]:
+            temp = i[1].split("title:")[1]
+        if(temp != ''):
+            blacklist_list.append(temp)
+    for b in blacklist_list:
+        if(http_title):
+            if(b in http_title):
+                print(http_title + "被过滤啦!过滤规则:" + b)
+                return True
+    return False

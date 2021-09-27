@@ -27,10 +27,15 @@ def targetroute():
 def targetaddroute():
     return targetadd();
 
-@blueprint.route('/tagetinfo', methods=['GET', 'POST'])
+@blueprint.route('/targetinfo', methods=['GET', 'POST'])
 @login_required
 def targetinforoute():
     return targetinfo();
+
+@blueprint.route('/targetedit', methods=['GET', 'POST'])
+@login_required
+def targeteditroute():
+    return targetedit();
 
 @blueprint.route('/scanmethod', methods=['GET', 'POST'])
 @login_required

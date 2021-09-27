@@ -1,0 +1,99 @@
+resolvers:
+    - 1.1.1.1:53
+    - 1.0.0.1:53
+    - 8.8.8.8:53
+    - 8.8.4.4:53
+    - 9.9.9.9:53
+    - 9.9.9.10:53
+    - 77.88.8.8:53
+    - 77.88.8.1:53
+    - 208.67.222.222:53
+    - 208.67.220.220:53
+    - 220.181.38.148:53
+    - 61.139.2.69:53
+    - 114.114.114.11:53
+sources:
+    - alienvault
+    - anubis
+    - bufferover
+    - certspotter
+    - censys
+    - chaos
+    - crtsh
+    - dnsdumpster
+    - hackertarget
+    - intelx
+    - passivetotal
+    - robtex
+    - riddler
+    - securitytrails
+    - shodan
+    - spyse
+    - sublist3r
+    - threatcrowd
+    - threatminer
+    - virustotal
+all-sources:
+    - alienvault
+    - anubis
+    - archiveis
+    - binaryedge
+    - bufferover
+    - censys
+    - certspotter
+    - chaos
+    - commoncrawl
+    - crtsh
+    - dnsdumpster
+    - dnsdb
+    - github
+    - hackertarget
+    - intelx
+    - passivetotal
+    - rapiddns
+    - riddler
+    - recon
+    - robtex
+    - securitytrails
+    - shodan
+    - sitedossier
+    - sonarsearch
+    - spyse
+    - sublist3r
+    - threatbook
+    - threatcrowd
+    - threatminer
+    - virustotal
+    - waybackarchive
+    - zoomeye
+recursive:
+    - alienvault
+    - binaryedge
+    - bufferover
+    - certspotter
+    - crtsh
+    - dnsdumpster
+    - hackertarget
+    - passivetotal
+    - securitytrails
+    - sonarsearch
+    - sublist3r
+    - virustotal
+binaryedge: []
+censys: []
+certspotter: []
+chaos: []
+dnsdb: []
+github: []
+intelx: []
+passivetotal: []
+recon: []
+robtex: []
+securitytrails: []
+shodan: []
+spyse: []
+threatbook: []
+urlscan: []
+virustotal: []
+zoomeye: []
+subfinder-version: 2.4.8

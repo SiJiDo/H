@@ -9,3 +9,14 @@ python-decouple==3.4
 gunicorn==20.0.4
 jinja2==2.11.3
 flask_mysqldb==0.2.0
+redis
+celery==4.4.7
+dnspython
+lxml
+nmap
+selenium==2.48.0
+chromedriver
+requests
+tld
+urllib3
+Pillow

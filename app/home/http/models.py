@@ -14,9 +14,9 @@ class Http(db.Model):
     http_status = Column(String(128))   # http 响应码
     http_length = Column(String(128))   # http 响应长度
     http_screen = Column(LONGTEXT)   # http 页面截图
-    http_dirb_status = Column(Boolean, default=False) #是否扫描目录
-    http_vuln_status = Column(Boolean, default=False) #是否扫描漏洞
+    http_finger = Column(String(128))   # http 指纹
     http_see = Column(Boolean, default=False) #是否已读
     http_new = Column(Integer) #是否是新增
     http_time = Column(String(128))   #修改时间
+    http_user = Column(String(128))   # 扫描用户
     http_target = Column(Integer) #隶属于的目标

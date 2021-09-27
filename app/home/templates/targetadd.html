@@ -119,16 +119,4 @@
 
 <!-- Specific Page JS goes HERE  -->
 {% block javascripts %}
-<script>
-    function initPage() {
-
-        switch_value = $('#target_cron')[0].checked
-        $('#target_corn').bootstrapSwitch("size","small",{
-            state: switch_value,
-            onText: '监控',
-            offText: '未监控',
-        });
-
-    }
-</script>
 {% endblock javascripts %}

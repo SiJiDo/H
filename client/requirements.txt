@@ -1,0 +1,11 @@
+redis
+celery==4.4.7
+dnspython
+lxml
+nmap
+selenium==2.48.0
+chromedriver
+requests
+tld
+urllib3
+Pillow

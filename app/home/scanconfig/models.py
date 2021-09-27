@@ -9,7 +9,7 @@ class Scanmethod(db.Model):
     scanmethod_subfinder = db.Column(db.Boolean, default=False) #是否扫描subfinder
     scanmethod_amass = db.Column(db.Boolean, default=False) #是否扫描amass
     scanmethod_shuffledns = db.Column(db.Boolean, default=False) #是否扫描amass
-    scanmethod_github = db.Column(db.Boolean, default=False) #是否扫描amass
+    scanmethod_second = db.Column(db.Boolean, default=False) # 基于已有的子域名，对二级域名爆破
     scanmethod_port = db.Column(db.Boolean, default=False)  #是否扫描端口
     scanmethod_port_portlist = db.Column(db.String(128))  #扫描端口类型选择
     scanmethod_port_dfportlist = db.Column(db.String(255))  #自定义端口

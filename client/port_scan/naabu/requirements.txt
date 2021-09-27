@@ -1,0 +1,3 @@
+lxml
+celery
+redis
