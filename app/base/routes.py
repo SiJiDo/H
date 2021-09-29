@@ -13,8 +13,10 @@ from flask_login import (
 
 from app import db, login_manager
 from app.base import blueprint
-from app.base.forms import LoginForm, CreateAccountForm
+from app.base.forms import ChangePasswordForm, LoginForm, CreateAccountForm
 from app.base.models import User
+from app.home.utils import *
+from app.base.util import *
 
 from app.base.util import verify_pass
 
@@ -77,6 +79,41 @@ def register():
 
     else:
         return render_template( 'accounts/register.html', form=create_account_form)
+
+@blueprint.route('/changepassword', methods=['GET', 'POST'])
+@login_required
+def changepassword():
+    change_account_form = ChangePasswordForm(request.form)
+    
+
+    if 'changepassword' in request.form:
+        password = request.form['password']
+        username  = str(current_user)
+        
+        user = User.query.filter_by(username=username).first()
+        
+        # Check the password
+        if user and verify_pass( password, user.password):
+
+            if(request.form['newpassword1'] != request.form['newpassword2']):
+                return render_template( 'accounts/changepassword.html', msg='新密码两次输入不一样', form=change_account_form)
+
+            user_result = queryToDict(user)
+            print(user_result)
+            user_result['password'] = hash_pass(request.form['newpassword1'])
+            
+            db.session.query(User).filter(User.username == str(current_user)).update(user_result)
+            db.session.commit()
+
+            logout_user()
+            return redirect(url_for('base_blueprint.login'))
+
+    else:
+
+        return render_template('accounts/changepassword.html', form=change_account_form)
+
+
+
 
 @blueprint.route('/logout')
 def logout():

@@ -28,24 +28,44 @@ def run(target):
 
     work_dir = FILEPATH + '/tools'
     out_file_name = 'jsfinder_{}.txt'.format(time())
+    out_file_name1 = 'jsfinder_{}.txt'.format(time())
     out_file_name2 = 'httpx_{}.txt'.format(time())
+    out_file_name3 = 'httpx_{}.txt'.format(time())
 
     # 执行命令
     if DEBUG == 'True':
         command = ['python3', 'JSFinder.py', '-u', target, '-ou', out_file_name]
+        command1 = ['python3', 'JSFinder_moblie.py', '-u', target, '-ou', out_file_name1]
         command2 = ['./httpx_mac', '-l', out_file_name, '-follow-host-redirects' , '-json', '-o', out_file_name2]
+        command3 = ['./httpx_mac', '-l', out_file_name1, '-follow-host-redirects' , '-json', '-o', out_file_name3]
     else:
         command = ['python3', 'JSFinder.py', '-u', target, '-ou', out_file_name]
+        command1 = ['python3', 'JSFinder_moblie.py', '-u', target, '-ou', out_file_name1]
         command2 = ['./httpx', '-l', out_file_name, '-follow-host-redirects' , '-json', '-o', out_file_name2]
+        command3 = ['./httpx', '-l', out_file_name1, '-follow-host-redirects' , '-json', '-o', out_file_name3, '-H', 'User-Agent: Mozilla/5.0 (Linux; U; Android 8.1.0; zh-cn; BLA-AL00 Build/HUAWEIBLA-AL00) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.132 MQQBrowser/8.9 Mobile Safari/537.36', '-random-agent=False' ]
+    result = []
+
+    result = tool(command, command2, work_dir, out_file_name2)
+    result = result + tool(command1, command3, work_dir, out_file_name3)
+    try:
+        os.system('rm -rf {}/{}'.format(work_dir, out_file_name))
+        os.system('rm -rf {}/{}'.format(work_dir, out_file_name1))
+        os.system('rm -rf {}/{}'.format(work_dir, out_file_name2))
+        os.system('rm -rf {}/{}'.format(work_dir, out_file_name3))
+    except:
+        pass
+    return {'tool': 'jsfinder', 'result': result}
+
+def tool(command, command2, work_dir, out_file_name):
     result = []
     sb = SubProcessSrc(command, cwd=work_dir).run()
-    if sb['status'] == 0:
+    if sb['status'] == 0:      
         # 运行成功，读取数据
         sb = SubProcessSrc(command2, cwd=work_dir).run()
         if sb['status'] == 0:
             try:
                 print("-------------开始存储------------")
-                with open('{}/{}'.format(work_dir, out_file_name2), 'r') as f:
+                with open('{}/{}'.format(work_dir, out_file_name), 'r') as f:
                     lines = f.readlines()
                     for line in lines:
                         flag = False
@@ -61,30 +81,24 @@ def run(target):
                                 dic["host"] = urlres.scheme + "://" + urlres.netloc
                                 dic["path"] = urlres.path
                                 dic["content-length"] = json.loads(line)['content-length']
-                                dic["title"] = json.loads(line)['title']
+                                dic["title"] = json.loads(line)['title']  + "(moblie)" if '-H' in command2 else json.loads(line)['title']
                                 dic["status-code"] = json.loads(line)['status-code']
                                 result.append(dic)
                             except:
                                 try:
-                                    url = json.loads(line)['url']
+                                    url = json.loads(line)['url'] + '(moblie)'
                                     urlres = urlparse(url)
                                     dic["host"] = urlres.scheme + "://" + urlres.netloc
                                     dic["path"] = urlres.path
                                     dic["content-length"] = ""
-                                    dic["title"] = ""
+                                    dic["title"] = json.loads(line)['title']  + "(moblie)" if '-H' in command2 else json.loads(line)['title']
                                     dic["status-code"] = json.loads(line)['status-code']
                                     result.append(dic)
                                 except:
                                     pass
             except:
                 pass
-
-    try:
-        os.system('rm -rf {}/{}'.format(work_dir, out_file_name))
-        os.system('rm -rf {}/{}'.format(work_dir, out_file_name2))
-    except:
-        pass
-    return {'tool': 'jsfinder', 'result': result}
+    return result
 
 if __name__ == '__main__':
     target = 'https://hr.vivo.com'

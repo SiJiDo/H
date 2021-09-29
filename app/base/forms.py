@@ -16,3 +16,8 @@ class LoginForm(FlaskForm):
 class CreateAccountForm(FlaskForm):
     username = TextField('Username'     , id='username_create' , validators=[DataRequired()])
     password = PasswordField('Password' , id='pwd_create'      , validators=[DataRequired()])
+
+class ChangePasswordForm(FlaskForm):
+    password = PasswordField('Password' , id='pwd_old'      , validators=[DataRequired()])
+    newpassword1 = PasswordField('Password' , id='pwd_new1'      , validators=[DataRequired()])
+    newpassword2 = PasswordField('Password' , id='pwd_new2'      , validators=[DataRequired()])

@@ -17,5 +17,5 @@ class Dirb(db.Model):
     dir_http = Column(Integer) # 隶属于的http
     dir_tool = Column(String(128)) # 通过何种工具收集
     dir_user = Column(String(128)) # 添加用户
-    dir_new = Column(String(128)) # 是否为新增
+    dir_new = Column(Integer) # 是否为新增
     dir_target = Column(Integer) # 隶属于的目标

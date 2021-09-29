@@ -22,12 +22,12 @@
                         <label>资产管理</label>
                     </li>
 
-                    <li data-username="targetinfo" 
-                     class="nav-item {% if 'targetinfo' in segment %} active {% endif %}">
+                    <li data-username="target" 
+                     class="nav-item {% if 'target' == segment %} active {% endif %}">
                     <a href="/target" class="nav-link "><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">资产列表</span></a></li>
 
                     <li data-username="targetadd" 
-                     class="nav-item {% if 'targetadd' in segment %} active {% endif %}">
+                     class="nav-item {% if 'targetadd' == segment %} active {% endif %}">
                     <a href="/targetadd" class="nav-link "><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">添加资产</span></a></li>
 
 
@@ -36,27 +36,25 @@
                     </li>
                     <li data-username="subdomain" 
                     class="nav-item {% if 'subdomain' in segment %} active {% endif %}">
-                    <a href="/charts-morris.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">子域名信息</span></a></li>
+                    <a href="/subdomain" class="nav-link "><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">子域名信息</span></a></li>
                 
                 
                     <li data-username="port" 
                      class="nav-item {% if 'port' in segment %} active {% endif %}">
-                    <a href="/maps-google.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-map"></i></span><span class="pcoded-mtext">端口信息</span></a></li>
+                    <a href="/port" class="nav-link "><span class="pcoded-micon"><i class="feather icon-map"></i></span><span class="pcoded-mtext">端口信息</span></a></li>
 
                     <li data-username="url" 
-                    class="nav-item {% if 'url' in segment %} active {% endif %}">
-                    <a href="/charts-morris.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">站点信息</span></a></li>
+                    class="nav-item {% if 'http' in segment %} active {% endif %}">
+                    <a href="/http" class="nav-link "><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">站点信息</span></a></li>
                 
                 
                     <li data-username="dirb" 
                      class="nav-item {% if 'dirb' in segment %} active {% endif %}">
-                    <a href="/maps-google.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-map"></i></span><span class="pcoded-mtext">目录信息</span></a></li>
+                    <a href="/dirb" class="nav-link "><span class="pcoded-micon"><i class="feather icon-map"></i></span><span class="pcoded-mtext">路径信息</span></a></li>
 
                     <li data-username="vuln" 
                     class="nav-item {% if 'vuln' in segment %} active {% endif %}">
-                    <a href="/charts-morris.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">漏洞信息</span></a></li>
-                
-
+                    <a href="/vuln" class="nav-link "><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">漏洞信息</span></a></li>
                     <li class="nav-item pcoded-menu-caption">
                         <label>扫描设置</label>
                     </li>
@@ -101,7 +99,7 @@
                     <a href="/changepassword" class="nav-link"><span class="pcoded-micon"><i class="feather icon-power"></i></span><span class="pcoded-mtext">修改密码</span></a></li>
                     
                     <li data-username="config" 
-                     class="nav-item {% if 'config' in segment %} active {% endif %}">
+                     class="nav-item {% if 'sysconfig' in segment %} active {% endif %}">
                     <a href="/sysconfig" class="nav-link"><span class="pcoded-micon"><i class="feather icon-power"></i></span><span class="pcoded-mtext">系统设置</span></a></li>
 
                     <li data-username="退出登陆" class="nav-item">

@@ -1,3 +1,9 @@
+from app.home.subdomain.models import Subdomain
+from app.home.domain.models import Domain
+from app.home.subdomain.models import Subdomain
+from app.home.port.models import Port
+from app.home.http.models import Http
+from app.home.dirb.models import Dirb
 from app.home.target.function import saveblacklist, savedomain, savesubdomain
 from app.home.target.models import *
 from app.home.utils import *
@@ -25,8 +31,36 @@ def target(DynamicModel = Target):
     if(action == 'delete'):
         if(is_admin()):
             db.session.query(DynamicModel).filter(DynamicModel.id == id).delete()
+            result = DynamicModel.query.filter(DynamicModel.id == id).all()
+            [db.session.delete(r) for r in result]
+            result = Blacklist.query.filter(Blacklist.black_target == id).all()
+            [db.session.delete(r) for r in result]
+            result = Domain.query.filter(Domain.domain_target == id).all()
+            [db.session.delete(r) for r in result]
+            result = Subdomain.query.filter(Subdomain.subdomain_target == id).all()
+            [db.session.delete(r) for r in result]
+            result = Port.query.filter(Port.port_target == id).all()
+            [db.session.delete(r) for r in result]
+            result = Http.query.filter(Http.http_target == id).all()
+            [db.session.delete(r) for r in result]
+            result = Dirb.query.filter(Dirb.dir_target == id).all()
+            [db.session.delete(r) for r in result]
         else:
             db.session.query(DynamicModel).filter(DynamicModel.id == id).filter(DynamicModel.target_user == str(current_user)).delete()
+            result = DynamicModel.query.filter(DynamicModel.id == id).filter(DynamicModel.target_user == str(current_user)).all()
+            [db.session.delete(r) for r in result]
+            result = Blacklist.query.filter(Blacklist.black_target == id).filter(DynamicModel.target_user == str(current_user)).all()
+            [db.session.delete(r) for r in result]
+            result = Domain.query.filter(Domain.domain_target == id).filter(DynamicModel.target_user == str(current_user)).all()
+            [db.session.delete(r) for r in result]
+            result = Subdomain.query.filter(Subdomain.subdomain_target == id).filter(DynamicModel.target_user == str(current_user)).all()
+            [db.session.delete(r) for r in result]
+            result = Port.query.filter(Port.port_target == id).filter(DynamicModel.target_user == str(current_user)).all()
+            [db.session.delete(r) for r in result]
+            result = Http.query.filter(Http.http_target == id).filter(DynamicModel.target_user == str(current_user)).all()
+            [db.session.delete(r) for r in result]
+            result = Dirb.query.filter(Dirb.dir_target == id).filter(DynamicModel.target_user == str(current_user)).all()
+            [db.session.delete(r) for r in result]
         db.session.commit()
         flash("删除成功")
 
@@ -42,8 +76,36 @@ def target(DynamicModel = Target):
         for id in ids:
             if(is_admin()):
                 db.session.query(DynamicModel).filter(DynamicModel.id == id).delete() 
+                result = DynamicModel.query.filter(DynamicModel.id == id).all()
+                [db.session.delete(r) for r in result]
+                result = Blacklist.query.filter(Blacklist.black_target == id).all()
+                [db.session.delete(r) for r in result]
+                result = Domain.query.filter(Domain.domain_target == id).all()
+                [db.session.delete(r) for r in result]
+                result = Subdomain.query.filter(Subdomain.subdomain_target == id).all()
+                [db.session.delete(r) for r in result]
+                result = Port.query.filter(Port.port_target == id).all()
+                [db.session.delete(r) for r in result]
+                result = Http.query.filter(Http.http_target == id).all()
+                [db.session.delete(r) for r in result]
+                result = Dirb.query.filter(Dirb.dir_target == id).all()
+                [db.session.delete(r) for r in result]
             else:
                 db.session.query(DynamicModel).filter(DynamicModel.id == id).filter(DynamicModel.target_user == str(current_user)).delete()
+                result = DynamicModel.query.filter(DynamicModel.id == id).filter(DynamicModel.target_user == str(current_user)).all()
+                [db.session.delete(r) for r in result]
+                result = Blacklist.query.filter(Blacklist.black_target == id).filter(DynamicModel.target_user == str(current_user)).all()
+                [db.session.delete(r) for r in result]
+                result = Domain.query.filter(Domain.domain_target == id).filter(DynamicModel.target_user == str(current_user)).all()
+                [db.session.delete(r) for r in result]
+                result = Subdomain.query.filter(Subdomain.subdomain_target == id).filter(DynamicModel.target_user == str(current_user)).all()
+                [db.session.delete(r) for r in result]
+                result = Port.query.filter(Port.port_target == id).filter(DynamicModel.target_user == str(current_user)).all()
+                [db.session.delete(r) for r in result]
+                result = Http.query.filter(Http.http_target == id).filter(DynamicModel.target_user == str(current_user)).all()
+                [db.session.delete(r) for r in result]
+                result = Dirb.query.filter(Dirb.dir_target == id).filter(DynamicModel.target_user == str(current_user)).all()
+                [db.session.delete(r) for r in result]
         db.session.commit()
         flash("删除成功")
 
@@ -115,7 +177,7 @@ def target(DynamicModel = Target):
         i['http_total_count'] = 0
     dict = {'content': content, 'total_count': total_count,
             'total_page': math.ceil(total_count / length), 'page': page, 'length': length, 'search': search}
-    return render_template('target.html',form = dict)
+    return render_template('target.html',form = dict,segment=get_segment(request))
 
 #target添加
 def targetadd(DynamicModel = Target, form = TargetForm):
@@ -154,7 +216,7 @@ def targetadd(DynamicModel = Target, form = TargetForm):
         savesubdomain(target.subdomain_name, target.id, current_user)
         flash("添加成功")
 
-    return render_template('targetadd.html', form=form)
+    return render_template('targetadd.html', form=form, segment=get_segment(request))
 
 #target详细
 def targetinfo(DynamicModel = Target, DynamicFrom = TargetForm):
@@ -173,7 +235,7 @@ def targetinfo(DynamicModel = Target, DynamicFrom = TargetForm):
         query = DynamicModel.query.filter(DynamicModel.id == id).filter(DynamicModel.target_user == str(current_user)).order_by(DynamicModel.id).first()
     dict = {'content': query, 
             }
-    return render_template('targetinfo.html', form=dict, id=id)
+    return render_template('targetinfo.html', form=dict, id=id,segment=get_segment(request))
 
 #target修改
 def targetedit(DynamicModel = Target, DynamicFrom = TargetForm):
@@ -226,4 +288,4 @@ def targetedit(DynamicModel = Target, DynamicFrom = TargetForm):
         savesubdomain(target.subdomain_name, target.id, current_user)
         flash("修改成功")
 
-    return render_template('targetedit.html', form=DynamicFrom, id=id)
+    return render_template('targetedit.html', form=DynamicFrom, id=id,segment=get_segment(request))

@@ -46,8 +46,8 @@
                                 <div class="table-responsive">
                                     <form>
                                     <div class="row">
-                                        <div class="col-md-8"></div>
-                                        <div class="col-md-4 form-inline">
+                                        <div class="col-md-5"></div>
+                                        <div class="col-md-7 form-inline">
                                             <div class="row">
                                                 <div class="col-md-7">
                                                     <input type="text" class="form-control" style="width: 250px; height: 35px;" name="search" />
@@ -139,6 +139,7 @@
                                                         {% for i in range(form.total_page - 10, form.total_page + 1) %}
                                                             {% if i == form.page %}
                                                                 <li class="page-item active"><a class="page-link" href="?page={{i}}&search={{form.search}}">{{i}}</a></li>
+                                                            {% elif i <= 0%}
                                                             {% else %}
                                                                 <li class="page-item"><a class="page-link" href="?page={{i}}&search={{form.search}}">{{i}}</a></li>
                                                             {% endif %}
@@ -160,9 +161,9 @@
                                         </div>
                                             <div class="col-md-2 text-center">
                                                 <div class="row">
-                                                    <div class="col-md-3">
+                                                    <div class="col-md-2">
                                                     </div>
-                                                    <div class="col-md-4">
+                                                    <div class="col-md-5">
                                                     <input type="text" class="form-control" id="name" name="page" style="width: 69px; height: 35px;" placeholder="页码">
                                                     </div>
                                                     <div class="col-md-4">

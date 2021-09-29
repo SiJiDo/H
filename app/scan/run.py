@@ -3,6 +3,9 @@ from app.scan.lib.Scansubdomain import scan_subdomain
 from app.scan.lib.Scanport import scan_port
 from app.scan.lib.Scanhttp import scan_http
 from app.scan.lib.Scandir import scan_dir
+from app.scan.lib.Scanvuln import scan_vuln
+from app.home.vuln.models import Vuln
+from app.home.http.models import Http
 from time import sleep
 from flask import request, redirect, url_for
 from flask_login import current_user
@@ -10,6 +13,7 @@ from multiprocessing import Process
 from app import db
 import os
 from app.scan.conn import dbconn
+import time
 
 #开始扫描
 def startscan():
@@ -38,6 +42,52 @@ def stopscan():
         return redirect(url_for('home_blueprint.targetinforoute',id=id,message="内部错误"))
     
     return redirect(url_for('home_blueprint.targetinforoute',id=id,message="停止扫描, 扫描进程为----" + str(pid)))
+
+#开始扫描
+def webhook():
+    vuln = request.json
+    if "web_statistic" in vuln['type']:
+        return "ok"
+
+    target_name = vuln["data"]["detail"]["addr"].split("://")[1].split("/")[0]
+    print("target_name : " + target_name )
+    if(":" not in target_name):
+        if(vuln["data"]["detail"]["addr"].split("://")[0] == 'https'):
+            target_name = target_name + ":443"
+        else:
+            target_name = target_name + ":80"
+    
+
+    result = db.session.query(Http).filter(Http.http_name == target_name).first()
+    v = Vuln()
+    v.vuln_mainkey = str(vuln["data"]["detail"]["addr"] + vuln["data"]["plugin"])[:100]
+    v.vuln_info = vuln["data"]["plugin"]
+    v.vuln_poc = vuln["data"]["detail"]["addr"]
+    v.vuln_level = "xray"
+    v.vuln_tool = "xray"
+    v.vuln_time = str(time.strftime('%Y-%m-%d  %H:%M:%S', time.localtime(time.time())))
+    v.vuln_new = 0
+    
+    if(result):
+        v.vuln_user = result.http_user
+        v.vuln_http = result.id
+        v.vuln_target = result.http_target
+        v.vuln_name = result.http_schema + "://" + result.http_name
+    else:
+        v.vuln_user = None
+        v.vuln_http = None
+        v.vuln_target = None
+        v.vuln_name = vuln["data"]["detail"]["addr"].split("://")[0] + "://" + vuln["data"]["detail"]["addr"].split("://")[1].split("/")[0]
+
+    count = db.session.query(Vuln).filter(Vuln.vuln_mainkey == v.vuln_mainkey).count()
+    if(count > 0):
+        db.session.query(Vuln).filter(Vuln.vuln_mainkey == v.vuln_mainkey).update({Vuln.vuln_new:1})
+    else:
+        print("入库:" + v.vuln_poc)
+        db.session.add(v)
+    db.session.commit()
+
+    return 'ok'
 
 
 #开始扫描，注意是子进程需要起新的句柄进行数据库连接
@@ -103,7 +153,7 @@ def startscan_process(id, current_user):
     scan_dir(scanmethod_query, id, current_user)
     #开始扫描漏洞 --- 6
     changestatus(6,id)
-    #scan_vuln(scanmethod_query, id)
+    scan_vuln(scanmethod_query, id, current_user)
     #结束 --- 7
     scan_over(id)
     sleep(5)

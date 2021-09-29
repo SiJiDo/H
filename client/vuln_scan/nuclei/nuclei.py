@@ -9,8 +9,6 @@ from time import time
 import json
 
 from process import SubProcessSrc
-import subprocess
-from urllib.parse import urlparse
 
 FILEPATH = os.path.split(os.path.realpath(__file__))[0]
 
@@ -20,55 +18,91 @@ if 'DEBUG' in os.environ and os.environ['DEBUG'] == 'False':
     DEBUG = "False"
 else:
     DEBUG = "True"
-    broker = 'amqp://hhsrc:hhsrc@127.0.0.1:5672/hhsrc_broker'
-    backend = 'amqp://hhsrc:hhsrc@127.0.0.1:5672/hhsrc_backend'
+    broker = 'amqp://guest:guest@127.0.0.1:5672/H_broker'
+    backend = 'amqp://guest:guest@127.0.0.1:5672/H_backend'
 
-app = Celery('hhsrc.nuclei', broker=broker, backend=backend, )
+app = Celery('H.nuclei', broker=broker, backend=backend, )
 app.config_from_object('config')
 
 
 @app.task
-def run(target):
-    print("-------------------调用nuclei组件:" + target + "--------------------")
+def run(target, flag=False, github=""):
     work_dir = FILEPATH + '/tools'
-    nucelei_tmp = work_dir + '/nuclei-templates'
     out_file_name = '{}.txt'.format(time())
     result = []
 
     # 先更新
-    command = ['git', 'pull']
+    if DEBUG == 'True':
+        command = ['./nuclei_mac', '-ut', '-update']
+    else:
+        command = ['./nuclei', '-ut', '-update']
     try:
-        sb = SubProcessSrc(command, cwd=nucelei_tmp).run()
+        sb = SubProcessSrc(command, cwd=work_dir).run()
     except:
         pass
-    # 执行命令 ./nuclei -target target -t "nuclei-templates" -o 1.txt
-    if DEBUG == 'True':
-        command = ['./nuclei_mac', '-target', target, '-no-color', '-silent', '-config', 'config.yaml']
+
+    #周期扫描新poc
+    if(flag == True):
+        # 执行命令 ./nuclei -target target -t "nuclei-templates" -o 1.txt
+        if DEBUG == 'True':
+            command = ['./nuclei_mac', '-u', target, '-config', 'config_new.yaml', '-json', '-o', out_file_name]
+        else:
+            command = ['./nuclei', '-u', target, '-config', 'config_new.yaml', '-json', '-o', out_file_name]
+    #自定义poc
+    elif(github != ""):
+        dir_name = github.split("/")[-1].split('.')[0]
+        print(dir_name)
+        try:
+            #更新自定义的poc
+            if(os.path.exists(work_dir + '/' + dir_name)):
+                command = ['git', 'pull', github]
+            else:
+                command = ['git', 'clone', github]
+                sb = SubProcessSrc(command, cwd=work_dir).run()
+        except:
+            pass
+        if DEBUG == 'True':
+            command = ['./nuclei_mac', '-u', target, '-severity','low,medium,high,critical', '-templates', dir_name, '-json', '-o', out_file_name]
+        else:
+            command = ['./nuclei', '-u', target, '-severity','low,medium,high,critical', '-templates', dir_name, '-json', '-o', out_file_name]
+
     else:
-        command = ['./nuclei', '-target', target, '-no-color', '-silent', '-config', 'config.yaml']
-    sb = SubProcessSrc(command, cwd=work_dir, stdout=subprocess.PIPE).run()
+        # 执行命令 ./nuclei -target target -t "nuclei-templates" -o 1.txt
+        if DEBUG == 'True':
+            command = ['./nuclei_mac', '-u', target, '-config', 'config.yaml', '-json', '-o', out_file_name]
+        else:
+            command = ['./nuclei', '-u', target, '-config', 'config.yaml', '-json', '-o', out_file_name]
+        
+    sb = SubProcessSrc(command, cwd=work_dir).run()
     if sb['status'] == 0:
-        for r in sb['result']:
-            try:
-                dic = {}
-                dic['target'] = ""
-                dic['vuln_level'] = ""
-                dic['vuln_info'] = ""
-                dic['vuln_path'] = ""
-                line = r.decode("utf-8")
-                url = line.split('] ')[-1].split('\n')[0].split(" [")[0]
-                if("://" not in url):
-                    url = "http://" + url
-                urlres = urlparse(url)
-                dic['target'] = urlres.scheme + "://" + urlres.netloc
-                dic['vuln_level'] = line.split('] ')[-2].split('[')[-1]
-                dic['vuln_info'] = line.split('[')[2].split(']')[0]
-                dic['vuln_path'] = line.split('] ')[-1].split('\n')[0]
-                result.append(dic)
-            except Exception as e:
-                print(e)
+        result = send_info(sb, work_dir, out_file_name)
+
     return {'tool': 'nuclei', 'result': result}
 
+def send_info(sb, work_dir, out_file_name):
+    result = []
+    # 运行成功，读取json数据返回
+    with open('{}/{}'.format(work_dir, out_file_name), 'r') as f:
+        vuln = f.readlines()
+        for line in vuln:
+            dic = {}
+            try:
+                dic['vuln_level'] = json.loads(line)['info']['severity']
+                dic['vuln_poc'] = json.loads(line)['matched']
+                dic['vuln_info'] = json.loads(line)['info']['name']
+                dic['vuln_target'] = json.loads(line)['host']
+
+                result.append(dic)
+
+            except Exception as e:
+                print(e)
+    try:
+        os.system('rm -rf {}/{}'.format(work_dir, out_file_name))
+    except:
+        pass
+
+    return result
+
 if __name__ == '__main__':
-    list2 = 'https://asia-exstatic.vivo.com'
-    print(run(list2))
+    target = 'http://127.0.0.1:8081/'
+    print(run(target, github="https://SiJiDo:62c27071be432ae840df8b6655354fa4@gitee.com/SiJiDo/H_template.git"))

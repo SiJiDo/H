@@ -11,6 +11,11 @@ from jinja2 import TemplateNotFound
 from app.home.target.view import *
 from app.home.scanconfig.view import *
 from app.home.sysconfig.view import *
+from app.home.subdomain.view import * 
+from app.home.port.view import * 
+from app.home.http.view import *
+from app.home.dirb.view import * 
+from app.home.vuln.view import *
 
 @blueprint.route('/index')
 @login_required
@@ -37,6 +42,36 @@ def targetinforoute():
 def targeteditroute():
     return targetedit();
 
+@blueprint.route('/subdomain', methods=['GET', 'POST'])
+@login_required
+def subdomainroute():
+    return subdomain();
+
+@blueprint.route('/port', methods=['GET', 'POST'])
+@login_required
+def portroute():
+    return port();
+
+@blueprint.route('/http', methods=['GET', 'POST'])
+@login_required
+def httproute():
+    return http();
+
+@blueprint.route('/httpinfo', methods=['GET', 'POST'])
+@login_required
+def httpinforoute():
+    return httpinfo();
+
+@blueprint.route('/dirb', methods=['GET', 'POST'])
+@login_required
+def dirbroute():
+    return dirb();
+
+@blueprint.route('/vuln', methods=['GET', 'POST'])
+@login_required
+def vulnroute():
+    return vuln();
+
 @blueprint.route('/scanmethod', methods=['GET', 'POST'])
 @login_required
 def scanmethodroute():
@@ -51,7 +86,6 @@ def scancronroute():
 @login_required
 def sysconfigroute():
     return sysconfig();
-
 
 
 

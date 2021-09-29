@@ -3,9 +3,13 @@ from app.home.utils import *
 import time 
 import configparser
 from app.scan.conn import dbconn
+import queue
+from threading import *
 
 cfg = configparser.ConfigParser()
 cfg.read('config.ini')
+
+lock=Lock()
 
 def scan_dir(scanmethod_query, target_id, current_user):
     #初始化数据库连接
@@ -18,47 +22,108 @@ def scan_dir(scanmethod_query, target_id, current_user):
     cursor.execute(sql,(target_id,))
     http_query = cursor.fetchall()
 
-    if(scanmethod_query[10] == True):
-        tool_jsfinder(task, http_query, target_id, conn, cursor, current_user)
+
+    #初始化多线程
+    thread_count = 10
+    jsfinder_queue = queue.Queue()
+    fileleak_queue = queue.Queue()
+
+    #整理队列
+    for dir_target in http_query:
+        jsfinder_queue.put(dir_target)
+        fileleak_queue.put(dir_target)
+
+    if(scanmethod_query[10] == True): 
+        # 使用多线程
+        threads = []
+        for i in range(0, thread_count):
+            thread = tool_jsfinder(jsfinder_queue, task, target_id, conn, cursor, current_user)
+            thread.start()
+            threads.append(thread)
+        for j in threads:
+            j.join()
+
     if(scanmethod_query[11] == True):
-        #13是字典
+        #12是字典
         wordlist = scanmethod_query[12]
-        tool_fileleak(task, http_query, wordlist, target_id, conn, cursor, current_user)
+        
+        threads = []
+        for i in range(0, thread_count):
+            thread = tool_fileleak(fileleak_queue,task, wordlist, target_id, conn, cursor, current_user)
+            thread.start()
+            threads.append(thread)
+        for j in threads:
+            j.join()
 
     #关闭数据库句柄
     cursor.close()
     conn.close()
     return 
 
-def tool_jsfinder(task, http_query, target_id, conn, cursor, current_user):
-    #开始扫描
-    for target in http_query:
-        url = target[1] + '://' + target[2]
-        dir_scan = task.send_task('jsfinder.run', args=(url,), queue='jsfinder')
-        while True:
-            if dir_scan.successful():
-                try:
-                    save_result(target, target_id, dir_scan.result, cursor, conn, current_user)
-                    break
-                except Exception as e:
-                    print(e)
-                    break
-    return
+class tool_jsfinder(Thread):
+    def __init__(self, jsfinder_queue, task, target_id, conn, cursor, current_user):
+        Thread.__init__(self)
+        self.queue = jsfinder_queue
+        self.task = task
+        self.target_id = target_id
+        self.cursor = cursor
+        self.conn = conn
+        self.current_user = current_user
 
-def tool_fileleak(task, http_query, wordlist, target_id, conn, cursor, current_user):
-    #开始扫描
-    for target in http_query:
-        url = target[1] + '://' + target[2]
-        dir_scan = task.send_task('fileleak.run', args=(url,wordlist,), queue='fileleak')
-        while True:
-            if dir_scan.successful():
-                try:
-                    save_result(target, target_id, dir_scan.result, cursor, conn, current_user)
-                    break
-                except Exception as e:
-                    print(e)
-                    break
-    return
+    def run(self):
+        queue = self.queue
+        task = self.task
+        target_id = self.target_id
+        cursor = self.cursor
+        conn = self.conn
+        current_user = self.current_user
+
+        while not queue.empty():
+            target = queue.get()
+            scan_target = target[1] + '://' + target[2]
+            dir_scan = task.send_task('jsfinder.run', args=(scan_target,), queue='jsfinder')
+            while True:
+                if dir_scan.successful():
+                    try:
+                        save_result(target, target_id, dir_scan.result, cursor, conn, current_user)
+                        break
+                    except Exception as e:
+                        print(e)
+                        break
+
+
+class tool_fileleak(Thread):
+    def __init__(self, fileleak_queue, task, wordlist,target_id, conn, cursor, current_user):
+        Thread.__init__(self)
+        self.queue = fileleak_queue
+        self.task = task
+        self.target_id = target_id
+        self.cursor = cursor
+        self.conn = conn
+        self.current_user = current_user
+        self.wordlist = wordlist
+
+    def run(self):
+        queue = self.queue
+        task = self.task
+        target_id = self.target_id
+        cursor = self.cursor
+        conn = self.conn
+        current_user = self.current_user
+        wordlist = self.wordlist
+
+        while not queue.empty():
+            target = queue.get()
+            scan_target = target[1] + '://' + target[2]
+            dir_scan = task.send_task('fileleak.run', args=(scan_target,wordlist,), queue='fileleak')
+            while True:
+                if dir_scan.successful():
+                    try:
+                        save_result(target, target_id, dir_scan.result, cursor, conn, current_user)
+                        break
+                    except Exception as e:
+                        print(e)
+                        break
 
 #保存
 def save_result(target, target_id, result, cursor, conn, current_user): 

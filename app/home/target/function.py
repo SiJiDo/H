@@ -4,6 +4,7 @@ from app.home.subdomain.models import Subdomain
 from app.home.port.models import Port
 from app.home.http.models import Http
 from app.home.dirb.models import Dirb
+from app.home.vuln.models import Vuln
 from app.home.utils import *
 import time
 from app import db
@@ -127,6 +128,8 @@ def blacklist_remove(black, target_id):
             [db.session.delete(r) for r in result]
             result = Dirb.query.filter(Dirb.dir_base.like("%{}%".format(b)), Dirb.dir_target == target_id).all()
             [db.session.delete(r) for r in result]
+            result = Vuln.query.filter(Vuln.vuln_name.like("%{}%".format(b)), Vuln.vuln_target == target_id).all()
+            [db.session.delete(r) for r in result]
             db.session.commit()
         except Exception as e:
             print(e)
@@ -139,8 +142,6 @@ def blacklist_remove(black, target_id):
             result = Port.query.filter(Port.port_ip.like("%{}%".format(b)), Port.port_target == target_id).all()
             [db.session.delete(r) for r in result]
             result = Http.query.filter(Http.http_name.like("%{}%".format(b)), Http.http_target == target_id).all()
-            [db.session.delete(r) for r in result]
-            result = Dirb.query.filter(Dirb.dir_base.like("%{}%".format(b)), Dirb.dir_target == target_id).all()
             [db.session.delete(r) for r in result]
             db.session.commit()
         except Exception as e:

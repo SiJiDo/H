@@ -28,4 +28,4 @@ def sysconfig(DynamicModel = Sysconfig, DynamicFrom = SysconfigForm):
         db.session.commit()
 
 
-    return render_template('sysconfig.html',form=DynamicFrom)
+    return render_template('sysconfig.html',form=DynamicFrom, segment=get_segment(request))

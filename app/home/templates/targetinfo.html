@@ -111,22 +111,25 @@
                                 <div class="card-block">
                                     <div class="row align-items-center justify-content-center">
                                         <div class="col">
-                                            <h5 class="m-0">项目详细</h5>
+                                            <h5 class="m-4">操作</h5>
                                         </div>
+                                        <br>
                                         <div class="col-auto row">
-                                            <div class="col-xl-4">
-                                                <label class="label theme-bg text-white f-14 f-w-400 float-right"><a href="startscan?id={{id}}" class="label theme-bg text-white f-12">开始扫描</a></label>
+                                            <div class="col-xl-6">
+                                                <label class="label theme-bg text-white f-8 f-w-400 float-right"><a href="startscan?id={{id}}" class="label theme-bg text-white f-12">开始扫描</a></label>
+                                                <br>
+                                                <br>
+                                                <label class="label theme-bg2 text-white f-8 f-w-400 float-right"><a href="stopscan?id={{id}}" class="label theme-bg2 text-white f-12">暂停扫描</a></label>
                                             </div>
-                                            <div class="col-xl-4">
-                                                <label class="label theme-bg2 text-white f-14 f-w-400 float-right"><a href="stopscan?id={{id}}" class="label theme-bg2 text-white f-12">暂停扫描</a></label>
+                                            <div class="col-xl-6">
+                                                
+                                                <label class="label theme-bg2 text-white f-8 f-w-400 float-right"><a href="export?id={{id}}" class="label theme-bg2 text-white f-12">导出项目</a></label>
                                             </div>
-                                            <div class="col-xl-4">
-                                            <label class="label theme-bg2 text-white f-14 f-w-400 float-right"><a href="export?id={{id}}" class="label theme-bg2 text-white f-12">导出项目</a></label>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                     <hr/>
-                                    <h2 class="mt-3 f-w-300"><b>{{form.content.target_name}}</b></h2>
+                                    <h3 class="mt-3 f-w-300"><b>{{form.content.target_name}}</b></h3>
                                     <h5 class="text-muted mt-4 mb-0">项目描述:<br><br>{{form.content.target_description}}</h5>
                                     <a href="targetedit?id={{id}}"><i class="feather icon-settings fab text-c-purple f-50"></i></a>
                                 </div>

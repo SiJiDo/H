@@ -1,0 +1,154 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} 资产详情 {% endblock %} 
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="pcoded-content">
+        <div class="pcoded-inner-content">
+            <!-- [ breadcrumb ] start -->
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h5 class="m-b-10">资产详情</h5>
+                            </div>
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index"><i class="feather icon-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="#!">资产管理</a></li>
+                                <li class="breadcrumb-item"><a href="javascript:">资产详情</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-header with-border">
+                {% include 'message.html' %}
+            </div>
+            <!-- [ breadcrumb ] end -->
+            <div class="main-body">
+                <div class="page-wrapper">
+                    <!-- [ Main Content ] start -->
+                    <div class="row">
+
+                        <!-- [ statistics year chart ] start -->
+                        <div class="col-xl-8 col-md-6">
+                            <div class="card card-event">
+                                <div class="card-block">
+                                    <div class="row align-items-center justify-content-center">
+                                        <div class="col">
+                                            <h5 class="m-0">站点详细</h5>
+                                        </div>
+                                    </div>
+                                    <hr/>
+                                    <div class="row">
+                                        <div class="col-xl-6">
+                                            <h5 class="mt-3 f-w-300"><b>地址:{{form.content.http_schema}}://{{form.content.http_name}}</b></h5>
+                                            <br>
+                                            <h5 class="text-muted mt-4 mb-0">响应码:{{form.content.http_status}}</h5>
+                                            <h5 class="text-muted mt-4 mb-0">标题:{{form.content.http_title}}</h5>
+                                            <h5 class="text-muted mt-4 mb-0">长度:{{form.content.http_length}}</h5>
+                                            <h5 class="text-muted mt-4 mb-0">添加时间:{{form.content.http_time}}</h5>
+                                        </div>
+                                        <div class="col-xl-4">
+                                            <br>
+                                            <br>
+                                            <br>
+                                            <h5 class="text-muted mt-4 mb-0">截图:</h5>
+                                            <br>
+                                            {% if form.content.http_screen == 'No' %}获取截图失败{% elif form.content.http_screen == 'None' %} 获取截图失败 {% else %}<img src="data:image/png;base64,{{form.content.http_screen}}" />{% endif %}</td>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- [list Content] start -->
+                        <div class="col-xl-4 col-md-12 m-b-30">
+                            <div class="card Recent-Users">
+
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active show" id="subdomain-tab" data-toggle="tab" href="#subdomain" role="tab" aria-controls="subdomain" aria-selected="true">监控域名信息</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">黑名单信息</a>
+                                    </li>
+                                </ul>
+                                
+
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade active show" id="subdomain" role="tabpanel" aria-labelledby="subdomain-tab">
+                                        <!-- 域名列表 start -->
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th style="vertical-align: middle !important;text-align: center;">域名</th>
+                                                    <th style="vertical-align: middle !important;text-align: center;">子域名数</th>
+                                                    <th style="vertical-align: middle !important;text-align: center;">端口数</th>
+                                                    <th style="vertical-align: middle !important;text-align: center;">操作</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td style="vertical-align: middle !important;text-align: center;">
+                                                        <h6 class="m-0">oppo.com</h6>
+                                                    </td>
+                                                    <td style="vertical-align: middle !important;text-align: center;">
+                                                        <h6 class="m-0">123</h6>
+                                                    </td>
+                                                    <td style="vertical-align: middle !important;text-align: center;">
+                                                        <h6 class="m-0">256</h6>
+                                                    </td>
+                                                    <td style="vertical-align: middle !important;text-align: center;"><a href="/targetinfo?action=delete&id=" class="label theme-bg2 text-white f-12">删除</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <!-- 域名列表 end -->
+
+                                    </div>
+                                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th style="vertical-align: middle !important;text-align: center;">类型</th>
+                                                    <th style="vertical-align: middle !important;text-align: center;">黑名单</th>
+                                                    <th style="vertical-align: middle !important;text-align: center;">操作</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td style="vertical-align: middle !important;text-align: center;"> 
+                                                        <h6 class="m-0">subdomain</h6>
+                                                    </td>
+                                                    <td style="vertical-align: middle !important;text-align: center;">
+                                                        <h6 class="m-0">www.oppo.com</h6>
+                                                    </td style="vertical-align: middle !important;text-align: center;">
+                                                    <td style="vertical-align: middle !important;text-align: center;"><a href="/targetinfo?action=delete&id=" class="label theme-bg2 text-white f-12">删除</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <!-- [list Content] end -->
+
+                    </div>
+                    <!-- [ Main Content ] end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+{% endblock javascripts %}

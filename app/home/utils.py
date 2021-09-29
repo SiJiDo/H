@@ -251,3 +251,17 @@ def black_list_title_query(target_id, http_title, cursor, conn):
                 print(http_title + "被过滤啦!过滤规则:" + b)
                 return True
     return False
+
+def get_segment( request ): 
+
+    try:
+
+        segment = request.path.split('/')[-1]
+
+        if segment == '':
+            segment = 'index'
+
+        return segment    
+
+    except:
+        return None  

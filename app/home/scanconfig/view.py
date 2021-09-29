@@ -49,7 +49,7 @@ def scanmethod(DynamicModel = Scanmethod, DynamicFrom = ScanmethodForm):
         dict = {'content': utils.queryToDict(result)}
     else:
         dict = {'content':{}}
-    return render_template('scanmethod.html',form=DynamicFrom, dict = dict, id = id, flag=flag)
+    return render_template('scanmethod.html',form=DynamicFrom, dict = dict, id = id, flag=flag,segment=get_segment(request))
 
 
 #扫描周期
@@ -91,4 +91,4 @@ def scancron(DynamicModel = Scancron, DynamicFrom = ScancronFrom):
         dict = {'content': utils.queryToDict(result)}
     else:
         dict = {'content':{}}
-    return render_template('scancron.html',form=DynamicFrom, dict = dict, id = id, flag=flag)
+    return render_template('scancron.html',form=DynamicFrom, dict = dict, id = id, flag=flag,segment=get_segment(request))

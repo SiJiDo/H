@@ -18,3 +18,7 @@ def startscanroute():
 @login_required
 def stopscanroute():
     return stopscan()
+
+@blueprint.route('/webhook', methods=['POST'])
+def webhookroute():
+    return webhook()
