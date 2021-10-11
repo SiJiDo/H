@@ -1,10 +1,10 @@
 from app.home.subdomain.models import Subdomain
 from app.home.domain.models import Domain
-from app.home.subdomain.models import Subdomain
 from app.home.port.models import Port
 from app.home.http.models import Http
 from app.home.dirb.models import Dirb
-from app.home.target.function import saveblacklist, savedomain, savesubdomain
+from app.home.vuln.models import Vuln
+from app.home.target.function import ip_addr, saveblacklist, savedomain, savesubdomain
 from app.home.target.models import *
 from app.home.utils import *
 from flask import render_template, request
@@ -45,6 +45,8 @@ def target(DynamicModel = Target):
             [db.session.delete(r) for r in result]
             result = Dirb.query.filter(Dirb.dir_target == id).all()
             [db.session.delete(r) for r in result]
+            result = Vuln.query.filter(Vuln.vuln_target == id).all()
+            [db.session.delete(r) for r in result]
         else:
             db.session.query(DynamicModel).filter(DynamicModel.id == id).filter(DynamicModel.target_user == str(current_user)).delete()
             result = DynamicModel.query.filter(DynamicModel.id == id).filter(DynamicModel.target_user == str(current_user)).all()
@@ -60,6 +62,8 @@ def target(DynamicModel = Target):
             result = Http.query.filter(Http.http_target == id).filter(DynamicModel.target_user == str(current_user)).all()
             [db.session.delete(r) for r in result]
             result = Dirb.query.filter(Dirb.dir_target == id).filter(DynamicModel.target_user == str(current_user)).all()
+            [db.session.delete(r) for r in result]
+            result = Vuln.query.filter(Vuln.vuln_target == id).filter(DynamicModel.target_user == str(current_user)).all()
             [db.session.delete(r) for r in result]
         db.session.commit()
         flash("删除成功")
@@ -90,6 +94,9 @@ def target(DynamicModel = Target):
                 [db.session.delete(r) for r in result]
                 result = Dirb.query.filter(Dirb.dir_target == id).all()
                 [db.session.delete(r) for r in result]
+                result = Vuln.query.filter(Vuln.vuln_target == id).all()
+                [db.session.delete(r) for r in result]
+                
             else:
                 db.session.query(DynamicModel).filter(DynamicModel.id == id).filter(DynamicModel.target_user == str(current_user)).delete()
                 result = DynamicModel.query.filter(DynamicModel.id == id).filter(DynamicModel.target_user == str(current_user)).all()
@@ -105,6 +112,8 @@ def target(DynamicModel = Target):
                 result = Http.query.filter(Http.http_target == id).filter(DynamicModel.target_user == str(current_user)).all()
                 [db.session.delete(r) for r in result]
                 result = Dirb.query.filter(Dirb.dir_target == id).filter(DynamicModel.target_user == str(current_user)).all()
+                [db.session.delete(r) for r in result]
+                result = Vuln.query.filter(Vuln.vuln_target == id).filter(DynamicModel.target_user == str(current_user)).all()
                 [db.session.delete(r) for r in result]
         db.session.commit()
         flash("删除成功")
@@ -173,6 +182,23 @@ def target(DynamicModel = Target):
     for q in query.items:
         content.append(queryToDict(q))
     for i in content:
+        if(i['target_status'] == 0):
+            i['target_status_info'] = '未扫描'
+        if(i['target_status'] == 1):
+            i['target_status_info'] = '准备扫描'
+        if(i['target_status'] == 2):
+            i['target_status_info'] = '扫描子域名'
+        if(i['target_status'] == 3):
+            i['target_status_info'] = '扫描端口'
+        if(i['target_status'] == 4):
+            i['target_status_info'] = '扫描站点'
+        if(i['target_status'] == 5):
+            i['target_status_info'] = '扫描路径'
+        if(i['target_status'] == 6):
+            i['target_status_info'] = '扫描漏洞'
+        if(i['target_status'] == 7):
+            i['target_status_info'] = '扫描完成'
+
         i['domain_total_count'] = 0
         i['http_total_count'] = 0
     dict = {'content': content, 'total_count': total_count,
@@ -224,18 +250,110 @@ def targetinfo(DynamicModel = Target, DynamicFrom = TargetForm):
     # 接收参数
     action = request.args.get('action')
     id = request.args.get('id')
+    Blacklist_page = int(request.args.get('blacklist_page')) if request.args.get('blacklist_page') else 1
+    Blacklist_length = int(request.args.get('blacklist_length')) if request.args.get('blacklist_length') else 6
+    Domain_page = int(request.args.get('domain_page')) if request.args.get('domain_page') else 1
+    Domain_length = int(request.args.get('domain_length')) if request.args.get('domain_length') else 6
     query = ""
+    black = request.args.get('black')
     message = request.args.get('message')
+
+    remove_id =  int(request.args.get('target_id')) if request.args.get('target_id') else 0 
+    action = request.args.get('action') 
+    if(action == 'delete_domain'):
+        target_id = id
+        b = Domain.query.filter(Domain.id == remove_id).first()
+        b = b.domain_name
+        result = Domain.query.filter(Domain.id == remove_id).all()
+        [db.session.delete(r) for r in result]
+        result = Subdomain.query.filter(Subdomain.subdomain_name.like("%.{}".format(b)), Subdomain.subdomain_target == target_id).all()
+        [db.session.delete(r) for r in result]
+        result = Port.query.filter(Port.port_domain.like("%.{}".format(b)), Port.port_target == target_id).all()
+        [db.session.delete(r) for r in result]
+        result = Http.query.filter(Http.http_name.like("%.{}".format(b)), Http.http_target == target_id).all()
+        [db.session.delete(r) for r in result]
+        result = Dirb.query.filter(Dirb.dir_base.like("%.{}".format(b)), Dirb.dir_target == target_id).all()
+        [db.session.delete(r) for r in result]
+        result = Vuln.query.filter(Vuln.vuln_name.like("%.{}".format(b)), Vuln.vuln_target == target_id).all()
+        [db.session.delete(r) for r in result]
+        db.session.commit()
+        
+    if(action == 'delete_blacklist'):
+        result = Blacklist.query.filter(Blacklist.id == remove_id).all()
+        [db.session.delete(r) for r in result]
+        db.session.commit()
+
     if(message):
         flash(message)
 
-    if(is_admin()):
+    #获取blacklist的信息
+    query_blacklist = Blacklist.query.filter(Blacklist.black_target == id,).paginate(Blacklist_page, Blacklist_length)
+    blacklist_total_count = Blacklist.query.filter(Blacklist.black_target == id).count()
+
+    if(is_admin):
         query = DynamicModel.query.filter(DynamicModel.id == id).first()
+        # 获取domain的信息
+        query_domain = Domain.query.filter(Domain.domain_target == id,).order_by(Domain.domain_time.desc(),Domain.id.desc()).paginate(Domain_page, Domain_length)
+        domain_total_count = Domain.query.filter(Domain.domain_target == id).count()
+
     else:
         query = DynamicModel.query.filter(DynamicModel.id == id).filter(DynamicModel.target_user == str(current_user)).order_by(DynamicModel.id).first()
-    dict = {'content': query, 
+        # 获取domain的信息
+        query_domain = Domain.query.filter(Domain.domain_target == id, Domain.Domain_use == str(current_user)).order_by(Domain.domain_time.desc(),Domain.id.desc()).paginate(Domain_page, Domain_length)
+        domain_total_count = Domain.query.filter(Domain.domain_target == id, Domain.Domain_use == str(current_user)).count()
+           
+    domain_content = []
+    for q in query_domain.items:
+        dic = queryToDict(q)
+        dic['subdomain_count'] = Subdomain.query.filter(Subdomain.subdomain_target == id, Subdomain.subdomain_name.like('%.{}'.format(dic['domain_name']))).count()
+        dic['port_count'] = Port.query.filter(Port.port_target == id, Port.port_domain.like('%.{}'.format(dic['domain_name']))).count()
+        domain_content.append(dic)
+    blacklist_content = []
+    for q in query_blacklist.items:
+        dic = queryToDict(q)
+        dic['blacklist_type'] = dic['black_name'].split(":")[0]
+        dic['blacklist_name'] = dic['black_name'].split(":")[1]
+        blacklist_content.append(dic)
+
+    vuln_count = Vuln.query.filter(Vuln.vuln_target == id).count()
+    web_count = Http.query.filter(Http.http_target == id).count()
+    old_domain = Subdomain.query.filter(Subdomain.subdomain_new == 1).count()
+    new_domain = Subdomain.query.filter(Subdomain.subdomain_new == 0).count()
+    status_200 = Http.query.filter(Http.http_target == id, Http.http_status == '200').count()
+    status_30x = Http.query.filter(Http.http_target == id, Http.http_status.like('%30%')).count()
+    status_50x = Http.query.filter(Http.http_target == id, Http.http_status.like('%50%')).count()
+    status_403 = Http.query.filter(Http.http_target == id, Http.http_status == '403').count()
+    status_other = Http.query.filter(Http.http_target == id).count() - status_200 - status_30x - status_50x - status_403
+
+    iptop_1 = ip_addr(id)[0][0] + ".0/24"
+    iptop_1_count = ip_addr(id)[0][1]
+    iptop_2 = ip_addr(id)[1][0] + ".0/24"
+    iptop_2_count = ip_addr(id)[1][1]
+    iptop_3 = ip_addr(id)[2][0] + ".0/24"
+    iptop_3_count = ip_addr(id)[2][1]
+    iptop_4 = ip_addr(id)[3][0] + ".0/24"
+    iptop_4_count = ip_addr(id)[3][1]
+    iptop_5 = ip_addr(id)[4][0] + ".0/24"
+    iptop_5_count = ip_addr(id)[4][1]
+    
+    print(iptop_1)
+
+    dict = {'content': query,
+            'domain_content': domain_content,'domain_total_page': math.ceil(domain_total_count / Domain_length), 'domain_total_count':domain_total_count, 'domain_page': Domain_page, 'domain_length': Domain_length,
+            'blacklist_content': blacklist_content,'blacklist_total_page': math.ceil(blacklist_total_count / Blacklist_length), 'blacklist_total_count': blacklist_total_count, 'blacklist_page': Blacklist_page, 'blacklist_length': Blacklist_length,
+            'black': black, 'vuln_count': vuln_count, 'web_count': web_count, 'old_domain': old_domain, 'new_domain': new_domain ,
+            'status_200':status_200, 'status_30x':status_30x, 'status_50x':status_50x, 'status_403':status_403, 'status_other':status_other,
+            'iptop_1':iptop_1,'iptop_2':iptop_2,'iptop_3':iptop_3,'iptop_4':iptop_4,'iptop_5':iptop_5,
+            'iptop_1_count':iptop_1_count,'iptop_2_count':iptop_2_count,'iptop_3_count':iptop_3_count,'iptop_4_count':iptop_4_count,'iptop_5_count':iptop_5_count
             }
-    return render_template('targetinfo.html', form=dict, id=id,segment=get_segment(request))
+    return render_template('targetinfo.html', form=dict, id=id, black=black, segment=get_segment(request))
+
+
+def ipinfo(DynamicModel = Subdomain, DynamicFrom = TargetForm):
+
+    return render_template('ipinfo.html', form=dict, id=id, segment=get_segment(request))
+
+
 
 #target修改
 def targetedit(DynamicModel = Target, DynamicFrom = TargetForm):

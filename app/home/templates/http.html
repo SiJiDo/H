@@ -46,14 +46,14 @@
                                 <div class="table-responsive">
                                     <form>
                                     <div class="row">
-                                        <div class="col-md-5"></div>
+                                        <div class="col-md-3"></div>
                                         <div class="col-md-7 form-inline">
                                             <div class="row">
                                                 <div class="col-md-7">
-                                                    <input type="text" class="form-control" style="width: 250px; height: 35px;" name="search" />
+                                                    <input type="text" class="form-control" style="width: 550px; height: 55px;" name="search" />
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="submit" class="theme-bg btn text-white f-12" style="width: 65px; height: 35px; line-height: 10px; border:1px; float: right;" value="搜索" />
+                                                    <input type="submit" class="theme-bg btn text-white f-12" style="width: 85px; height: 55px; line-height: 10px; border:1px; float: right;" value="搜索" />
                                                 </div>
 
                                             </div>
@@ -70,7 +70,6 @@
                                                 <th>截图</th>
                                                 <th>目录信息</th>  
                                                 <th>漏洞信息</th>    
-                                                <th>更新时间</th>
                                                 <th>操作</th>
                                             </tr>
                                         </thead>
@@ -83,12 +82,11 @@
                                                     {% else %}
                                                     <i class="feather icon-alert-octagon text-c-red"></i>
                                                     {% endif %}</td>
-                                                <td style="vertical-align: middle !important;text-align: center;"><a href="javascript:window.open('{{row.http_schema}}:\\{{row.http_name}}')">{{row.http_schema}}:\\{{row.http_name}}</a></td>
+                                                <td style="vertical-align: middle !important;text-align: center;"><a href=javascript:window.open("{{row.http_schema}}://{{row.http_name}}")>{{row.http_schema}}:\\{{row.http_name}}</a></td>
                                                 <td style="vertical-align: middle !important;text-align: center;"><label class="label theme-bg text-white f-10 f-w-50">标题:{{row.http_title}}</label><br><label class="label theme-bg text-white f-10 f-w-50">长度:{{row.http_length}}</label><br><label class="label theme-bg text-white f-10 f-w-50">响应码:{{row.http_status}}</label></td>
                                                 <td style="vertical-align: middle !important;text-align: center;">{% if row.http_screen == 'No' %}获取截图失败{% elif row.http_screen == 'None' %} 获取截图失败 {% else %}<img src="data:image/png;base64,{{row.http_screen}}" />{% endif %}</td>
                                                 <td style="vertical-align: middle !important;text-align: center;">{{row.dirb_count}}</td>
                                                 <td style="vertical-align: middle !important;text-align: center;">{{row.vuln_count}}</td>
-                                                <td style="vertical-align: middle !important;text-align: center;">{{row.http_time}}</td>
                                                 <td style="vertical-align: middle !important;text-align: center;">
                                                     <a href="/httpinfo?id={{row.id}}" class="label theme-bg text-white f-12">详情</a>
                                                     {% if row.http_see == False %}

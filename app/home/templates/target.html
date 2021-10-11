@@ -46,21 +46,22 @@
                                 <div class="table-responsive">
                                     <form>
                                     <div class="row">
-                                        <div class="col-md-5"></div>
+                                        <div class="col-md-3"></div>
                                         <div class="col-md-7 form-inline">
                                             <div class="row">
                                                 <div class="col-md-7">
-                                                    <input type="text" class="form-control" style="width: 250px; height: 35px;" name="search" />
+                                                    <input type="text" class="form-control" style="width: 550px; height: 55px;" name="search" />
                                                 </div>
-                                                <div class="col-md-2">
-                                                    <input type="submit" class="theme-bg btn text-white f-12" style="width: 65px; height: 35px; line-height: 10px; border:1px;" value="搜索" />
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <button type="submit" name="action" value="deleteall" class="theme-bg2 btn text-white f-12" style="width: 90px; height: 35px; line-width: 5px; line-height: 10px;  border:1px; float: right;">多选删除</button>
-                                                    
+                                                <div class="col-md-5">
+                                                    <input type="submit" class="theme-bg btn text-white f-12" style="width: 85px; height: 55px; line-height: 10px; border:1px; float: right;" value="搜索" />
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                    <hr>
+                                    <div>
+                                        <button type="submit" name="action" value="deleteall" class="theme-bg2 btn text-white f-12" style="width: 90px; height: 35px; line-width: 5px; line-height: 10px;  border:1px; float: right;">删除</button>
+                                        
                                     </div>
                                     <br>
                                     <table class="table table-hover text-center" style="vertical-align: middle;">
@@ -91,9 +92,25 @@
                                                 <td style="vertical-align: middle !important;text-align: center;">{{row.domain_total_count}}</td>
                                                 <td style="vertical-align: middle !important;text-align: center;">{{row.http_total_count}}</td>
                                                 <td style="vertical-align: middle !important;text-align: center;">
-                                                    <div class= "m-t-1 m-b-1 f-10" style="color:gray;">端口扫描</div>
+                                                    <div class= "m-t-1 m-b-1 f-10" style="color:gray;">{{row.target_status_info}}</div>
                                                     <div class="progress m-t-10 m-b-10" style="height: 10px;">
-                                                        <div class="progress-bar progress-c-theme" role="progressbar" style="width: 10%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        {% if row.target_status == 0 %}
+                                                            <div class="progress-bar progress-c-theme" role="progressbar" style="width: 0%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        {% elif row.target_status == 1 %}
+                                                            <div class="progress-bar progress-c-theme" role="progressbar" style="width: 13%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        {% elif row.target_status == 2 %}
+                                                            <div class="progress-bar progress-c-theme" role="progressbar" style="width: 26%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        {% elif row.target_status == 3 %}
+                                                            <div class="progress-bar progress-c-theme" role="progressbar" style="width: 39%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        {% elif row.target_status == 4 %}
+                                                            <div class="progress-bar progress-c-theme" role="progressbar" style="width: 52%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        {% elif row.target_status == 5 %}
+                                                            <div class="progress-bar progress-c-theme" role="progressbar" style="width: 65%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        {% elif row.target_status == 6 %}
+                                                            <div class="progress-bar progress-c-theme" role="progressbar" style="width: 79%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        {% else %}
+                                                            <div class="progress-bar progress-c-theme" role="progressbar" style="width: 100%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        {% endif %}
                                                     </div>
                                                 </td>
                                                 <td style="vertical-align: middle !important;text-align: center;">{% if row.target_cron == true %}

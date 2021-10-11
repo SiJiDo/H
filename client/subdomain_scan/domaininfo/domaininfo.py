@@ -107,4 +107,4 @@ class domaininfo(Thread):
 
 
 if __name__ == '__main__':
-    print(run(["www.baidu.com","www.oppo.com"]))
+    print(run(["kr00.niubi.com"]))

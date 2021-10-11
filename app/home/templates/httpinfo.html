@@ -36,7 +36,7 @@
                     <div class="row">
 
                         <!-- [ statistics year chart ] start -->
-                        <div class="col-xl-8 col-md-6">
+                        <div class="col-xl-12 col-md-6">
                             <div class="card card-event">
                                 <div class="card-block">
                                     <div class="row align-items-center justify-content-center">
@@ -46,19 +46,17 @@
                                     </div>
                                     <hr/>
                                     <div class="row">
-                                        <div class="col-xl-6">
-                                            <h5 class="mt-3 f-w-300"><b>地址:{{form.content.http_schema}}://{{form.content.http_name}}</b></h5>
+                                        <div class="col-xl-7">
                                             <br>
-                                            <h5 class="text-muted mt-4 mb-0">响应码:{{form.content.http_status}}</h5>
-                                            <h5 class="text-muted mt-4 mb-0">标题:{{form.content.http_title}}</h5>
-                                            <h5 class="text-muted mt-4 mb-0">长度:{{form.content.http_length}}</h5>
-                                            <h5 class="text-muted mt-4 mb-0">添加时间:{{form.content.http_time}}</h5>
+                                            <h5 class="mt-2 f-w-300"><b>地址:{{form.content.http_schema}}://{{form.content.http_name}}</b></h5>
+                                            <h6 class="text-muted mt-4 mb-0">响应码:{{form.content.http_status}}</h6>
+                                            <h6 class="text-muted mt-4 mb-0">标题:{{form.content.http_title}}</h6>
+                                            <h6 class="text-muted mt-4 mb-0">长度:{{form.content.http_length}}</h6>
+                                            <h6 class="text-muted mt-4 mb-0">添加时间:{{form.content.http_time}}</h6>
                                         </div>
-                                        <div class="col-xl-4">
+                                        <div class="col-xl-5">
                                             <br>
-                                            <br>
-                                            <br>
-                                            <h5 class="text-muted mt-4 mb-0">截图:</h5>
+                                            <h5 class="mt-2 f-w-300"><b>截图:</b></h5>
                                             <br>
                                             {% if form.content.http_screen == 'No' %}获取截图失败{% elif form.content.http_screen == 'None' %} 获取截图失败 {% else %}<img src="data:image/png;base64,{{form.content.http_screen}}" />{% endif %}</td>
                                         </div>
@@ -68,70 +66,167 @@
                         </div>
                         
                         <!-- [list Content] start -->
-                        <div class="col-xl-4 col-md-12 m-b-30">
+                        <div class="col-xl-12 col-md-12 m-b-30">
                             <div class="card Recent-Users">
 
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active show" id="subdomain-tab" data-toggle="tab" href="#subdomain" role="tab" aria-controls="subdomain" aria-selected="true">监控域名信息</a>
+                                        <a class="nav-link {% if black %}{% else %}active show{% endif %}" id="dir-tab" data-toggle="tab" href="#dir" role="tab" aria-controls="dir" aria-selected="true">目录扫描结果</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">黑名单信息</a>
+                                        <a class="nav-link {% if black %}active show{% else %}{% endif %}" id="vuln-tab" data-toggle="tab" href="#vuln" role="tab" aria-controls="vuln" aria-selected="false">漏洞扫描结果</a>
                                     </li>
                                 </ul>
                                 
 
                                 <div class="tab-content" id="myTabContent">
-                                    <div class="tab-pane fade active show" id="subdomain" role="tabpanel" aria-labelledby="subdomain-tab">
+                                    <div class="tab-pane fade {% if black %}{% else %}active show{% endif %}" id="dir" role="tabpanel" aria-labelledby="subdomain-tab">
                                         <!-- 域名列表 start -->
                                         <table class="table table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th style="vertical-align: middle !important;text-align: center;">域名</th>
-                                                    <th style="vertical-align: middle !important;text-align: center;">子域名数</th>
-                                                    <th style="vertical-align: middle !important;text-align: center;">端口数</th>
-                                                    <th style="vertical-align: middle !important;text-align: center;">操作</th>
+                                                    <th style="vertical-align: middle !important;text-align: center;">路径</th>
+                                                    <th style="vertical-align: middle !important;text-align: center;">响应码</th>
+                                                    <th style="vertical-align: middle !important;text-align: center;">标题</th>
+                                                    <th style="vertical-align: middle !important;text-align: center;">长度</th>
+                                                    <th style="vertical-align: middle !important;text-align: center;">采集时间</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td style="vertical-align: middle !important;text-align: center;">
-                                                        <h6 class="m-0">oppo.com</h6>
-                                                    </td>
-                                                    <td style="vertical-align: middle !important;text-align: center;">
-                                                        <h6 class="m-0">123</h6>
-                                                    </td>
-                                                    <td style="vertical-align: middle !important;text-align: center;">
-                                                        <h6 class="m-0">256</h6>
-                                                    </td>
-                                                    <td style="vertical-align: middle !important;text-align: center;"><a href="/targetinfo?action=delete&id=" class="label theme-bg2 text-white f-12">删除</a></td>
-                                                </tr>
+                                                {% for row in form.query_dirb %}
+                                                <tr class="unread">
+                                                    
+                                                    <td style="vertical-align: middle !important;text-align: center;"><a href="javascript:window.open('{{form.content.http_schema}}://{{form.content.http_name}}{{row.dir_path}}')">{{row.dir_path}}</a></td>
+                                                    <td style="vertical-align: middle !important;text-align: center;">{{row.dir_status}}</td>
+                                                    <td style="vertical-align: middle !important;text-align: center;">{{row.dir_title}}</td>
+                                                    <td style="vertical-align: middle !important;text-align: center;">{{row.dir_lenght}}</td>
+                                                    <td style="vertical-align: middle !important;text-align: center;">{{row.dir_time}}</td>              
+                                            </tr>
+                                            {% endfor %}
                                             </tbody>
                                         </table>
+                                        <nav aria-label="Page navigation example ">
+                                            {% if form%}
+                                            <ul class="pagination">
+                                                <li class="page-item"><a class="page-link" href="?dir_page={{1}}&&id={{id}}" aria-label="Previous"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
+                                                
+                                                {% if form.dir_page <= 5 %}
+                                                    {% if form.dir_total_page >= 10 %}
+                                                        {% for i in range(1, 11) %}
+                                                            {% if i == form.dir_page %}
+                                                                <li class="page-item active"><a class="page-link" href="?dir_page={{i}}&&id={{id}}">{{i}}</a></li>
+                                                            {% else %}
+                                                                <li class="page-item"><a class="page-link" href="?dir_page={{i}}&&id={{id}}">{{i}}</a></li>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% else %}
+                                                        {% for i in range(1, form.dir_total_page + 1) %}
+                                                            {% if i == form.dir_page %}
+                                                                <li class="page-item active"><a class="page-link" href="?dir_page={{i}}&&id={{id}}">{{i}}</a></li>
+                                                            {% else %}
+                                                                <li class="page-item"><a class="page-link" href="?dir_page={{i}}&&id={{id}}">{{i}}</a></li>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+
+                                                {% elif form.dir_page <= form.dir_total_page and form.dir_page > form.dir_total_page - 5 %}
+                                                    
+                                                    {% for i in range(form.dir_total_page - 10, form.dir_total_page + 1) %}
+                                                        {% if i == form.dir_page %}
+                                                            <li class="page-item active"><a class="page-link" href="?dir_page={{i}}&&id={{id}}">{{i}}</a></li>
+                                                        {% elif i <= 0%}
+                                                        {% else %}
+                                                            <li class="page-item"><a class="page-link" href="?dir_page={{i}}&&id={{id}}">{{i}}</a></li>
+                                                        {% endif %}
+                                                    {% endfor %}
+
+                                                {% else %}
+                                                    {% for i in range(form.dir_page - 5, form.dir_page + 5) %}
+                                                        {% if i == form.dir_page %}
+                                                            <li class="page-item active"><a class="page-link" href="?dir_page={{i}}&&id={{id}}">{{i}}</a></li>
+                                                        {% else %}
+                                                            <li class="page-item"><a class="page-link" href="?dir_page={{i}}&&id={{id}}">{{i}}</a></li>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                {% endif %}
+                                                <li class="page-item"><a class="page-link" href="?dir_page={{form.dir_total_page}}&&id={{id}}" aria-label="Next"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
+                                            {% endif %}
+                                            </ul>
+                                        </nav>
                                         <!-- 域名列表 end -->
 
                                     </div>
-                                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                    <div class="tab-pane fade {% if black %}active show{% else %}{% endif %}" id="vuln" role="tabpanel" aria-labelledby="profile-tab">
                                         <table class="table table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th style="vertical-align: middle !important;text-align: center;">类型</th>
-                                                    <th style="vertical-align: middle !important;text-align: center;">黑名单</th>
-                                                    <th style="vertical-align: middle !important;text-align: center;">操作</th>
+                                                    <th style="vertical-align: middle !important;text-align: center;">等级</th>
+                                                    <th style="vertical-align: middle !important;text-align: center;">信息</th>
+                                                    <th style="vertical-align: middle !important;text-align: center;">poc</th>
+                                                    <th style="vertical-align: middle !important;text-align: center;">采集时间</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td style="vertical-align: middle !important;text-align: center;"> 
-                                                        <h6 class="m-0">subdomain</h6>
-                                                    </td>
-                                                    <td style="vertical-align: middle !important;text-align: center;">
-                                                        <h6 class="m-0">www.oppo.com</h6>
-                                                    </td style="vertical-align: middle !important;text-align: center;">
-                                                    <td style="vertical-align: middle !important;text-align: center;"><a href="/targetinfo?action=delete&id=" class="label theme-bg2 text-white f-12">删除</a></td>
-                                                </tr>
+                                                
+                                            {% for row in form.query_vuln %}
+                                            <tr class="unread">
+                                                <td style="vertical-align: middle !important;text-align: center;">{{row.vuln_level}}</td>
+                                                <td style="vertical-align: middle !important;text-align: center;">{{row.vuln_info}}</td>
+                                                <td style="vertical-align: middle !important;text-align: center;">{{row.vuln_poc}}</td>
+                                                <td style="vertical-align: middle !important;text-align: center;">{{row.vuln_time}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                               
                                             </tbody>
                                         </table>
+                                        <nav aria-label="Page navigation example ">
+                                            {% if form%}
+                                            <ul class="pagination">
+                                                <li class="page-item"><a class="page-link" href="?vuln_page={{1}}&&id={{id}}&&vuln=1" aria-label="Previous"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
+                                                
+                                                {% if form.vuln_page <= 5 %}
+                                                    {% if form.vuln_total_page >= 10 %}
+                                                        {% for i in range(1, 11) %}
+                                                            {% if i == form.vuln_page %}
+                                                                <li class="page-item active"><a class="page-link" href="?vuln_page={{i}}&&id={{id}}&&vuln=1">{{i}}</a></li>
+                                                            {% else %}
+                                                                <li class="page-item"><a class="page-link" href="?vuln_page={{i}}&&id={{id}}&&vuln=1">{{i}}</a></li>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% else %}
+                                                        {% for i in range(1, form.vuln_total_page + 1) %}
+                                                            {% if i == form.vuln_page %}
+                                                                <li class="page-item active"><a class="page-link" href="?vuln_page={{i}}&&id={{id}}&&vuln=1">{{i}}</a></li>
+                                                            {% else %}
+                                                                <li class="page-item"><a class="page-link" href="?vuln_page={{i}}&&id={{id}}&&vuln=1">{{i}}</a></li>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+
+                                                {% elif form.vuln_page <= form.vuln_total_page and form.vuln_page > form.vuln_total_page - 5 %}
+                                                    
+                                                    {% for i in range(form.vuln_total_page - 10, form.vuln_total_page + 1) %}
+                                                        {% if i == form.vuln_page %}
+                                                            <li class="page-item active"><a class="page-link" href="?vuln_page={{i}}&&id={{id}}&&vuln=1">{{i}}</a></li>
+                                                        {% elif i <= 0%}
+                                                        {% else %}
+                                                            <li class="page-item"><a class="page-link" href="?vuln_page={{i}}&&id={{id}}&&vuln=1">{{i}}</a></li>
+                                                        {% endif %}
+                                                    {% endfor %}
+
+                                                {% else %}
+                                                    {% for i in range(form.vuln_page - 5, form.vuln_page + 5) %}
+                                                        {% if i == form.vuln_page %}
+                                                            <li class="page-item active"><a class="page-link" href="?vuln_page={{i}}&&id={{id}}&&vuln=1">{{i}}</a></li>
+                                                        {% else %}
+                                                            <li class="page-item"><a class="page-link" href="?vuln_page={{i}}&&id={{id}}&&vuln=1">{{i}}</a></li>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                {% endif %}
+                                                <li class="page-item"><a class="page-link" href="?vuln_page={{form.vuln_total_page}}&&id={{id}}&&vuln=1" aria-label="Next"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
+                                            {% endif %}
+                                            </ul>
+                                        </nav>
                                     </div>
                                     
                                 </div>

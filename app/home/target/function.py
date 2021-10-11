@@ -18,6 +18,8 @@ def savedomain(domain_name, id, current_user):
     for i in domain_list:
         if(Domain.query.filter(Domain.domain_name == i).count() > 0):
             continue
+        if(i == ''):
+            continue
         domain = Domain()
         domain.domain_name = i
         domain.domain_target = id
@@ -34,6 +36,8 @@ def saveblacklist(black_name, id):
     for i in black_list:
         if(Blacklist.query.filter(Blacklist.black_name == i).count() > 0):
             continue
+        if i == '':
+            pass
         blacklist = Blacklist()
         blacklist.black_name = i
         blacklist.black_target = id
@@ -120,15 +124,15 @@ def blacklist_remove(black, target_id):
     if("domain:" in black):
         b = black.split("domain:")[1]
         try:
-            result = Subdomain.query.filter(Subdomain.subdomain_name.like("%{}%".format(b)), Subdomain.subdomain_target == target_id).all()
+            result = Subdomain.query.filter(Subdomain.subdomain_name.like("{}".format(b)), Subdomain.subdomain_target == target_id).all()
             [db.session.delete(r) for r in result]
-            result = Port.query.filter(Port.port_domain.like("%{}%".format(b)), Port.port_target == target_id).all()
+            result = Port.query.filter(Port.port_domain.like("{}".format(b)), Port.port_target == target_id).all()
             [db.session.delete(r) for r in result]
-            result = Http.query.filter(Http.http_name.like("%{}%".format(b)), Http.http_target == target_id).all()
+            result = Http.query.filter(Http.http_name.like("{}".format(b)), Http.http_target == target_id).all()
             [db.session.delete(r) for r in result]
-            result = Dirb.query.filter(Dirb.dir_base.like("%{}%".format(b)), Dirb.dir_target == target_id).all()
+            result = Dirb.query.filter(Dirb.dir_base.like("{}".format(b)), Dirb.dir_target == target_id).all()
             [db.session.delete(r) for r in result]
-            result = Vuln.query.filter(Vuln.vuln_name.like("%{}%".format(b)), Vuln.vuln_target == target_id).all()
+            result = Vuln.query.filter(Vuln.vuln_name.like("{}".format(b)), Vuln.vuln_target == target_id).all()
             [db.session.delete(r) for r in result]
             db.session.commit()
         except Exception as e:
@@ -213,3 +217,23 @@ def getip1(ip):
                         temp = temp.replace("temp3", str(v))
                         result.append(temp)
     return result
+
+
+def ip_addr(id):
+    dic = {}
+    sub = db.session.query(Subdomain.subdomain_ip).filter(Subdomain.subdomain_target == id).all()
+    for ip in sub:
+        ip = queryToDict(ip)['subdomain_ip']
+        if(',' in ip):
+            continue
+        ip = '.'.join(ip.split('.')[:-1])
+        if ip not in dic:
+            dic[ip] = 1
+        else:
+            dic[ip] = dic[ip] + 1
+
+    # for i in len(dic):
+    #     for j in i + 1:
+    #         if(dic)
+
+    return sorted(dic.items(), key = lambda kv:(kv[1], kv[0]), reverse = True)

@@ -59,6 +59,7 @@ def vuln(DynamicModel = Vuln):
                     DynamicModel.vuln_tool,
                     DynamicModel.vuln_new,
                     DynamicModel.vuln_user,
+                    DynamicModel.vuln_name,
                     Target.target_name,
                 ).join(
                     Target,
@@ -100,6 +101,7 @@ def vuln(DynamicModel = Vuln):
                     DynamicModel.vuln_tool,
                     DynamicModel.vuln_new,
                     DynamicModel.vuln_user,
+                    DynamicModel.vuln_name,
                     Target.target_name,
                 ).join(
                     Target,
@@ -135,12 +137,12 @@ def vuln(DynamicModel = Vuln):
 
     else:
         if(is_admin()):
-            query = db.session.query(DynamicModel.vuln_tool,DynamicModel.vuln_poc, DynamicModel.vuln_level, DynamicModel.vuln_info,DynamicModel.vuln_time,DynamicModel.vuln_new,DynamicModel.vuln_user,Target.target_name,).join(Target,Target.id == DynamicModel.vuln_target).order_by(DynamicModel.vuln_time.desc()).order_by(DynamicModel.id.desc()).paginate(page, length)
+            query = db.session.query(DynamicModel.vuln_tool,DynamicModel.vuln_poc, DynamicModel.vuln_level, DynamicModel.vuln_info,DynamicModel.vuln_time,DynamicModel.vuln_new,DynamicModel.vuln_user,Target.target_name,DynamicModel.vuln_name).join(Target,Target.id == DynamicModel.vuln_target).order_by(DynamicModel.vuln_time.desc()).order_by(DynamicModel.id.desc()).paginate(page, length)
             total_count = DynamicModel.query.count()
         else:
-            query = db.session.query(DynamicModel.vuln_tool,DynamicModel.vuln_poc, DynamicModel.vuln_level, DynamicModel.vuln_info,DynamicModel.vuln_time,DynamicModel.vuln_new,DynamicModel.vuln_user,Target.target_name).join(Target,Target.id == DynamicModel.vuln_target).filter(DynamicModel.vuln_user == str(current_user)).order_by(DynamicModel.vuln_time.desc()).order_by(DynamicModel.id.desc()).paginate(page, length)
+            query = db.session.query(DynamicModel.vuln_tool,DynamicModel.vuln_poc, DynamicModel.vuln_level, DynamicModel.vuln_info,DynamicModel.vuln_time,DynamicModel.vuln_new,DynamicModel.vuln_user,Target.target_name,DynamicModel.vuln_name).join(Target,Target.id == DynamicModel.vuln_target).filter(DynamicModel.vuln_user == str(current_user)).order_by(DynamicModel.vuln_time.desc()).order_by(DynamicModel.id.desc()).paginate(page, length)
             total_count = DynamicModel.query.filter(DynamicModel.target_user == str(current_user)).count()
-
+    
     content = []
     #转换成dict
     for q in query.items:

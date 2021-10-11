@@ -186,6 +186,7 @@ def httpinfo(DynamicModel = Http):
     dir_length = int(request.args.get('dir_length')) if request.args.get('dir_length') else 10
     vuln_page = int(request.args.get('vuln_page')) if request.args.get('vuln_page') else 1
     vuln_length = int(request.args.get('vuln_length')) if request.args.get('vuln_length') else 10
+    vuln = request.args.get('vuln')
 
     if(is_admin()):
         query = DynamicModel.query.filter(DynamicModel.id == id).first()
@@ -193,11 +194,24 @@ def httpinfo(DynamicModel = Http):
         query_dirb = db.session.query(Dirb.dir_path, Dirb.dir_status, Dirb.dir_title,Dirb.dir_length,Dirb.dir_time,).filter(Dirb.dir_http == id,).paginate(dir_page, dir_length)
         query_vuln = db.session.query(Vuln.vuln_level, Vuln.vuln_info, Vuln.vuln_poc,Vuln.vuln_time,).filter(Vuln.vuln_http == id,).paginate(vuln_page, vuln_length)
         vuln_total_count = Vuln.query.filter(Vuln.vuln_http == id).count()
-        total_count = Dirb.query.filter(Dirb.dir_http == id).count()
-
+        dirb_total_count = Dirb.query.filter(Dirb.dir_http == id).count()
+        
     else:
         query = DynamicModel.query.filter(DynamicModel.id == id).filter(DynamicModel.target_user == str(current_user)).order_by(DynamicModel.id).first()
+        query_dirb = db.session.query(Dirb.dir_path, Dirb.dir_status, Dirb.dir_title,Dirb.dir_length,Dirb.dir_time,).filter(Dirb.dir_http == id, Dirb.dir_user == str(current_user)).paginate(dir_page, dir_length)
+        query_vuln = db.session.query(Vuln.vuln_level, Vuln.vuln_info, Vuln.vuln_poc,Vuln.vuln_time,).filter(Vuln.vuln_http == id, Vuln.vuln_user == str(current_user)).paginate(vuln_page, vuln_length)
+        vuln_total_count = Vuln.query.filter(Vuln.vuln_http == id,Dirb.dir_user == str(current_user)).count()
+        dirb_total_count = Dirb.query.filter(Dirb.dir_http == id, Vuln.vuln_user == str(current_user)).count()
+    
+    dir_content = []
+    for q in query_dirb.items:
+        dir_content.append(queryToDict(q))
+    vuln_content = []
+    for q in query_vuln.items:
+        vuln_content.append(queryToDict(q))
+    
     dict = {'content': query,
-
+            'query_dirb':dir_content,'dir_total_page': math.ceil(dirb_total_count / dir_length),'dir_total_count':dirb_total_count,'dir_page':dir_page,'dir_length':dir_length,
+            'query_vuln':vuln_content,'vuln_total_page': math.ceil(vuln_total_count / vuln_length),'vuln_total_count':vuln_total_count,'vuln_page':vuln_page,'vuln_length':vuln_length,
             }
-    return render_template('httpinfo.html', form=dict, id=id,segment=get_segment(request))
+    return render_template('httpinfo.html', form=dict, id=id, vuln=vuln, segment=get_segment(request))

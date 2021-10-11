@@ -46,14 +46,14 @@
                                 <div class="table-responsive">
                                     <form>
                                     <div class="row">
-                                        <div class="col-md-5"></div>
+                                        <div class="col-md-3"></div>
                                         <div class="col-md-7 form-inline">
                                             <div class="row">
                                                 <div class="col-md-7">
-                                                    <input type="text" class="form-control" style="width: 250px; height: 35px;" name="search" />
+                                                    <input type="text" class="form-control" style="width: 550px; height: 55px;" name="search" />
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="submit" class="theme-bg btn text-white f-12" style="width: 65px; height: 35px; line-height: 10px; border:1px; float: right;" value="搜索" />
+                                                    <input type="submit" class="theme-bg btn text-white f-12" style="width: 85px; height: 55px; line-height: 10px; border:1px; float: right;" value="搜索" />
                                                 </div>
 
                                             </div>
@@ -113,7 +113,7 @@
                                                                 {% endif %}
                                                             {% endfor %}
                                                         {% else %}
-                                                            {% for i in range(1, form.total_page + 1) %}
+                                                            {% for i in range(1, form.total_page) %}
                                                                 {% if i == form.page %}
                                                                     <li class="page-item active"><a class="page-link" href="?page={{i}}&search={{form.search}}">{{i}}</a></li>
                                                                 {% else %}

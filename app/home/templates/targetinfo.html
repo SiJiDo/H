@@ -40,16 +40,16 @@
 
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active show" id="subdomain-tab" data-toggle="tab" href="#subdomain" role="tab" aria-controls="subdomain" aria-selected="true">监控域名信息</a>
+                                        <a class="nav-link {% if black %}{% else %}active show{% endif %}" id="subdomain-tab" data-toggle="tab" href="#subdomain" role="tab" aria-controls="subdomain" aria-selected="true">监控域名信息</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">黑名单信息</a>
+                                        <a class="nav-link {% if black %}active show{% else %}{% endif %}" id="blacklist-tab" data-toggle="tab" href="#blacklist" role="tab" aria-controls="blacklist" aria-selected="false">黑名单信息</a>
                                     </li>
                                 </ul>
                                 
 
                                 <div class="tab-content" id="myTabContent">
-                                    <div class="tab-pane fade active show" id="subdomain" role="tabpanel" aria-labelledby="subdomain-tab">
+                                    <div class="tab-pane fade {% if black %}{% else %}active show{% endif %}" id="subdomain" role="tabpanel" aria-labelledby="subdomain-tab">
                                         <!-- 域名列表 start -->
                                         <table class="table table-hover">
                                             <thead>
@@ -57,28 +57,75 @@
                                                     <th style="vertical-align: middle !important;text-align: center;">域名</th>
                                                     <th style="vertical-align: middle !important;text-align: center;">子域名数</th>
                                                     <th style="vertical-align: middle !important;text-align: center;">端口数</th>
+                                                    <th style="vertical-align: middle !important;text-align: center;">添加时间</th>
                                                     <th style="vertical-align: middle !important;text-align: center;">操作</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td style="vertical-align: middle !important;text-align: center;">
-                                                        <h6 class="m-0">oppo.com</h6>
-                                                    </td>
-                                                    <td style="vertical-align: middle !important;text-align: center;">
-                                                        <h6 class="m-0">123</h6>
-                                                    </td>
-                                                    <td style="vertical-align: middle !important;text-align: center;">
-                                                        <h6 class="m-0">256</h6>
-                                                    </td>
-                                                    <td style="vertical-align: middle !important;text-align: center;"><a href="/targetinfo?action=delete&id=" class="label theme-bg2 text-white f-12">删除</a></td>
+                                                {% for row in form.domain_content %}
+                                                <tr class="unread">
+                                                    <td style="vertical-align: middle !important;text-align: center;">{{row.domain_name}}</td>
+                                                    <td style="vertical-align: middle !important;text-align: center;">{{row.subdomain_count}}</td>
+                                                    <td style="vertical-align: middle !important;text-align: center;">{{row.port_count}}</td>
+                                                    <td style="vertical-align: middle !important;text-align: center;">{{row.domain_time}}</td>
+                                                    <td style="vertical-align: middle !important;text-align: center;"><a href="/targetinfo?action=delete_domain&id={{id}}&&target_id={{row.id}}" class="label theme-bg2 text-white f-12">删除</a></td>     
                                                 </tr>
+                                                {% endfor %}
                                             </tbody>
                                         </table>
+                                        <nav aria-label="Page navigation example ">
+                                            {% if form%}
+                                            <ul class="pagination">
+                                                <li class="page-item"><a class="page-link" href="?domain_page={{1}}&&id={{id}}" aria-label="Previous"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
+                                                
+                                                {% if form.domain_page <= 5 %}
+                                                    {% if form.domain_total_page >= 10 %}
+                                                        {% for i in range(1, 11) %}
+                                                            {% if i == form.domain_page %}
+                                                                <li class="page-item active"><a class="page-link" href="?domain_page={{i}}&&id={{id}}">{{i}}</a></li>
+                                                            {% else %}
+                                                                <li class="page-item"><a class="page-link" href="?domain_page={{i}}&&id={{id}}">{{i}}</a></li>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% else %}
+                                                        {% for i in range(1, form.domain_total_page + 1) %}
+                                                            {% if i == form.domain_page %}
+                                                                <li class="page-item active"><a class="page-link" href="?domain_page={{i}}&&id={{id}}">{{i}}</a></li>
+                                                            {% else %}
+                                                                <li class="page-item"><a class="page-link" href="?domain_page={{i}}&&id={{id}}">{{i}}</a></li>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+
+                                                {% elif form.domain_page <= form.domain_total_page and form.domain_page > form.domain_total_page - 5 %}
+                                                    
+                                                    {% for i in range(form.domain_total_page - 10, form.domain_total_page + 1) %}
+                                                        {% if i == form.domain_page %}
+                                                            <li class="page-item active"><a class="page-link" href="?domain_page={{i}}&&id={{id}}">{{i}}</a></li>
+                                                        {% elif i <= 0%}
+                                                        {% else %}
+                                                            <li class="page-item"><a class="page-link" href="?domain_page={{i}}&&id={{id}}">{{i}}</a></li>
+                                                        {% endif %}
+                                                    {% endfor %}
+
+                                                {% else %}
+                                                    {% for i in range(form.domain_page - 5, form.domain_page + 5) %}
+                                                        {% if i == form.domain_page %}
+                                                            <li class="page-item active"><a class="page-link" href="?domain_page={{i}}&&id={{id}}">{{i}}</a></li>
+                                                        {% else %}
+                                                            <li class="page-item"><a class="page-link" href="?domain_page={{i}}&&id={{id}}">{{i}}</a></li>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                {% endif %}
+                                                <li class="page-item"><a class="page-link" href="?domain_page={{form.domain_total_page}}&&id={{id}}" aria-label="Next"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
+                                            {% endif %}
+                                            </ul>
+                                        </nav>
+
                                         <!-- 域名列表 end -->
 
                                     </div>
-                                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                    <div class="tab-pane fade {% if black %}active show{% else %}{% endif %} " id="blacklist" role="tabpanel" aria-labelledby="blacklist-tab">
                                         <table class="table table-hover">
                                             <thead>
                                                 <tr>
@@ -88,17 +135,67 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                {% for row in form.blacklist_content %}
                                                 <tr>
                                                     <td style="vertical-align: middle !important;text-align: center;"> 
-                                                        <h6 class="m-0">subdomain</h6>
+                                                        {{row.blacklist_type}}
                                                     </td>
                                                     <td style="vertical-align: middle !important;text-align: center;">
-                                                        <h6 class="m-0">www.oppo.com</h6>
+                                                       {{row.blacklist_name}}
                                                     </td style="vertical-align: middle !important;text-align: center;">
-                                                    <td style="vertical-align: middle !important;text-align: center;"><a href="/targetinfo?action=delete&id=" class="label theme-bg2 text-white f-12">删除</a></td>
+                                                    <td style="vertical-align: middle !important;text-align: center;"><a href="/targetinfo?action=delete_blacklist&id={{id}}&&target_id={{row.id}}&&black=1" class="label theme-bg2 text-white f-12">删除</a></td>
                                                 </tr>
+                                                {% endfor %}
                                             </tbody>
                                         </table>
+                                        <nav aria-label="Page navigation example ">
+                                            {% if form%}
+                                            <ul class="pagination">
+                                                <li class="page-item"><a class="page-link" href="?blacklist_page={{1}}&&id={{id}}&&black=1" aria-label="Previous"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
+                                                
+                                                {% if form.blacklist_page <= 5 %}
+                                                    {% if form.blacklist_total_page >= 10 %}
+                                                        {% for i in range(1, 11) %}
+                                                            {% if i == form.blacklist_page %}
+                                                                <li class="page-item active"><a class="page-link" href="?blacklist_page={{i}}&&id={{id}}&&black=1">{{i}}</a></li>
+                                                            {% else %}
+                                                                <li class="page-item"><a class="page-link" href="?blacklist_page={{i}}&&id={{id}}&&black=1">{{i}}</a></li>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% else %}
+                                                        {% for i in range(1, form.blacklist_total_page + 1) %}
+                                                            {% if i == form.blacklist_page %}
+                                                                <li class="page-item active"><a class="page-link" href="?blacklist_page={{i}}&&id={{id}}&&black=1">{{i}}</a></li>
+                                                            {% else %}
+                                                                <li class="page-item"><a class="page-link" href="?blacklist_page={{i}}&&id={{id}}&&black=1">{{i}}</a></li>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+
+                                                {% elif form.blacklist_page <= form.blacklist_total_page and form.blacklist_page > form.blacklist_total_page - 5 %}
+                                                    
+                                                    {% for i in range(form.blacklist_total_page - 10, form.blacklist_total_page + 1) %}
+                                                        {% if i == form.blacklist_page %}
+                                                            <li class="page-item active"><a class="page-link" href="?blacklist_page={{i}}&&id={{id}}&&black=1">{{i}}</a></li>
+                                                        {% elif i <= 0%}
+                                                        {% else %}
+                                                            <li class="page-item"><a class="page-link" href="?blacklist_page={{i}}&&id={{id}}&&black=1">{{i}}</a></li>
+                                                        {% endif %}
+                                                    {% endfor %}
+
+                                                {% else %}
+                                                    {% for i in range(form.blacklist_page - 5, form.blacklist_page + 5) %}
+                                                        {% if i == form.blacklist_page %}
+                                                            <li class="page-item active"><a class="page-link" href="?blacklist_page={{i}}&&id={{id}}&&black=1">{{i}}</a></li>
+                                                        {% else %}
+                                                            <li class="page-item"><a class="page-link" href="?blacklist_page={{i}}&&id={{id}}&&black=1">{{i}}</a></li>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                {% endif %}
+                                                <li class="page-item"><a class="page-link" href="?blacklist_page={{form.blacklist_total_page}}&&id={{id}}" aria-label="Next"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
+                                            {% endif %}
+                                            </ul>
+                                        </nav>
                                     </div>
                                     
                                 </div>
@@ -110,9 +207,7 @@
                             <div class="card card-event">
                                 <div class="card-block">
                                     <div class="row align-items-center justify-content-center">
-                                        <div class="col">
-                                            <h5 class="m-4">操作</h5>
-                                        </div>
+                                        <h4 class="m-4">操作</h4>
                                         <br>
                                         <div class="col-auto row">
                                             <div class="col-xl-6">
@@ -141,7 +236,7 @@
                                             <i class="feather icon-airplay f-50 text-c-green"></i>
                                         </div>
                                         <div class="col">
-                                            <h3 class="f-w-300">235</h3>
+                                            <h3 class="f-w-300">{{form.web_count}}</h3>
                                             <span class="d-block text-uppercase">WEB站点数</span>
                                         </div>
                                     </div>
@@ -152,23 +247,24 @@
                                             <i class="feather icon-bell f-50 text-c-red"></i>
                                         </div>
                                         <div class="col">
-                                            <h3 class="f-w-300">26</h3>
-                                            <span class="d-block text-uppercase">中危以上漏洞数</span>
+                                            <h3 class="f-w-300">{{form.vuln_count}}</h3>
+                                            <span class="d-block text-uppercase">漏洞数</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!-- [ statistics year chart ] end -->
-
+                        
                         <div class="col-xl-4">
                             <div class="card">
                                 <div class="card-header">
-                                    <h5>域名信息</h5>
+                                    <h5>域名增添信息</h5>
                                 </div>
-                                <input type="hidden" id="test1" value={{233}} />
+                                <input type="hidden" id="olddomain" value={{form.old_domain}} />
+                                <input type="hidden" id="newdomain" value={{form.new_domain}} />
                                 <div class="card-block">
-                                    <div id="morris-donut-chart1" style="height:300px"></div>
+                                    <div id="domain" style="height:300px"></div>
                                 </div>
                             </div>
                         </div>
@@ -176,19 +272,35 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h5>ip分布信息</h5>
+                                    <h6 style="float: right;"><a href="/ipinfo?id={{id}}">全部ip段分部信息</a></h6>
                                 </div>
+                                <input type="hidden" id="iptop_1" value={{form.iptop_1}} />
+                                <input type="hidden" id="iptop_2" value={{form.iptop_2}} />
+                                <input type="hidden" id="iptop_3" value={{form.iptop_3}} />
+                                <input type="hidden" id="iptop_4" value={{form.iptop_4}} />
+                                <input type="hidden" id="iptop_5" value={{form.iptop_5}} />
+                                <input type="hidden" id="iptop_1_count" value={{form.iptop_1_count}} />
+                                <input type="hidden" id="iptop_2_count" value={{form.iptop_2_count}} />
+                                <input type="hidden" id="iptop_3_count" value={{form.iptop_3_count}} />
+                                <input type="hidden" id="iptop_4_count" value={{form.iptop_4_count}} />
+                                <input type="hidden" id="iptop_5_count" value={{form.iptop_5_count}} />
                                 <div class="card-block">
-                                    <div id="morris-donut-chart2" style="height:300px"></div>
+                                    <div id="ip" style="height:300px"></div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-4">
                             <div class="card">
                                 <div class="card-header">
-                                    <h5>站点信息</h5>
+                                    <h5>站点响应码信息</h5>
                                 </div>
+                                <input type="hidden" id="status_200" value={{form.status_200}} />
+                                <input type="hidden" id="status_30x" value={{form.status_30x}} />
+                                <input type="hidden" id="status_50x" value={{form.status_50x}} />
+                                <input type="hidden" id="status_403" value={{form.status_403}} />
+                                <input type="hidden" id="status_other" value={{form.status_other}} />
                                 <div class="card-block">
-                                    <div id="morris-donut-chart3" style="height:300px"></div>
+                                    <div id="http" style="height:300px"></div>
                                 </div>
                             </div>
                         </div>
@@ -210,27 +322,66 @@
 <script src="/static/assets/plugins/chart-morris/js/raphael.min.js"></script>
 <script src="/static/assets/plugins/chart-morris/js/morris.min.js"></script>
 <script>
-    var test  = document.getElementById("test1").value
+    var olddomain  = document.getElementById("olddomain").value
+    var newdomain  = document.getElementById("newdomain").value
+
 $(document).ready(function() {
     setTimeout(function() {
     // [ Donut-chart ] Start
     var graph = Morris.Donut({
-        element: 'morris-donut-chart1',
+        element: 'domain',
         data: [{
-                value: test,
-                label: 'baidu.com'
+                value: olddomain,
+                label: '旧域名'
             },
             {
-                value: 20,
-                label: 'Data 1'
+                value: newdomain,
+                label: '新域名'
+            },
+        ],
+        colors: [
+            '#1de9b6',
+            '#A389D4',
+        ],
+        resize: true,
+        formatter: function(x) {
+            return "个数: " + x
+        }
+    });
+
+    var iptop_1  = document.getElementById("iptop_1").value
+    var iptop_2  = document.getElementById("iptop_2").value
+    var iptop_3  = document.getElementById("iptop_3").value
+    var iptop_4  = document.getElementById("iptop_4").value
+    var iptop_5  = document.getElementById("iptop_5").value
+    var iptop_1_count  = document.getElementById("iptop_1_count").value
+    var iptop_2_count  = document.getElementById("iptop_2_count").value
+    var iptop_3_count  = document.getElementById("iptop_3_count").value
+    var iptop_4_count  = document.getElementById("iptop_4_count").value
+    var iptop_5_count  = document.getElementById("iptop_5_count").value
+    
+
+    var graph = Morris.Donut({
+        element: 'ip',
+        data: [{
+                value: iptop_1_count,
+                label: iptop_1
             },
             {
-                value: 10,
-                label: 'Data 1'
+                value: iptop_2_count,
+                label: iptop_2
             },
             {
-                value: 5,
-                label: 'Data 1'
+                value: iptop_3_count,
+                label: iptop_3
+            },
+            {
+                value: iptop_4_count,
+                label: iptop_4
+            },
+            {
+                value: iptop_5_count,
+                label: iptop_5
             }
         ],
         colors: [
@@ -238,59 +389,41 @@ $(document).ready(function() {
             '#A389D4',
             '#04a9f5',
             '#1dc4e9',
+            '#66ccff',
         ],
         resize: true,
         formatter: function(x) {
-            return "val : " + x
+            return "个数: " + x
         }
     });
+
+    var status_200  = document.getElementById("status_200").value
+    var status_30x  = document.getElementById("status_30x").value
+    var status_50x  = document.getElementById("status_50x").value
+    var status_403  = document.getElementById("status_403").value
+    var status_other  = document.getElementById("status_other").value
+
     var graph = Morris.Donut({
-        element: 'morris-donut-chart2',
+        element: 'http',
         data: [{
-                value: 60,
-                label: '127.0.0.0/24'
-            },
-            {
-                value: 20,
-                label: 'Data 1'
-            },
-            {
-                value: 10,
-                label: 'Data 1'
-            },
-            {
-                value: 5,
-                label: 'Data 1'
-            }
-        ],
-        colors: [
-            '#1de9b6',
-            '#A389D4',
-            '#04a9f5',
-            '#1dc4e9',
-        ],
-        resize: true,
-        formatter: function(x) {
-            return "val : " + x
-        }
-    });
-    var graph = Morris.Donut({
-        element: 'morris-donut-chart3',
-        data: [{
-                value: 610,
+                value: status_200,
                 label: '200'
             },
             {
-                value: 20,
-                label: '404'
-            },
-            {
-                value: 10,
+                value: status_403,
                 label: '403'
             },
             {
-                value: 5,
-                label: '302'
+                value: status_50x,
+                label: '50x'
+            },
+            {
+                value: status_30x,
+                label: '30x'
+            },
+            {
+                value: status_other,
+                label: '其他'
             }
         ],
         colors: [
@@ -298,10 +431,11 @@ $(document).ready(function() {
             '#A389D4',
             '#04a9f5',
             '#1dc4e9',
+            '#66ccff',
         ],
         resize: true,
         formatter: function(x) {
-            return "val : " + x
+            return "个数: " + x
         }
     });    
     // [ Donut-chart ] end

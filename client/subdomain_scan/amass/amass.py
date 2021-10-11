@@ -27,9 +27,9 @@ def run(domain):
     out_file_name = '{}_{}.json'.format(domain, time())
     # 执行命令 ./subfinder_mac -d example.com -json -o
     if DEBUG == 'True':
-        command = ['./amass_mac', 'enum','-noalts','-silent','-nolocaldb', '-d', domain, '-json' , out_file_name]
+        command = ['./amass_mac', 'enum','-noalts','-silent','-nolocaldb', '-d', domain, '-json' , out_file_name, '-config', 'config.ini']
     else:
-        command = ['./amass','enum','-noalts','-silent','-nolocaldb', '-d', domain, '-json', out_file_name]
+        command = ['./amass','enum','-noalts','-silent','-nolocaldb', '-d', domain, '-json', out_file_name, '-config', 'config.ini']
     sb = SubProcessSrc(command, cwd=work_dir).run()
     result = []
     if sb['status'] == 0:

@@ -10,6 +10,7 @@ from app import login_manager
 from jinja2 import TemplateNotFound
 from app.home.target.view import *
 from app.home.scanconfig.view import *
+from app.home.index.view import *
 from app.home.sysconfig.view import *
 from app.home.subdomain.view import * 
 from app.home.port.view import * 
@@ -20,7 +21,7 @@ from app.home.vuln.view import *
 @blueprint.route('/index')
 @login_required
 def index():
-    return render_template('index.html', segment='index')
+    return indexview();
 
 @blueprint.route('/target')
 @login_required
@@ -87,6 +88,10 @@ def scancronroute():
 def sysconfigroute():
     return sysconfig();
 
+@blueprint.route('/page-blank', methods=['GET', 'POST'])
+@login_required
+def pageblankroute():
+    return render_template('page-blank.html')
 
 
 @blueprint.route('/<template>')

@@ -115,6 +115,7 @@ def tool_domaininfo(task, target_id, conn, cursor):
         while True:
             if domaininfo_scan.successful():
                 try:
+                    #print(domaininfo_scan.result)
                     save_result_domaininfo(target_id, domaininfo_scan.result, cursor, conn)
                 except Exception as e:
                     print(e)
@@ -168,27 +169,28 @@ def save_result(target_id, result, conn, cursor, current_user):
 def save_result_domaininfo(target_id, result, cursor, conn):
     result_info = result['result']
     for i in result_info:
-        i['domain'] = i['domain'].strip()
-        i['domain'].replace("'","\'")
-        #排除黑名单和ip个数超过5个的站点(防止cdn)
-        sql = "SELECT * FROM Subdomain where subdomain_ip = %s"
-        ip_count = cursor.execute(sql,(','.join(i['ips'])))
-        if(black_list_query_scan(target_id, '', ','.join(i['ips']),cursor,conn) #黑名单
-            or
-           ip_count > 5                                                         #ip个数大于5
-        ):
-            sql = "DELETE FROM Subdomain WHERE subdomain_name=%s"
-            cursor.execute(sql,(i['domain'],))
-            conn.commit()
+        if('ips' in i and 'domain' in i):
+            i['domain'] = i['domain'].strip()
+            i['domain'].replace("'","\'")
+            #排除黑名单和ip个数超过5个的站点(防止cdn)
+            sql = "SELECT * FROM Subdomain where subdomain_ip = %s"
+            ip_count = cursor.execute(sql,(','.join(i['ips'])))
+            if(black_list_query_scan(target_id, '', ','.join(i['ips']),cursor,conn) #黑名单
+                or
+            ip_count > 5                                                         #ip个数大于5
+            ):
+                sql = "DELETE FROM Subdomain WHERE subdomain_name=%s"
+                cursor.execute(sql,(i['domain'],))
+                conn.commit()
 
-        else:
-            sql = "UPDATE Subdomain SET subdomain_ip='{}', subdomain_info='{}' WHERE subdomain_name='{}'".format(
-                    ",".join(i['ips'][:3]), 
-                    i['type'], 
-                    i['domain'],
-                )
-            cursor.execute(sql)
-            conn.commit()
+            else:
+                sql = "UPDATE Subdomain SET subdomain_ip='{}', subdomain_info='{}' WHERE subdomain_name='{}'".format(
+                        ",".join(i['ips'][:3]), 
+                        i['type'], 
+                        i['domain'],
+                    )
+                cursor.execute(sql)
+                conn.commit()
     return
 
 
