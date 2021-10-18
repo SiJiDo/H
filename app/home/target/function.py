@@ -18,7 +18,7 @@ def savedomain(domain_name, id, current_user):
     for i in domain_list:
         if(Domain.query.filter(Domain.domain_name == i).count() > 0):
             continue
-        if(i == ''):
+        if(i.strip() == ''):
             continue
         domain = Domain()
         domain.domain_name = i
@@ -38,13 +38,14 @@ def saveblacklist(black_name, id):
             continue
         if i == '':
             pass
-        blacklist = Blacklist()
-        blacklist.black_name = i
-        blacklist.black_target = id
-        blacklist.black_time = time.strftime('%Y-%m-%d  %H:%M:%S', time.localtime(time.time()))
-        db.session.add(blacklist)
-        db.session.commit()
-        blacklist_remove(i,id)
+        if(i.strip()):
+            blacklist = Blacklist()
+            blacklist.black_name = i
+            blacklist.black_target = id
+            blacklist.black_time = time.strftime('%Y-%m-%d  %H:%M:%S', time.localtime(time.time()))
+            db.session.add(blacklist)
+            db.session.commit()
+            blacklist_remove(i,id)
     return
 
 #保存精准域名或ip信息

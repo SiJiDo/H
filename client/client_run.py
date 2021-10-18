@@ -42,15 +42,19 @@ def run():
     #启动JSFinder的celery
     if(cfg.get("WORKER_CONFIG", "dir_jsfinder") == 'True'):
         os.chdir("{}/dir_scan/jsfinder".format(FILEPATH))
-        os.system("nohup celery -A jsfinder worker -l info -Q jsfinder -n jsfinder_{} -c 1 &".format(time()))
+        os.system("nohup celery -A jsfinder worker -l info -Q jsfinder -n jsfinder_{} -c {} &".format(time(),cfg.get("WORKER_CONFIG", "dir_jsfinder_count")))
     #启动fileleak的celery
     if(cfg.get("WORKER_CONFIG", "dir_fileleak") == 'True'):
         os.chdir("{}/dir_scan/fileleak".format(FILEPATH))
-        os.system("nohup celery -A fileleak worker -l info -Q fileleak -n fileleak_{} -c {} &".format(time(),cfg.get("WORKER_CONFIG", "dirb_fileleak_count")))
+        os.system("nohup celery -A fileleak worker -l info -Q fileleak -n fileleak_{} -c {} &".format(time(),cfg.get("WORKER_CONFIG", "dir_fileleak_count")))
     #启动nuclei的celery
     if(cfg.get("WORKER_CONFIG", "vuln_nuclei") == 'True'):
         os.chdir("{}/vuln_scan/nuclei".format(FILEPATH))
-        os.system("nohup celery -A nuclei worker -l info -Q nuclei -n nuclei_{} -c {} &".format(time(),cfg.get("WORKER_CONFIG", "dirb_nuclei_count")))
+        os.system("nohup celery -A nuclei worker -l info -Q nuclei -n nuclei_{} -c {} &".format(time(),cfg.get("WORKER_CONFIG", "vuln_nuclei_count")))
+    #启动xray的celery
+    if(cfg.get("WORKER_CONFIG", "vuln_xray") == 'True'):
+        os.chdir("{}/vuln_scan/xray_scan".format(FILEPATH))
+        os.system("nohup celery -A xray worker -l info -Q xray -n xray_{} -c 1 &".format(time()))
 
 if __name__ == '__main__':
     run()

@@ -9,3 +9,4 @@ requests
 tld
 urllib3
 Pillow
+bs4

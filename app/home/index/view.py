@@ -11,15 +11,17 @@ def indexview():
 
     subdomain_total_count = db.session.query(Subdomain).count()
     subdomain_new_count = db.session.query(Subdomain).filter(Subdomain.subdomain_new == 0).count()
-    subdomain_rate = format(subdomain_new_count / subdomain_total_count * 100, '.2f')
+    subdomain_rate = format(subdomain_new_count / subdomain_total_count * 100, '.2f') if subdomain_total_count else 0
 
     http_total_count = db.session.query(Http).count()
     http_new_count = db.session.query(Http).filter(Http.http_new == 0).count()
-    http_rate = format(http_new_count / http_total_count * 100, '.2f')
+    http_rate = format(http_new_count / http_total_count * 100, '.2f') if http_total_count else 0
+
 
     vuln_total_count = db.session.query(Vuln).count()
     vuln_new_count = db.session.query(Vuln).filter(Vuln.vuln_new == 0).count()
-    vuln_rate = format(vuln_new_count / vuln_total_count * 100, '.2f')
+    vuln_rate = format(vuln_new_count / vuln_total_count * 100, '.2f') if vuln_total_count else 0
+
 
     content = {'subdomain_total_count' : subdomain_total_count, 'subdomain_new_count': subdomain_new_count, 'subdomain_rate': subdomain_rate,
                 'http_total_count': http_total_count, 'http_new_count': http_new_count, 'http_rate': http_rate,

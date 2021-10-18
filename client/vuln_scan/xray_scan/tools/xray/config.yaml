@@ -102,7 +102,7 @@ plugins:
 # 注意: 默认配置为禁用反连平台，这是无法扫描出依赖反连平台的漏洞，这些漏洞包括 fastjson，ssrf 以及 poc 中依赖反连的情况等
 reverse:
   db_file_path: ""                      # 反连平台数据库文件位置, 这是一个 KV 数据库
-  token: "sijidou"                             # 反连平台认证的 Token, 独立部署时不能为空
+  token: "7a0e0ee3f2ab062aabde6166dff2cedb"                             # 反连平台认证的 Token, 独立部署时不能为空
   http:
     enabled: false
     listen_ip: 0.0.0.0 
@@ -120,7 +120,7 @@ reverse:
       ttl: 60
   client:
     remote_server: true                # 是否是独立的远程 server，如果是要在下面配置好远程的服务端地址
-    http_base_url: "http://139.159.159.70:15001"                   # 默认将根据 ListenIP 和 ListenPort 生成，该地址是存在漏洞的目标反连回来的地址, 当反连平台前面有反代、绑定域名、端口映射时需要自行配置
+    http_base_url: "http://appseed-app:5001"                   # 默认将根据 ListenIP 和 ListenPort 生成，该地址是存在漏洞的目标反连回来的地址, 当反连平台前面有反代、绑定域名、端口映射时需要自行配置
     dns_server_ip: ""                   # 和 http_base_url 类似，实际用来访问 dns 服务器的地址
 
 # 被动代理配置

@@ -1,14 +1,16 @@
 version: '3'
 services:
-  appseed-app:
+  server:
     restart: always
-    env_file: .env
     build: .
     ports:
       - "5005:5005"
+      - "5004:5004"
+    tty: true
+    restart: always
     networks:
-      - db_network
-      - web_network
+      - H_network
+
   nginx:
     restart: always
     image: "nginx:latest"
@@ -17,11 +19,37 @@ services:
     volumes:
       - ./nginx:/etc/nginx/conf.d
     networks:
-      - web_network
+      - H_network
     depends_on: 
-      - appseed-app
+      - server
+  
+  rabbitmq:
+    image: rabbitmq:3.8.3-management
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      - RABBITMQ_DEFAULT_VHOST=H_broker
+      - RABBITMQ_DEFAULT_USER=H245245111
+      - RABBITMQ_DEFAULT_PASS=H245245111
+      - RABBITMQ_VM_MEMORY_HIGH_WATERMARK=2147483648
+    networks:
+      - H_network
+  
+  worker:
+    build: client/.
+    tty: true
+    environment:
+      DEBUG: 'False'
+      BROKER: 'amqp://H245245111:H245245111@rabbitmq:5672/H_broker'
+      BACKEND: 'amqp://H245245111:H245245111@rabbitmq:5672/H_backend'
+      TZ: Asia/Shanghai
+    restart: always
+    networks:
+      - H_network
+
 networks:
-  db_network:
-    driver: bridge
-  web_network:
+  H_network:
     driver: bridge

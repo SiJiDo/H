@@ -106,7 +106,7 @@ def save_result(subdomain_info, target_id, port_result,cursor, conn, current_use
         
     for result in port_result:
         #去重,port比较特殊需要2个字段才能判断是否重复，因此需要进行查询
-        sql = "SELECT * from port WHERE port_ip =%s and port_port = %s"
+        sql = "SELECT * from Port WHERE port_ip =%s and port_port = %s"
         port_count = cursor.execute(sql,(result['ip'],str(result['port'])))
         if(port_count > 0):
             sql = "UPDATE Port SET port_new={}  WHERE port_ip='{}' AND port_port='{}'".format(

@@ -208,16 +208,23 @@ def target(DynamicModel = Target):
 #target添加
 def targetadd(DynamicModel = Target, form = TargetForm):
     form = TargetForm()
+
     #定义扫描模式下拉框
-    model = Scanmethod.query.all()
-    model = queryToDict(model)
-    list = [(c['id'],c['scanmethod_name']) for c in model]
+    if(Scanmethod.query.count()):
+        model = Scanmethod.query.all()
+        model = queryToDict(model)
+        list = [(c['id'],c['scanmethod_name']) for c in model]
+    else:
+        list = []
     form.target_method.choices = list
 
     #定义扫描周期下拉框
-    model = Scancron.query.all()
-    model = queryToDict(model)
-    list_cron = [(c['id'],c['scancron_name']) for c in model]
+    if(Scancron.query.count()):
+        model = Scancron.query.all()
+        model = queryToDict(model)
+        list_cron = [(c['id'],c['scancron_name']) for c in model]
+    else:
+        list_cron = []
     form.target_cron_id.choices = list_cron
 
     #处理发送添加请求
@@ -303,17 +310,19 @@ def targetinfo(DynamicModel = Target, DynamicFrom = TargetForm):
         domain_total_count = Domain.query.filter(Domain.domain_target == id, Domain.Domain_use == str(current_user)).count()
            
     domain_content = []
-    for q in query_domain.items:
-        dic = queryToDict(q)
-        dic['subdomain_count'] = Subdomain.query.filter(Subdomain.subdomain_target == id, Subdomain.subdomain_name.like('%.{}'.format(dic['domain_name']))).count()
-        dic['port_count'] = Port.query.filter(Port.port_target == id, Port.port_domain.like('%.{}'.format(dic['domain_name']))).count()
-        domain_content.append(dic)
+    if(domain_total_count > 0):
+        for q in query_domain.items:
+            dic = queryToDict(q)
+            dic['subdomain_count'] = Subdomain.query.filter(Subdomain.subdomain_target == id, Subdomain.subdomain_name.like('%.{}'.format(dic['domain_name']))).count()
+            dic['port_count'] = Port.query.filter(Port.port_target == id, Port.port_domain.like('%.{}'.format(dic['domain_name']))).count()
+            domain_content.append(dic)
     blacklist_content = []
-    for q in query_blacklist.items:
-        dic = queryToDict(q)
-        dic['blacklist_type'] = dic['black_name'].split(":")[0]
-        dic['blacklist_name'] = dic['black_name'].split(":")[1]
-        blacklist_content.append(dic)
+    if(blacklist_total_count > 0):
+        for q in query_blacklist.items:
+            dic = queryToDict(q)
+            dic['blacklist_type'] = dic['black_name'].split(":")[0]
+            dic['blacklist_name'] = dic['black_name'].split(":")[1]
+            blacklist_content.append(dic)
 
     vuln_count = Vuln.query.filter(Vuln.vuln_target == id).count()
     web_count = Http.query.filter(Http.http_target == id).count()
@@ -325,16 +334,17 @@ def targetinfo(DynamicModel = Target, DynamicFrom = TargetForm):
     status_403 = Http.query.filter(Http.http_target == id, Http.http_status == '403').count()
     status_other = Http.query.filter(Http.http_target == id).count() - status_200 - status_30x - status_50x - status_403
 
-    iptop_1 = ip_addr(id)[0][0] + ".0/24"
-    iptop_1_count = ip_addr(id)[0][1]
-    iptop_2 = ip_addr(id)[1][0] + ".0/24"
-    iptop_2_count = ip_addr(id)[1][1]
-    iptop_3 = ip_addr(id)[2][0] + ".0/24"
-    iptop_3_count = ip_addr(id)[2][1]
-    iptop_4 = ip_addr(id)[3][0] + ".0/24"
-    iptop_4_count = ip_addr(id)[3][1]
-    iptop_5 = ip_addr(id)[4][0] + ".0/24"
-    iptop_5_count = ip_addr(id)[4][1]
+    
+    iptop_1 = ip_addr(id)[0][0] + ".0/24" if(len(ip_addr(id)) > 0) else 'null'
+    iptop_1_count = ip_addr(id)[0][1]  if(len(ip_addr(id)) > 0) else 0
+    iptop_2 = ip_addr(id)[1][0] + ".0/24"  if(len(ip_addr(id)) > 1) else 'null'
+    iptop_2_count = ip_addr(id)[1][1]  if(len(ip_addr(id)) > 1) else 0
+    iptop_3 = ip_addr(id)[2][0] + ".0/24"  if(len(ip_addr(id)) > 2) else 'null'
+    iptop_3_count = ip_addr(id)[2][1]  if(len(ip_addr(id)) > 2) else 0
+    iptop_4 = ip_addr(id)[3][0] + ".0/24"  if(len(ip_addr(id)) > 3) else 'null'
+    iptop_4_count = ip_addr(id)[3][1]  if(len(ip_addr(id)) > 3) else 0
+    iptop_5 = ip_addr(id)[4][0] + ".0/24"  if(len(ip_addr(id)) > 4) else 'null'
+    iptop_5_count = ip_addr(id)[4][1]  if(len(ip_addr(id)) > 4) else 0
     
     print(iptop_1)
 
