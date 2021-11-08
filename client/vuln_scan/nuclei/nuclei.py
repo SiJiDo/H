@@ -105,4 +105,4 @@ def send_info(sb, work_dir, out_file_name):
 
 if __name__ == '__main__':
     target = 'http://127.0.0.1:8081/'
-    print(run(target, github="https://SiJiDo:62c27071be432ae840df8b6655354fa4@gitee.com/SiJiDo/H_template.git"))
+    print(run(target, github=""))
