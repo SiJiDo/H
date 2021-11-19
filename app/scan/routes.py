@@ -19,6 +19,6 @@ def startscanroute():
 def stopscanroute():
     return stopscan()
 
-@blueprint.route('/webhook', methods=['POST'])
+@blueprint.route('/webhook', methods=['POST', 'GET'])
 def webhookroute():
     return webhook()

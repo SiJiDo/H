@@ -55,6 +55,11 @@ def run():
     if(cfg.get("WORKER_CONFIG", "vuln_xray") == 'True'):
         os.chdir("{}/vuln_scan/xray_scan".format(FILEPATH))
         os.system("nohup celery -A xray worker -l info -Q xray -n xray_{} -c 1 &".format(time()))
+        os.system("nohup tools/xray/xray webscan --listen 0.0.0.0:7777 --webhook-output http://{}/webhook  &".format(cfg.get("WORKER_CONFIG", "vuln_xray_webhook")))
+    #启动icp备案的celery
+    if(cfg.get("WORKER_CONFIG", "plugin_icpget") == 'True'):
+        os.chdir("{}/icp_scan".format(FILEPATH))
+        os.system("nohup celery -A icpget worker -l info -Q icpget -n icpget_{} -c {} &".format(time(),cfg.get("WORKER_CONFIG", "vuln_nuclei_count")))
 
 if __name__ == '__main__':
     run()

@@ -8,6 +8,5 @@ echo -e "export LANG=\"en_US.UTF-8\"\nalias python3='PYTHONIOENCODING=utf-8 pyth
 source /root/.bashrc
 
 cd /app/vuln_scan/xray_scan/tools/xray/ && ./xray genca && cp ca.crt /usr/local/share/ca-certificates/xray.crt && update-ca-certificates \
-    && webscan --listen 0.0.0.0:7777 --webhook-output http://appseed-app:5005/webhook
 
 /bin/bash

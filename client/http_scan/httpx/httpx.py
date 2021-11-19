@@ -65,12 +65,13 @@ def run(target):
         print(e)
     #当httpx出错，导致生成不了文件时，抛出异常
     try:
-        os.system('rm -rf {}/{}'.format(work_dir, target_file))
-        os.system('rm -rf {}/{}'.format(work_dir, out_file_name))
+        pass
+        # os.system('rm -rf {}/{}'.format(work_dir, target_file))
+        # os.system('rm -rf {}/{}'.format(work_dir, out_file_name))
     except:
         pass
     return {'tool': 'httpx', 'result': result}
 
 if __name__ == '__main__':
-    list2 = ['sdp.vivo.com', 'bs.vivo.com', 'err.up.vivo.com', 'vds.vivo.com', 'zhushou.vivo.com', 'passport.vivo.com', 'global.vivo.com', 'findphone.vivo.com', 'ru.vivo.com', 'internetgratis.vivo.com', 'hr.vivo.com', 'browserproxy.vivo.com', 'in-ali-cname-www.vivo.com', 'www.ru.vivo.com', 'as.vivo.com', 'cloud.vivo.com', 'visionplus.vivo.com', 'zs.vivo.com', 'zhaopin.vivo.com', 'asia-news-abroad.vivo.com', 'vivo.com', 'tianma-prd-in.vivo.com', 'shop.vivo.com', 'issue.dev.vivo.com', 'easyshare.vivo.com', 'homepagestatic.vivo.com', 'tech.vivo.com', 'shgj.vivo.com', 'in-exstatic-vivofs.vivo.com', 'asia-exstatic.vivo.com', 'www.vivo.com', 'sg-exstpay.vivo.com', 'in-ali-browserproxy-cname.vivo.com', 'bhwkju.vivo.com', 'es.vivo.com', 'homepage.vivo.com', 'asia-exstatic-vivofs.vivo.com', 'medialive.vivo.com', 'mshop.vivo.com']
+    list2 = ['k3.vulnweb.com', 'home.vulnweb.com', 'ff9e0ea19912924.yl4.us-west-2.eks.vulnweb.com', 'sp.vulnweb.com', 'iimahd.vulnweb.com', '6-134.ap-northeast-2.compute.vulnweb.com', 'testphp.vulnweb.com', 'www.testasp.vulnweb.com', 'testaspnet.vulnweb.com', 'testasp.vulnweb.com', 'rest.vulnweb.com', 'localhost.vulnweb.com', 'rest.vulnweb.com:8080','testphp.vulnweb.com']
     print(run(list2))

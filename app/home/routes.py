@@ -18,7 +18,7 @@ from app.home.http.view import *
 from app.home.dirb.view import * 
 from app.home.vuln.view import *
 
-@blueprint.route('/index')
+@blueprint.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
     return indexview();
@@ -42,6 +42,11 @@ def targetinforoute():
 @login_required
 def targeteditroute():
     return targetedit();
+
+@blueprint.route('/export', methods=['GET', 'POST'])
+@login_required
+def exporteditroute():
+    return export();
 
 @blueprint.route('/subdomain', methods=['GET', 'POST'])
 @login_required
@@ -87,6 +92,11 @@ def scancronroute():
 @login_required
 def sysconfigroute():
     return sysconfig();
+
+@blueprint.route('/ipinfo', methods=['GET', 'POST'])
+@login_required
+def ipinforoute():
+    return ipinfo();
 
 @blueprint.route('/page-blank', methods=['GET', 'POST'])
 @login_required

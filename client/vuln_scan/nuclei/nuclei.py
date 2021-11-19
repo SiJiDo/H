@@ -1,8 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Time    : 2020/12/3 16:55
-# @Author  : le31ei
-# @File    : subfinder.py
 from celery import Celery
 import os
 from time import time
@@ -26,20 +23,22 @@ app.config_from_object('config')
 
 
 @app.task
-def run(target, flag=False, github=""):
+def run(target, flag=False, github="", update = False):
     work_dir = FILEPATH + '/tools'
     out_file_name = '{}.txt'.format(time())
     result = []
 
-    # 先更新
-    if DEBUG == 'True':
-        command = ['./nuclei_mac', '-ut', '-update']
-    else:
-        command = ['./nuclei', '-ut', '-update']
-    try:
-        sb = SubProcessSrc(command, cwd=work_dir).run()
-    except:
-        pass
+    if(update == 'True'):
+        # 先更新
+        if DEBUG == 'True':
+            command = ['./nuclei_mac', '-ut', '-update']
+        else:
+            command = ['./nuclei', '-ut', '-update']
+        try:
+            sb = SubProcessSrc(command, cwd=work_dir).run()
+        except:
+            pass
+        return {'tool': 'nuclei', 'result': 'upadte ok'} 
 
     #周期扫描新poc
     if(flag == True):
@@ -105,4 +104,4 @@ def send_info(sb, work_dir, out_file_name):
 
 if __name__ == '__main__':
     target = 'http://127.0.0.1:8081/'
-    print(run(target, github=""))
+    print(run(target, github="https://SiJiDo:62c27071be432ae840df8b6655354fa4@gitee.com/SiJiDo/H_template.git"))

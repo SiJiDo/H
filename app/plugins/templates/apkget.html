@@ -1,0 +1,80 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} apk域名获取插件 {% endblock %} 
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="pcoded-content">
+        <div class="pcoded-inner-content">
+            <!-- [ breadcrumb ] start -->
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h5 class="m-b-10">apk域名获取插件</h5>
+                            </div>
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="javascript:">apk域名获取插件</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- [ breadcrumb ] end -->
+            <div class="main-body">
+                <div class="page-wrapper">
+                    <!-- [ Main Content ] start -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>apk域名获取插件</h5>
+                                </div>
+                                <div class="card-block Recent-Users" style="text-align:center">
+                                
+                                    <form method="POST" enctype='multipart/form-data'>
+                                        <input id="apkfile" name="apkfile" type="file" class="file" data-show-preview="false">  
+                                        <small class="form-text text-muted" style="float: left;">仅允许上传apk</small>
+                                        <br>
+                                        <br>
+                                    </form>
+                                    <hr/>
+                                    <h3>提取结果如下</h3>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="card-block px-4 py-1">
+                                                <label>域名提取情况</label>
+                                                <div class="form-group">
+                                                    <textarea style="resize:none; font-size:12px;" class="form-control" id="domainresult" rows="30" disabled>{% for row in form.domainresult %}{{ row }}&#13;{% endfor %}</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="card-block px-4 py-1">
+                                                <label>url提取情况</label>
+                                                <div class="form-group">
+                                                    <textarea style="resize:none; font-size:12px;" class="form-control" id="urlresults" rows="30" disabled>{% for row in form.urlresults %}{{ row }}&#13;{% endfor %}</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- [ Main Content ] end -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

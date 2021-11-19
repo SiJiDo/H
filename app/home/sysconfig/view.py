@@ -4,6 +4,8 @@ from app.home.utils import *
 from app.home import utils
 from flask import render_template,request
 from app import db
+from app.schedulertasks.controller import restart_scheduler
+
 import time
 
 def sysconfig(DynamicModel = Sysconfig, DynamicFrom = SysconfigForm):
@@ -22,10 +24,14 @@ def sysconfig(DynamicModel = Sysconfig, DynamicFrom = SysconfigForm):
         for d in dic:
             if dic[d] == None:
                 dic[d] = False
+        if dic['config_email_password'] == '':
+            dic['config_email_password'] = db.session.query(DynamicModel.config_email_password).filter(DynamicModel.id == 1).first().config_email_password
         dic['id'] = 1
         db.session.query(DynamicModel).filter(DynamicModel.id == 1).update(dic)
         #db.session.add(sysconfig)
         db.session.commit()
+        #重新配置定时
+        restart_scheduler()
 
 
     return render_template('sysconfig.html',form=DynamicFrom, segment=get_segment(request))

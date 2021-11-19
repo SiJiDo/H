@@ -8,6 +8,7 @@ from threading import *
 from app.scan.conn import dbconn
 import queue
 from threading import *
+from app.schedulertasks.emailsend import Sendemail
 
 cfg = configparser.ConfigParser()
 cfg.read('config.ini')
@@ -17,6 +18,11 @@ lock=Lock()
 def scan_vuln(scanmethod_query, target_id, current_user):
     #初始化数据库连接
     conn,cursor = dbconn()
+    info = "target id:{} ---- 开始扫描漏洞".format(target_id)
+    sql = "INSERT INTO Runlog(log_info, log_time) VALUE('{}', '{}')".format(info, str(time.strftime('%Y-%m-%d  %H:%M:%S', time.localtime(time.time()))))
+    cursor.execute(sql)
+    conn.commit()
+
     task = Celery(broker=cfg.get("CELERY_CONFIG", "CELERY_BROKER_URL"), backend=cfg.get("CELERY_CONFIG", "CELERY_RESULT_BACKEND"))
     task.conf.update(CELERY_TASK_SERIALIZER = 'json',CELERY_RESULT_SERIALIZER = 'json',CELERY_ACCEPT_CONTENT=['json'],CELERY_TIMEZONE = 'Asia/Shanghai',CELERY_ENABLE_UTC = False,)
 
@@ -32,6 +38,12 @@ def scan_vuln(scanmethod_query, target_id, current_user):
     #整理队列
     for nuclei_target in http_query:
         nuclei_queue.put(nuclei_target)
+
+    #更新nuclei的poc
+    vuln_scan = task.send_task('nuclei.run', args=("",False,"",True,), queue='nuclei')
+    while True:
+        if vuln_scan.successful():
+            break
 
     #nuclei --多线程
     if(scanmethod_query[14] == True):
@@ -129,7 +141,6 @@ def tool_xray(task,http_query, conn, cursor):
                 print(scan_target + "目标超时")
                 nowtime = time.time()
         
-
     return
 
 def save_result(target, target_id, vuln_result, cursor, conn, current_user): 
@@ -163,6 +174,10 @@ def save_result(target, target_id, vuln_result, cursor, conn, current_user):
                 )
                 cursor.execute(sql)
                 conn.commit()
+                #邮件实时通知
+                if(result['vuln_level'] != 'low'):
+                    Sendemail(isdaliy=False, tool=tool, url=result['vuln_target'], info=result['vuln_info'], poc=result['vuln_poc'], level=result['vuln_level'],scantime=time.strftime('%Y-%m-%d  %H:%M:%S', time.localtime(time.time())) )
+
             except Exception as e:
                 print(e)
 

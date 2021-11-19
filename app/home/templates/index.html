@@ -112,6 +112,69 @@
                             </div>
                         </div>
                         <!--[social-media section] end-->
+
+                        <!--[ Recent Users ] start-->
+                        <div class="col-xl-4 col-md-5">
+                            <div class="card Recent-Users">
+                                <div class="card-header">
+                                    <h5>celery监控状态</h5>
+                                </div>
+                                <div class="card-block px-0 py-0">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <tbody>
+                                                {% for row in form.celery_result %}
+                                                <tr class="unread">
+                                                    <td style="vertical-align: middle !important;text-align: center;">
+                                                        <h6 class="mb-1">{{ row }}插件</h6>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="text-muted"><i class="fas fa-circle text-c-green f-10 m-r-15"></i>空闲:{{form.celery_result[row][0]}}</h6>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="text-muted"><i class="fas fa-circle text-c-red f-10 m-r-15"></i>繁忙:{{form.celery_result[row][1]}}</h6>
+                                                    </td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--[ Recent Users ] end-->
+
+                        <div class="col-xl-8 col-md-5">
+                            <div class="card">
+                                <form action="" method="POST">
+                                    <div class="card-header">
+                                        <div style="display:inline-block" ><h5>记事本</h5></div>
+                                        <div style="display:inline-block; float:right">
+                                            {{indexnote.submit(class_="btn-sm btn-outline-primary")}}
+                                        </div>
+                                    </div>
+                                    <div class="card-block px-4 py-4">
+                                        <div class="form-group">
+                                            {{indexnote.index_note(style="resize:none;", class="form-control", rows="19")}}
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>日志</h5>
+                                </div>
+                                <div class="card-block px-4 py-1">
+                                    <div class="form-group">
+                                        <textarea style="resize:none; font-size:12px;" class="form-control" id="loginfo" rows="5" disabled>{% for row in form.runlog %}{{ row.log_time }}-------------------------------------------------------------------------------------------------------------------- {{ row.log_info }}&#13;{% endfor %}</textarea>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+
                        
 
                     </div>
@@ -124,4 +187,5 @@
 {% endblock content %}
 
 <!-- Specific Page JS goes HERE  -->
-{% block javascripts %}{% endblock javascripts %}
+{% block javascripts %}
+{% endblock javascripts %}

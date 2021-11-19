@@ -83,20 +83,21 @@
                                             <br>
                                             <hr/>
                                             <div>
+                                                <label><h6>每日扫描:</h6></label><br>
+                                            </div>
+                                            <div class="custom-control custom-checkbox custom-control-inline">  
+                                                {{form.config_nuclei_day(class="custom-control-input",id="config_nuclei_day")}}
+                                                <label class="custom-control-label" for="config_nuclei_day" >{{form.config_nuclei_day.label}}(需要目标扫描方式开启nuclei扫描模块)</label>
+                                            </div>
+                                            <hr/>
+                                            <div>
                                                 <label><h6>每日推送内容选择: </h6></label><br>
                                             </div>
                                             <div class="custom-control custom-checkbox custom-control-inline">  
-                                                {{form.config_subdomain(class="custom-control-input",id="config_subdomain")}}
-                                                <label class="custom-control-label" for="config_subdomain" >{{form.config_subdomain.label}}</label>
+                                                {{form.config_info(class="custom-control-input",id="config_info")}}
+                                                <label class="custom-control-label" for="config_info" >{{form.config_info.label}}</label>
                                             </div>
-                                            <div class="custom-control custom-checkbox custom-control-inline">  
-                                                {{form.config_port(class="custom-control-input",id="config_port")}}
-                                                <label class="custom-control-label" for="config_port" >{{form.config_port.label}}</label>
-                                            </div>
-                                            <div class="custom-control custom-checkbox custom-control-inline">  
-                                                {{form.config_http(class="custom-control-input",id="config_http")}}
-                                                <label class="custom-control-label" for="config_http" >{{form.config_http.label}}</label>
-                                            </div>
+                                            
                                             <hr/>
                                             <div>
                                                 <label><h6>实时推送内容选择(中危以上): </h6></label><br>

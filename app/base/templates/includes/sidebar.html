@@ -5,9 +5,9 @@
                 <a target="_blank" 
                    href="" class="b-brand">
                     <div class="b-bg">
-                        <i class="feather icon-trending-up"></i>
+                        <div style="color: white;">H</div>
                     </div>
-                    <span class="b-title align-items-center">H</span>
+                    <span class="b-title align-items-center">资产管理器</span>
                 </a>
                 <a class="mobile-menu" id="mobile-collapse" href="javascript:"><span></span></a>
             </div>
@@ -24,11 +24,11 @@
 
                     <li data-username="target" 
                      class="nav-item {% if 'target' == segment %} active {% endif %}">
-                    <a href="/target" class="nav-link "><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">资产列表</span></a></li>
+                    <a href="/target" class="nav-link "><span class="pcoded-micon"><i class="feather icon-crosshair"></i></span><span class="pcoded-mtext">资产列表</span></a></li>
 
                     <li data-username="targetadd" 
                      class="nav-item {% if 'targetadd' == segment %} active {% endif %}">
-                    <a href="/targetadd" class="nav-link "><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">添加资产</span></a></li>
+                    <a href="/targetadd" class="nav-link "><span class="pcoded-micon"><i class="feather icon-edit"></i></span><span class="pcoded-mtext">添加资产</span></a></li>
 
 
                     <li class="nav-item pcoded-menu-caption">
@@ -41,11 +41,11 @@
                 
                     <li data-username="port" 
                      class="nav-item {% if 'port' in segment %} active {% endif %}">
-                    <a href="/port" class="nav-link "><span class="pcoded-micon"><i class="feather icon-map"></i></span><span class="pcoded-mtext">端口信息</span></a></li>
+                    <a href="/port" class="nav-link "><span class="pcoded-micon"><i class="feather icon-radio"></i></span><span class="pcoded-mtext">端口信息</span></a></li>
 
                     <li data-username="url" 
                     class="nav-item {% if 'http' in segment %} active {% endif %}">
-                    <a href="/http" class="nav-link "><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">站点信息</span></a></li>
+                    <a href="/http" class="nav-link "><span class="pcoded-micon"><i class="feather icon-airplay"></i></span><span class="pcoded-mtext">站点信息</span></a></li>
                 
                 
                     <li data-username="dirb" 
@@ -54,39 +54,38 @@
 
                     <li data-username="vuln" 
                     class="nav-item {% if 'vuln' in segment %} active {% endif %}">
-                    <a href="/vuln" class="nav-link "><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">漏洞信息</span></a></li>
+                    <a href="/vuln" class="nav-link "><span class="pcoded-micon"><i class="feather icon-bell"></i></span><span class="pcoded-mtext">漏洞信息</span></a></li>
                     <li class="nav-item pcoded-menu-caption">
                         <label>扫描设置</label>
                     </li>
                     <li data-username="scanmethod" 
                         class="nav-item {% if 'scanmethod' in segment %} active {% endif %}">
-                        <a href="/scanmethod" class="nav-link "><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">扫描模式配置</span></a></li>
+                        <a href="/scanmethod" class="nav-link "><span class="pcoded-micon"><i class="feather icon-layers"></i></span><span class="pcoded-mtext">扫描模式配置</span></a></li>
                     
                     
                         <li data-username="scancron" 
                          class="nav-item {% if 'scancron' in segment %} active {% endif %}">
-                        <a href="/scancron" class="nav-link "><span class="pcoded-micon"><i class="feather icon-map"></i></span><span class="pcoded-mtext">扫描周期配置</span></a></li>
+                        <a href="/scancron" class="nav-link "><span class="pcoded-micon"><i class="feather icon-watch"></i></span><span class="pcoded-mtext">扫描周期配置</span></a></li>
                     
-                        <!-- <li class="nav-item pcoded-menu-caption">
+                        <li class="nav-item pcoded-menu-caption">
                             <label>快捷插件</label>
                         </li>
                             <li data-username="beian" 
-                             class="nav-item {% if 'beian' in segment %} active {% endif %}">
-                            <a href="/page-blank" class="nav-link "><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">备案信息查询</span></a></li>
+                             class="nav-item {% if 'icp' in segment %} active {% endif %}">
+                            <a href="/icp" class="nav-link "><span class="pcoded-micon"><i class="feather icon-search"></i></span><span class="pcoded-mtext">备案信息查询</span></a></li>
 
                             <li data-username="hostcrack" 
                              class="nav-item {% if 'hostcrack' in segment %} active {% endif %}">
-                            <a href="/page-blank" class="nav-link "><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">host碰撞</span></a></li>
+                            <a href="/hostcrack" class="nav-link "><span class="pcoded-micon"><i class="feather icon-minimize-2"></i></span><span class="pcoded-mtext">host碰撞</span></a></li>
 
                             <li data-username="apkinfo" 
-                            class="nav-item {% if 'apkinfo' in segment %} active {% endif %}">
-                            <a href="/page-blank" class="nav-link "><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">apk域名提取</span></a></li>
+                            class="nav-item {% if 'apkget' in segment %} active {% endif %}">
+                            <a href="/apkget" class="nav-link "><span class="pcoded-micon"><i class="feather icon-tablet"></i></span><span class="pcoded-mtext">apk域名提取</span></a></li>
     
-                            <li data-username="fofa" 
-                            class="nav-item {% if 'fofa' in segment %} active {% endif %}">
-                            <a href="/page-blank" class="nav-link "><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">fofa查询</span></a></li>
-
-                        <li class="nav-item pcoded-menu-caption"> -->
+                            <!-- <li data-username="fofa" 
+                            class="nav-item {% if 'fofaget' in segment %} active {% endif %}">
+                            <a href="/fofaget" class="nav-link "><span class="pcoded-micon"><i class="feather icon-facebook"></i></span><span class="pcoded-mtext">fofa查询</span></a></li> -->
+                    <li class="nav-item pcoded-menu-caption">
                         <label>系统设置</label>
                     </li>
                     
@@ -96,11 +95,11 @@
 
                     <li data-username="changepassword" 
                      class="nav-item {% if 'changepassword' in segment %} active {% endif %}">
-                    <a href="/changepassword" class="nav-link"><span class="pcoded-micon"><i class="feather icon-power"></i></span><span class="pcoded-mtext">修改密码</span></a></li>
+                    <a href="/changepassword" class="nav-link"><span class="pcoded-micon"><i class="feather icon-refresh-cw"></i></span><span class="pcoded-mtext">修改密码</span></a></li>
                     
                     <li data-username="config" 
                      class="nav-item {% if 'sysconfig' in segment %} active {% endif %}">
-                    <a href="/sysconfig" class="nav-link"><span class="pcoded-micon"><i class="feather icon-power"></i></span><span class="pcoded-mtext">系统设置</span></a></li>
+                    <a href="/sysconfig" class="nav-link"><span class="pcoded-micon"><i class="feather icon-settings"></i></span><span class="pcoded-mtext">系统设置</span></a></li>
 
                     <li data-username="退出登陆" class="nav-item">
                     <a href="{{ url_for('base_blueprint.logout') }}" class="nav-link"><span class="pcoded-micon"><i class="feather icon-power"></i></span><span class="pcoded-mtext">登出</span></a></li>

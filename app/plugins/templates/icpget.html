@@ -1,0 +1,143 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} icp备案查询 {% endblock %} 
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="pcoded-content">
+        <div class="pcoded-inner-content">
+            <!-- [ breadcrumb ] start -->
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h5 class="m-b-10">icp备案查询</h5>
+                            </div>
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="javascript:">icp备案查询</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- [ breadcrumb ] end -->
+            <div class="main-body">
+                <div class="page-wrapper">
+                    <!-- [ Main Content ] start -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>icp备案查询</h5>
+                                </div>
+                                <div class="card-block Recent-Users" style="text-align:center">
+                                    <h3>icp备案查询</h3>
+                                    <div class="row">
+                                        <div class="col-md-4"></div>
+                                        <div class="col-md-4">
+                                            <small class="form-text text-muted" style="float: left;">天眼查cookie(只需要auth_token的值即可)</small>
+                                            <form action="?action=setcookie" method="POST">
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="basic-addon3">auth_token=</span>
+                                                    </div>
+                                                    {{ form.icp_cookie(class="form-control")}}
+                                                    <div class="input-group-append">
+                                                        {{form.submit(class_="btn btn-primary")}}
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+
+
+
+                                    <form method="POST" action="?action=geticp">
+                                        <div class="row">
+                                            <div class="col-md-4"></div>
+                                            <div class="col-md-4">
+                                                <small class="form-text text-muted" style="float: left;">请输入目标公司名称</small>
+                                                <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="basic-addon3">公司名</span>
+                                                </div>
+                                                <input type="text" name="company" class="form-control">
+                                                <div class="input-group-append">
+                                                    <input type="submit" class="btn btn-primary" value="查询"/>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <br>
+                                    </form>
+                                    <hr/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- [ Main Content ] end -->
+                </div>
+
+                <div class="col-sm-12">
+                    <h5 class="mt-4">收集结果</h5>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-3 col-sm-12">
+                            <ul class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                <li><a class="nav-link text-left active" id="v-pills-home-tab" data-toggle="pill" href="#all-result" role="tab" aria-controls="all-result" aria-selected="true">域名汇总</a></li>
+                                {% for row in content %}
+                                <li><a class="nav-link text-left" id="v-pills-home-tab" data-toggle="pill" href="#{{ row['name'] }}" role="tab" aria-controls="{{ row['name'] }}" aria-selected="true">{{ row['name'] }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="col-md-9 col-sm-12">
+                            <div class="tab-content" id="v-pills-tabContent">
+                                <div class="tab-pane fade show active" id="all-result" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            备案信息
+                                        <textarea style="resize:none; font-size:12px;" class="form-control" id="urlresults" rows="30" disabled>{% for result in allresult %}{{ result[0] }} --------------- {{ result[1] }}&#13;{% endfor %}</textarea>
+                                        </div>
+                                        <div class="col-6">
+                                            域名汇总
+                                        <textarea style="resize:none; font-size:12px;" class="form-control" id="urlresults" rows="30" disabled>{% for result in allresultkillsame %} {{ result }}&#13;{% endfor %}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                {% for row in content %}
+                                <div class="tab-pane fade show" id="{{ row['name'] }}" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            备案信息
+                                        <textarea style="resize:none; font-size:12px;" class="form-control" id="urlresults" rows="30" disabled>{% for result in row['domain'] %}{{ result[0] }} --------------- {{ result[1] }}&#13;{% endfor %}</textarea>
+                                        </div>
+                                        <div class="col-6">
+                                            域名汇总
+                                        <textarea style="resize:none; font-size:12px;" class="form-control" id="urlresults" rows="30" disabled>{% for result in row['domain'] %} {{ result[1] }}&#13;{% endfor %}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

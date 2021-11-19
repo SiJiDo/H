@@ -95,11 +95,15 @@ def startscan_process(id, current_user):
     #建立连接
     sleep(3)
     conn, cursor = dbconn()
+    info = "target id:{} ---- 进入扫描等待".format(id)
+    sql = "INSERT INTO Runlog(log_info, log_time) VALUE('{}', '{}')".format(info, str(time.strftime('%Y-%m-%d  %H:%M:%S', time.localtime(time.time()))))
+    cursor.execute(sql)
+    conn.commit()
 
     #判断当前扫描任务是否达到上限,达到上限就等待
-    sql = "SELECT * FROM Sysconfig"
+    sql = "SELECT config_count FROM Sysconfig"
     cursor.execute(sql)
-    max_count = cursor.fetchone()[10]
+    max_count = cursor.fetchone()[0]
     sql = "SELECT * FROM Target where target_status > 1 AND target_status < 6"
     scan_count = cursor.execute(sql)
     while(scan_count >= max_count):
@@ -110,8 +114,9 @@ def startscan_process(id, current_user):
     target_status = cursor.execute(sql,(id))
     if(target_status == 0):
         print("项目正在运行")
-
         return
+
+    
     sql = '''SELECT scanmethod_subfinder,
                 scanmethod_amass,
                 scanmethod_shuffledns,
@@ -168,10 +173,18 @@ def scan_over(id):
     sql = "SELECT target_pid from Target WHERE id=%s"
     cursor.execute(sql,(id))
     pid = cursor.fetchone()[0]
-    os.system("kill " + str(pid))
+    try:
+        os.system("kill " + str(pid))
+    except:
+        pass
 
     sql = "UPDATE Target SET target_pid=%s, target_status=%s WHERE id=%s"
     cursor.execute(sql,(0,7,id))
+    conn.commit()
+
+    info = "target id:{} ---- 扫描结束".format(id)
+    sql = "INSERT INTO Runlog(log_info, log_time) VALUE('{}', '{}')".format(info, str(time.strftime('%Y-%m-%d  %H:%M:%S', time.localtime(time.time()))))
+    cursor.execute(sql)
     conn.commit()
 
     #关闭连接

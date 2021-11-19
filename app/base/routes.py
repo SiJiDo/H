@@ -44,41 +44,41 @@ def login():
             return redirect(url_for('base_blueprint.route_default'))
 
         # Something (user or pass) is not ok
-        return render_template( 'accounts/login.html', msg='Wrong user or password', form=login_form)
+        return render_template( 'accounts/login.html', msg='用户名或密码错误', form=login_form)
 
     if not current_user.is_authenticated:
         return render_template( 'accounts/login.html',
                                 form=login_form)
     return redirect(url_for('home_blueprint.index'))
 
-@blueprint.route('/register', methods=['GET', 'POST'])
-def register():
-    login_form = LoginForm(request.form)
-    create_account_form = CreateAccountForm(request.form)
-    if 'register' in request.form:
+# @blueprint.route('/register', methods=['GET', 'POST'])
+# def register():
+#     login_form = LoginForm(request.form)
+#     create_account_form = CreateAccountForm(request.form)
+#     if 'register' in request.form:
 
-        username  = request.form['username']
+#         username  = request.form['username']
 
-        # Check usename exists
-        user = User.query.filter_by(username=username).first()
-        if user:
-            return render_template( 'accounts/register.html', 
-                                    msg='Username already registered',
-                                    success=False,
-                                    form=create_account_form)
+#         # Check usename exists
+#         user = User.query.filter_by(username=username).first()
+#         if user:
+#             return render_template( 'accounts/register.html', 
+#                                     msg='Username already registered',
+#                                     success=False,
+#                                     form=create_account_form)
 
-        # else we can create the user
-        user = User(**request.form)
-        db.session.add(user)
-        db.session.commit()
+#         # else we can create the user
+#         user = User(**request.form)
+#         db.session.add(user)
+#         db.session.commit()
 
-        return render_template( 'accounts/register.html', 
-                                msg='User created please <a href="/login">login</a>', 
-                                success=True,
-                                form=create_account_form)
+#         return render_template( 'accounts/register.html', 
+#                                 msg='User created please <a href="/login">login</a>', 
+#                                 success=True,
+#                                 form=create_account_form)
 
-    else:
-        return render_template( 'accounts/register.html', form=create_account_form)
+#     else:
+#         return render_template( 'accounts/register.html', form=create_account_form)
 
 @blueprint.route('/changepassword', methods=['GET', 'POST'])
 @login_required

@@ -39,10 +39,9 @@ class Scancron(db.Model):
     scancron_time = db.Column(db.String(20))   #修改时间
 
 # 记录计划任务
-class Cornjob(db.Model):
+class Cronjob(db.Model):
     __table_args__ = {'extend_existing': True}
     __tablename__ = 'Cronjob'
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    cornjob_name = db.Column(db.String(128))  #计划任务名字
-    cornjob_time = db.Column(db.String(128))  #计划任务时间
+    cornjob_pid = db.Column(db.String(128))   #计划任务进程
 

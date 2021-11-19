@@ -1,8 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Time    : 2020/12/3 16:55
-# @Author  : le31ei
-# @File    : subfinder.py
 from celery import Celery
 import os
 from time import sleep, time
@@ -39,12 +36,12 @@ def run(target, httpx= []):
 
     # 先更新
     if DEBUG == 'True':
-        command = './rad_mac -c rad_config.yml -t ' + target
-        command2 = './rad_mac -c rad_config_moblie.yml -t ' + target
+        command = './rad_mac -c rad_config.yml -t "{}"'.format(target)
+        command2 = './rad_mac -c rad_config_moblie.yml -t "{}"'.format(target)
         command3 = './httpx_mac -http-proxy ' + xray_host +  ' -l ' + httpx_list
     else:
-        command = './rad -c rad_config.yml -t ' + target
-        command2 = './rad -c rad_config_moblie.yml -t ' + target
+        command = './rad -c rad_config.yml -t "{}"'.format(target)
+        command2 = './rad -c rad_config_moblie.yml -t "{}"'.format(target)
         command3 = './httpx -http-proxy ' + xray_host +  ' -l ' + httpx_list
 
     run_command(command, rad_work_dir)

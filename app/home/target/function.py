@@ -21,7 +21,7 @@ def savedomain(domain_name, id, current_user):
         if(i.strip() == ''):
             continue
         domain = Domain()
-        domain.domain_name = i
+        domain.domain_name = i.strip()
         domain.domain_target = id
         domain.domain_subdomain_status = False
         domain.domain_user = str(current_user)
@@ -40,7 +40,7 @@ def saveblacklist(black_name, id):
             pass
         if(i.strip()):
             blacklist = Blacklist()
-            blacklist.black_name = i
+            blacklist.black_name = i.strip()
             blacklist.black_target = id
             blacklist.black_time = time.strftime('%Y-%m-%d  %H:%M:%S', time.localtime(time.time()))
             db.session.add(blacklist)
@@ -56,7 +56,7 @@ def savesubdomain(subdomain_name, id, current_user):
         if(isdomain):
             try:
                 subdomain = Subdomain()
-                subdomain.subdomain_name = i
+                subdomain.subdomain_name = i.strip()
                 subdomain.subdomain_target = id
                 subdomain.subdomain_http_status = False
                 subdomain.subdomain_port_status = False
@@ -238,3 +238,115 @@ def ip_addr(id):
     #         if(dic)
 
     return sorted(dic.items(), key = lambda kv:(kv[1], kv[0]), reverse = True)
+
+
+#导出Excel
+def output_excel(target_id):
+    style = xlwt.easyxf('font: bold on')
+    output_file = "/tmp/h_output.xls"
+    workbook = xlwt.Workbook()
+    sheet_doamin = workbook.add_sheet('主域名',cell_overwrite_ok=True)
+    sheet_subdoamin = workbook.add_sheet('子域名',cell_overwrite_ok=True)
+    sheet_port = workbook.add_sheet('端口',cell_overwrite_ok=True)
+    sheet_url = workbook.add_sheet('站点',cell_overwrite_ok=True)
+    sheet_dirb = workbook.add_sheet('目录',cell_overwrite_ok=True)
+    sheet_vuln = workbook.add_sheet('漏洞',cell_overwrite_ok=True)
+    sheet_doamin.write(0,0,'主域名',style)
+    sheet_doamin.col(1).width = 256 * 15
+    sheet_doamin.write(0,1,'采集时间',style)
+    sheet_doamin.col(1).width = 256 * 20
+    sheet_subdoamin.write(0,0,'子域名',style)
+    sheet_subdoamin.col(0).width = 256 * 35
+    sheet_subdoamin.write(0,1,'ip',style)
+    sheet_subdoamin.col(1).width = 256 * 50
+    sheet_subdoamin.write(0,2,'解析',style)
+    sheet_subdoamin.col(2).width = 256 * 10
+    sheet_subdoamin.write(0,3,'采集时间',style)
+    sheet_subdoamin.col(3).width = 256 * 20
+    sheet_port.write(0,0,'域名',style)
+    sheet_port.col(0).width = 256 * 35
+    sheet_port.write(0,1,'ip',style)
+    sheet_port.col(1).width = 256 * 18
+    sheet_port.write(0,2,'端口',style)
+    sheet_port.col(2).width = 256 * 10
+    sheet_port.write(0,3,'服务',style)
+    sheet_port.col(3).width = 256 * 15
+    sheet_port.write(0,4,'采集时间',style)
+    sheet_port.col(4).width = 256 * 20
+    sheet_url.write(0,0,'目标',style)
+    sheet_url.col(0).width = 256 * 60
+    sheet_url.write(0,1,'标题',style)
+    sheet_url.col(1).width = 256 * 30
+    sheet_url.write(0,2,'响应码',style)
+    sheet_url.col(2).width = 256 * 10
+    sheet_url.write(0,3,'长度',style)
+    sheet_url.col(3).width = 256 * 10
+    sheet_url.write(0,4,'指纹',style)
+    sheet_url.col(4).width = 256 * 30
+    sheet_url.write(0,5,'采集时间',style)
+    sheet_url.col(5).width = 256 * 20
+    sheet_dirb.write(0,0,'目标',style)
+    sheet_dirb.col(0).width = 256 * 60
+    sheet_dirb.write(0,1,'标题',style)
+    sheet_dirb.col(1).width = 256 * 30
+    sheet_dirb.write(0,2,'响应码',style)
+    sheet_dirb.col(2).width = 256 * 10
+    sheet_dirb.write(0,3,'长度',style)
+    sheet_dirb.col(3).width = 256 * 10
+    sheet_dirb.write(0,4,'采集时间',style)
+    sheet_dirb.col(4).width = 256 * 20
+    sheet_vuln.write(0,0,'漏洞等级',style)
+    sheet_vuln.write(0,1,'漏洞名',style)
+    sheet_vuln.col(1).width = 256 * 30
+    sheet_vuln.write(0,2,'漏洞POC',style)
+    sheet_vuln.col(2).width = 256 * 60
+    sheet_vuln.write(0,3,'采集时间',style)
+    sheet_vuln.col(3).width = 256 * 20
+    
+    row = 1
+    for domain_info in Domain.query.filter(Domain.domain_target == target_id).all():
+        sheet_doamin.write(row,0,domain_info.domain_name)
+        sheet_doamin.write(row,1,domain_info.domain_time)
+        row = row + 1
+    row = 1
+    for subdomain_info in Subdomain.query.filter(Subdomain.subdomain_target == target_id).all():
+        sheet_subdoamin.write(row,0,subdomain_info.subdomain_name)
+        sheet_subdoamin.write(row,1,subdomain_info.subdomain_ip)
+        sheet_subdoamin.write(row,2,subdomain_info.subdomain_info)
+        sheet_subdoamin.write(row,3,subdomain_info.subdomain_time)
+        row = row + 1
+    row = 1
+    for port_info in Port.query.filter(Port.port_target == target_id).all():
+        sheet_port.write(row,0,port_info.port_domain)
+        sheet_port.write(row,1,port_info.port_ip)
+        sheet_port.write(row,2,port_info.port_port)
+        sheet_port.write(row,3,port_info.port_server)
+        sheet_port.write(row,4,port_info.port_time)
+        row = row + 1
+    row = 1
+    for url_info in Http.query.filter(Http.http_target == target_id).all():
+        sheet_url.write(row,0,url_info.http_schema + "://" + url_info.http_name)
+        sheet_url.write(row,1,url_info.http_title)
+        sheet_url.write(row,2,url_info.http_status)
+        sheet_url.write(row,3,url_info.http_length)
+        sheet_url.write(row,4,url_info.http_finger)
+        sheet_url.write(row,5,url_info.http_time)
+        row = row + 1
+    row = 1
+    for dirb_info in Dirb.query.filter(Dirb.dir_target == target_id).all():
+        sheet_dirb.write(row,0,dirb_info.dir_base)
+        sheet_dirb.write(row,1,dirb_info.dir_title)
+        sheet_dirb.write(row,2,dirb_info.dir_status)
+        sheet_dirb.write(row,3,dirb_info.dir_length)
+        sheet_dirb.write(row,4,dirb_info.dir_time)
+        row = row + 1
+    row = 1
+    for vuln_info in Vuln.query.filter(Vuln.vuln_target == target_id).all():
+        sheet_vuln.write(row,0,vuln_info.vuln_level)
+        sheet_vuln.write(row,1,vuln_info.vuln_info)
+        sheet_vuln.write(row,2,vuln_info.vuln_poc)
+        sheet_vuln.write(row,3,vuln_info.vuln_time)
+        row = row + 1
+    
+    workbook.save(output_file)
+    

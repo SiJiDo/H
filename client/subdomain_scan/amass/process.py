@@ -8,7 +8,7 @@ class SubProcessSrc(object):
        result dict with status and proc. status = 1 means process not completed.
        status = 0 means process completed successfully.
     """
-    def __init__(self, cmd, cwd, shell=False, timeout=604800):
+    def __init__(self, cmd, cwd, shell=False, timeout=300):
         self.cmd = cmd
         self.timeout = timeout
         self.proc = None

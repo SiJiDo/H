@@ -32,14 +32,20 @@ def run(domain):
         command = ['./amass','enum','-noalts','-silent','-nolocaldb', '-d', domain, '-json', out_file_name, '-config', 'config.ini']
     sb = SubProcessSrc(command, cwd=work_dir).run()
     result = []
-    if sb['status'] == 0:
+    
+    try:
         # 运行成功，读取json数据返回
         with open('{}/{}'.format(work_dir, out_file_name), 'r') as f:
             subdomains = f.readlines()
             for line in subdomains:
                 result.append(json.loads(line)['name'])
+    except:
+        pass
+    try:
         os.system('rm -rf {}/{}'.format(work_dir, out_file_name))
-        return {'tool': 'amass', 'result': result}
+    except:
+        pass
+    return {'tool': 'amass', 'result': result}
 
 if __name__ == '__main__':
-    print(run('oppo.com'))
+    print(run('vivo.xyz'))

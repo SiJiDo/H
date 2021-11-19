@@ -36,9 +36,8 @@ def http(DynamicModel = Http):
         http_url = ""
         http_title = ""
         http_status = ""
-        http_finger = ""
         user = ""
-        new = 1
+        new = 2
         start_time = "2021-01-01 00:00:00"
         end_time = "2099-01-01 00:00:00"
         info = search.split("&&")
@@ -55,13 +54,12 @@ def http(DynamicModel = Http):
                 http_title = i.split("=")[1]
             if('status' in i):
                 http_status = i.split("=")[1]
-            if('finger' in i):
-                http_finger = i.split("=")[1]
             if('user' in i):
                 user = i.split("=")[1]
             if('new' in i):
-                new = 0 if i.split("=")[1] == 'true' else 1
+                new = 0 if i.split("=")[1] == 'true' else 2
 
+        print(new)
         search = search.replace("&&", "%26%26")
         if(is_admin()):
             query = db.session.query(
@@ -86,9 +84,9 @@ def http(DynamicModel = Http):
                     DynamicModel.http_name.like("%{}%".format(http_url)),
                     DynamicModel.http_title.like("%{}%".format(http_title)),
                     DynamicModel.http_status.like("%{}%".format(http_status)),
-                    DynamicModel.http_finger.like("%{}%".format(http_finger)),
-                    DynamicModel.http_new >= new,
-                    DynamicModel.http_new <= 2,
+                    
+                    DynamicModel.http_new >= 0,
+                    DynamicModel.http_new <= new,
                     DynamicModel.http_time <= end_time, 
                     DynamicModel.http_time >= start_time,
                     DynamicModel.http_user.like("%{}%".format(str(user))),
@@ -96,15 +94,14 @@ def http(DynamicModel = Http):
             
             total_count = DynamicModel.query.join(
                 Target,
-                Target.id == DynamicModel.vuln_target
+                Target.id == DynamicModel.http_target
                 ).filter(
                     Target.target_name.like("%{}%".format(target)),
                     DynamicModel.http_name.like("%{}%".format(http_url)),
                     DynamicModel.http_title.like("%{}%".format(http_title)),
                     DynamicModel.http_status.like("%{}%".format(http_status)),
-                    DynamicModel.http_finger.like("%{}%".format(http_finger)),
-                    DynamicModel.http_new >= new,
-                    DynamicModel.http_new <= 2,
+                    DynamicModel.http_new >= 0,
+                    DynamicModel.http_new <= new,
                     DynamicModel.http_time <= end_time, 
                     DynamicModel.http_time >= start_time,
                     DynamicModel.http_user.like("%{}%".format(str(user))),
@@ -132,7 +129,6 @@ def http(DynamicModel = Http):
                     DynamicModel.http_name.like("%{}%".format(http_url)),
                     DynamicModel.http_title.like("%{}%".format(http_title)),
                     DynamicModel.http_status.like("%{}%".format(http_status)),
-                    DynamicModel.http_finger.like("%{}%".format(http_finger)),
                     DynamicModel.http_new >= new,
                     DynamicModel.http_new <= 2,
                     DynamicModel.http_time <= end_time, 
@@ -148,7 +144,6 @@ def http(DynamicModel = Http):
                     DynamicModel.http_name.like("%{}%".format(http_url)),
                     DynamicModel.http_title.like("%{}%".format(http_title)),
                     DynamicModel.http_status.like("%{}%".format(http_status)),
-                    DynamicModel.http_finger.like("%{}%".format(http_finger)),
                     DynamicModel.http_new >= new,
                     DynamicModel.http_new <= 2,
                     DynamicModel.http_time <= end_time, 

@@ -110,7 +110,7 @@ reverse:
   http:
     enabled: true
     listen_ip: 0.0.0.0 
-    listen_port: "5001"
+    listen_port: "5004"
     ip_header: ""                       # 在哪个 http header 中取 ip，为空代表从 REMOTE_ADDR 中取
   dns:
     enabled: false

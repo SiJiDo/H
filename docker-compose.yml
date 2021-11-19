@@ -10,18 +10,6 @@ services:
     restart: always
     networks:
       - H_network
-
-  nginx:
-    restart: always
-    image: "nginx:latest"
-    ports:
-      - "85:85"
-    volumes:
-      - ./nginx:/etc/nginx/conf.d
-    networks:
-      - H_network
-    depends_on: 
-      - server
   
   rabbitmq:
     image: rabbitmq:3.8.3-management
@@ -37,14 +25,24 @@ services:
       - RABBITMQ_VM_MEMORY_HIGH_WATERMARK=2147483648
     networks:
       - H_network
-  
+
+  redis:
+    image: redis
+    container_name: redis
+    command: redis-server --requirepass H245245111
+    restart: always
+    ports:
+      - 6379:6379
+    networks:
+      - H_network
+
   worker:
     build: client/.
     tty: true
     environment:
       DEBUG: 'False'
       BROKER: 'amqp://H245245111:H245245111@rabbitmq:5672/H_broker'
-      BACKEND: 'amqp://H245245111:H245245111@rabbitmq:5672/H_backend'
+      BACKEND: 'redis://:H245245111@redis:6379/2'
       TZ: Asia/Shanghai
     restart: always
     networks:

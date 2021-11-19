@@ -14,6 +14,11 @@ lock=Lock()
 def scan_port(scanmethod_query, target_id, current_user):
     #初始化数据库连接
     conn,cursor = dbconn()
+    info = "target id:{} ---- 开始收集端口".format(target_id)
+    sql = "INSERT INTO Runlog(log_info, log_time) VALUE('{}', '{}')".format(info, str(time.strftime('%Y-%m-%d  %H:%M:%S', time.localtime(time.time()))))
+    cursor.execute(sql)
+    conn.commit()
+
     task = Celery(broker=cfg.get("CELERY_CONFIG", "CELERY_BROKER_URL"), backend=cfg.get("CELERY_CONFIG", "CELERY_RESULT_BACKEND"))
     task.conf.update(CELERY_TASK_SERIALIZER = 'json',CELERY_RESULT_SERIALIZER = 'json',CELERY_ACCEPT_CONTENT=['json'],CELERY_TIMEZONE = 'Asia/Shanghai',CELERY_ENABLE_UTC = False,)
 
@@ -109,13 +114,15 @@ def save_result(subdomain_info, target_id, port_result,cursor, conn, current_use
         sql = "SELECT * from Port WHERE port_ip =%s and port_port = %s"
         port_count = cursor.execute(sql,(result['ip'],str(result['port'])))
         if(port_count > 0):
-            sql = "UPDATE Port SET port_new={}  WHERE port_ip='{}' AND port_port='{}'".format(
-                1,
-                result['ip'],
-                str(result['port']),
-            )
-            cursor.execute(sql)
-            conn.commit()
+            sql = "SELECT * from Port WHERE port_ip ='{}' AND port_port = '{}'  AND port_time like '%{}%'".format(result['ip'],str(result['port']),time.strftime('%Y-%m-%d', time.localtime(time.time())))
+            if(cursor.execute(sql) == 0):
+                sql = "UPDATE Port SET port_new={}  WHERE port_ip='{}' AND port_port='{}'".format(
+                    1,
+                    result['ip'],
+                    str(result['port']),
+                )
+                cursor.execute(sql)
+                conn.commit()
             continue 
         #存储数据
         sql = "SELECT subdomain_name from Subdomain WHERE id=%s"

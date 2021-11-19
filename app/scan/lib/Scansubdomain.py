@@ -10,6 +10,11 @@ cfg.read('config.ini')
 def scan_subdomain(scanmethod_query, target_id, current_user):
     #初始化数据库连接
     conn,cursor = dbconn()
+    info = "target id:{} ---- 开始收集域名".format(target_id)
+    sql = "INSERT INTO Runlog(log_info, log_time) VALUE('{}', '{}')".format(info, str(time.strftime('%Y-%m-%d  %H:%M:%S', time.localtime(time.time()))))
+    cursor.execute(sql)
+    conn.commit()
+
     task = Celery(broker=cfg.get("CELERY_CONFIG", "CELERY_BROKER_URL"), backend=cfg.get("CELERY_CONFIG", "CELERY_RESULT_BACKEND"))
     task.conf.update(CELERY_TASK_SERIALIZER = 'json',CELERY_RESULT_SERIALIZER = 'json',CELERY_ACCEPT_CONTENT=['json'],CELERY_TIMEZONE = 'Asia/Shanghai',CELERY_ENABLE_UTC = False,)
 

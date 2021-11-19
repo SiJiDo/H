@@ -14,6 +14,11 @@ lock=Lock()
 def scan_dir(scanmethod_query, target_id, current_user):
     #初始化数据库连接
     conn,cursor = dbconn()
+    info = "target id:{} ---- 开始扫描目录".format(target_id)
+    sql = "INSERT INTO Runlog(log_info, log_time) VALUE('{}', '{}')".format(info, str(time.strftime('%Y-%m-%d  %H:%M:%S', time.localtime(time.time()))))
+    cursor.execute(sql)
+    conn.commit()
+
     task = Celery(broker=cfg.get("CELERY_CONFIG", "CELERY_BROKER_URL"), backend=cfg.get("CELERY_CONFIG", "CELERY_RESULT_BACKEND"))
     task.conf.update(CELERY_TASK_SERIALIZER = 'json',CELERY_RESULT_SERIALIZER = 'json',CELERY_ACCEPT_CONTENT=['json'],CELERY_TIMEZONE = 'Asia/Shanghai',CELERY_ENABLE_UTC = False,)
 
@@ -21,7 +26,6 @@ def scan_dir(scanmethod_query, target_id, current_user):
     sql = "SELECT * from Http WHERE http_target=%s"
     cursor.execute(sql,(target_id,))
     http_query = cursor.fetchall()
-
 
     #初始化多线程
     thread_count = 10
@@ -85,7 +89,9 @@ class tool_jsfinder(Thread):
             while True:
                 if dir_scan.successful():
                     try:
+                        lock.acquire()
                         save_result(target, target_id, dir_scan.result, cursor, conn, current_user)
+                        lock.release()
                         break
                     except Exception as e:
                         print(e)
@@ -119,7 +125,9 @@ class tool_fileleak(Thread):
             while True:
                 if dir_scan.successful():
                     try:
+                        lock.acquire()
                         save_result(target, target_id, dir_scan.result, cursor, conn, current_user)
+                        lock.release()
                         break
                     except Exception as e:
                         print(e)
@@ -138,7 +146,7 @@ def save_result(target, target_id, result, cursor, conn, current_user):
             continue
 
         #去掉可能相同页面
-        sql = "SELECT * from Dirb WHERE dir_http=%s AND dir_length=%s"
+        sql = "SELECT * from Dirb WHERE dir_http='%s' AND dir_length='%s'"
         if(cursor.execute(sql,(target[0], result['content-length']))):
             #如果资产存在则标记已扫描
             print("判断过滤:" + result['host'] + result['path'])

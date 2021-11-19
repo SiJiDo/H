@@ -1,0 +1,85 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} 端口信息 {% endblock %} 
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h5 class="m-b-10">ip c段分布信息</h5>
+                        </div>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index"><i class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="#!">目标详细</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:">ip c段分布信息</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <div class="main-body">
+            <div class="page-wrapper">
+                <div class="box-header with-border">
+                    {% include 'message.html' %}
+                </div>
+                <!-- [ Main Content ] start -->
+                <div class="row">
+
+                    <!-- [ Hover-table ] start -->
+                    <div class="col-xl-12">
+                        <div class="card Recent-Users">
+                            <div class="card-header">
+                                <h5>目标详细</h5>
+                                <span class="d-block m-t-5">ip c段分布信息</span>
+                            </div>
+                            <div class="card-block table-border-style">
+                                <div class="table-responsive">
+                                    <form>
+                                    <br>
+                                    <table class="table table-hover text-center" style="vertical-align: middle;">
+                                        <thead>
+                                            <tr>
+                                                <th>项目名称</th>
+                                                <th>c段</th>
+                                                <th>个数</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for row in form.content %}
+                                            <tr class="unread">
+                                                <td style="vertical-align: middle !important;text-align: center;">{{row.target}}</td>
+                                                <td style="vertical-align: middle !important;text-align: center;">{{row.ip}}</td>
+                                                <td style="vertical-align: middle !important;text-align: center;">{{row.count}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                
+                                        </tbody>
+                                    </table> 
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- [ Hover-table ] end -->
+
+                </div>
+                <!-- [ Main Content ] end -->
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+{% endblock javascripts %}

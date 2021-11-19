@@ -112,7 +112,7 @@ def port(DynamicModel = Port):
                     DynamicModel.port_new <= new,
                     DynamicModel.port_new >= 0,
                     DynamicModel.port_user == str(current_user),
-                ).order_by(DynamicModel.port_time.desc()).order_by(DynamicModel.id.desc()).paginate(page, length).count()
+                ).order_by(DynamicModel.port_time.desc()).order_by(DynamicModel.id.desc()).paginate(page, length)
             
             total_count = DynamicModel.query.join(
                 Target,

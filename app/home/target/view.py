@@ -4,14 +4,15 @@ from app.home.port.models import Port
 from app.home.http.models import Http
 from app.home.dirb.models import Dirb
 from app.home.vuln.models import Vuln
-from app.home.target.function import ip_addr, saveblacklist, savedomain, savesubdomain
+from app.home.target.function import ip_addr, saveblacklist, savedomain, savesubdomain, output_excel
 from app.home.target.models import *
 from app.home.utils import *
-from flask import render_template, request
+from flask import render_template, request, send_from_directory
 from app.home.scanconfig.models import *
 from app import db
 from app.home.target.form import *
 from flask_login import current_user
+from app.schedulertasks.controller import restart_scheduler
 import math
 import time
 
@@ -247,6 +248,10 @@ def targetadd(DynamicModel = Target, form = TargetForm):
         savedomain(target.domain_name, target.id, current_user)
         #设置subdomain的其他属性
         savesubdomain(target.subdomain_name, target.id, current_user)
+
+        #重新配置定时
+        restart_scheduler()
+
         flash("添加成功")
 
     return render_template('targetadd.html', form=form, segment=get_segment(request))
@@ -279,9 +284,9 @@ def targetinfo(DynamicModel = Target, DynamicFrom = TargetForm):
         [db.session.delete(r) for r in result]
         result = Http.query.filter(Http.http_name.like("%.{}".format(b)), Http.http_target == target_id).all()
         [db.session.delete(r) for r in result]
-        result = Dirb.query.filter(Dirb.dir_base.like("%.{}".format(b)), Dirb.dir_target == target_id).all()
+        result = Dirb.query.filter(Dirb.dir_base.like("%.{}%".format(b)), Dirb.dir_target == target_id).all()
         [db.session.delete(r) for r in result]
-        result = Vuln.query.filter(Vuln.vuln_name.like("%.{}".format(b)), Vuln.vuln_target == target_id).all()
+        result = Vuln.query.filter(Vuln.vuln_name.like("%.{}%".format(b)), Vuln.vuln_target == target_id).all()
         [db.session.delete(r) for r in result]
         db.session.commit()
         
@@ -345,8 +350,6 @@ def targetinfo(DynamicModel = Target, DynamicFrom = TargetForm):
     iptop_4_count = ip_addr(id)[3][1]  if(len(ip_addr(id)) > 3) else 0
     iptop_5 = ip_addr(id)[4][0] + ".0/24"  if(len(ip_addr(id)) > 4) else 'null'
     iptop_5_count = ip_addr(id)[4][1]  if(len(ip_addr(id)) > 4) else 0
-    
-    print(iptop_1)
 
     dict = {'content': query,
             'domain_content': domain_content,'domain_total_page': math.ceil(domain_total_count / Domain_length), 'domain_total_count':domain_total_count, 'domain_page': Domain_page, 'domain_length': Domain_length,
@@ -359,9 +362,20 @@ def targetinfo(DynamicModel = Target, DynamicFrom = TargetForm):
     return render_template('targetinfo.html', form=dict, id=id, black=black, segment=get_segment(request))
 
 
-def ipinfo(DynamicModel = Subdomain, DynamicFrom = TargetForm):
+def ipinfo(DynamicModel = Target, DynamicFrom = TargetForm):
 
-    return render_template('ipinfo.html', form=dict, id=id, segment=get_segment(request))
+    id = request.args.get('id')
+    results = ip_addr(id)
+    content = []
+    target = DynamicModel.query.order_by(DynamicModel.id).first().target_name
+    for result in results:
+        dic = {}
+        dic['ip'] = result[0] + '.0/24'
+        dic['count'] = result[1]
+        dic['target'] = target
+        content.append(dic)
+    dict = {'content': content,}
+    return render_template('ipinfo.html', form=dict, id=id)
 
 
 
@@ -414,6 +428,16 @@ def targetedit(DynamicModel = Target, DynamicFrom = TargetForm):
         savedomain(target.domain_name, target.id, current_user)
         #设置subdomain的其他属性
         savesubdomain(target.subdomain_name, target.id, current_user)
+
+        #重新配置定时
+        restart_scheduler()
+
         flash("修改成功")
 
     return render_template('targetedit.html', form=DynamicFrom, id=id,segment=get_segment(request))
+
+
+def export():
+    id = request.args.get('id')
+    output_excel(id)
+    return send_from_directory(r"/tmp",filename="h_output.xls",as_attachment=True)
