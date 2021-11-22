@@ -17,6 +17,7 @@ H是一款强大的资产收集管理平台，采用python celery分布式实现
 - [ ] 多账号管理
 
 ### 开发日志
+闲暇时间龟速开发，想起了就记录下进度
 
 2021.9.10 -- 搭建好了前端，罗列好了目录，使用框架(https://github.com/app-generator/flask-datta-able) 
 
