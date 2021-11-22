@@ -141,7 +141,7 @@ DB_PORT = 3306
 docker exec -it h_worker_1 bash
 
 #如果你注释了开头的那段配置文件，你需要进入容器运行那一段代码
-RUN cd /tmp && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && apt install -y ./google-chrome-stable_current_amd64.deb
+cd /tmp && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && apt install -y ./google-chrome-stable_current_amd64.deb
 
 cd /app
 python3 client_run.py
