@@ -1,5 +1,5 @@
 # H
-H是一款强大的资产收集管理平台，采用python celery分布式实现多节点部署，提高效率
+H是一款强大的资产收集管理平台，主要用于挖src和红蓝对抗资产收集用，采用python celery分布式实现多节点部署，提高效率
 
 整个系统架构为 bootstrap + flask + celery(rabbitmq&redis) + mysql,实测在2核4G内存的服务器上能够独立运行，1核2G的可以试试目前没尝试，但问题应该不大
 
