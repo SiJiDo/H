@@ -135,7 +135,14 @@ DB_PORT = 3306
 
 #### 启动服务
 
-搭建好后就是运行，服务端是自动运行的，但客户端需要手动启动
+搭建好后就是运行，服务端启动
+
+```
+cd /app && nohup python3 run.py &
+```
+
+
+客户端启动
 
 ```
 docker exec -it h_worker_1 bash
