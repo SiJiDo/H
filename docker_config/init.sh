@@ -19,6 +19,6 @@ export LANG="en_US.UTF-8"
 alias python3='PYTHONIOENCODING=utf-8 python3'
 locale-gen
 
-cd /app && nohup python3 run.py &
+#cd /app && nohup python3 run.py &
 
 /bin/bash
