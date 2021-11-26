@@ -367,7 +367,7 @@ def ipinfo(DynamicModel = Target, DynamicFrom = TargetForm):
     id = request.args.get('id')
     results = ip_addr(id)
     content = []
-    target = DynamicModel.query.order_by(DynamicModel.id).first().target_name
+    target = DynamicModel.query.filter(DynamicModel.id == id).first().target_name
     for result in results:
         dic = {}
         dic['ip'] = result[0] + '.0/24'
