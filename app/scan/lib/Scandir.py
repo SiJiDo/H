@@ -146,7 +146,7 @@ def save_result(target, target_id, result, cursor, conn, current_user):
             continue
 
         #去掉可能相同页面
-        sql = "SELECT * from Dirb WHERE dir_http='%s' AND dir_length='%s'"
+        sql = "SELECT * from Dirb WHERE dir_http=%s AND dir_length=%s"
         if(cursor.execute(sql,(target[0], result['content-length']))):
             #如果资产存在则标记已扫描
             print("判断过滤:" + result['host'] + result['path'])
