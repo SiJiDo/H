@@ -138,6 +138,10 @@ DB_PORT = 3306
 搭建好后就是运行，服务端启动
 
 ```
+#启动整个docker容器
+docker-compose up -d
+
+docker exec -it h_server_1 bash
 cd /app && nohup python3 run.py &
 ```
 
