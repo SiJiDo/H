@@ -30,13 +30,13 @@ def startscan():
 def stopscan():
     id = request.args.get('id')
     pid = ""
+    db.session.query(Target).filter(Target.id == id).update({'target_pid':0})
+    db.session.commit()
     try:
         target = db.session.query(Target).filter(Target.id == id).first()
         pid = target.target_pid
         if(pid != 0):
             os.system("kill " + str(pid))
-        db.session.query(Target).filter(Target.id == id).update({'target_pid':0})
-        db.session.commit()
     except Exception as e:
         print(e)
         return redirect(url_for('home_blueprint.targetinforoute',id=id,message="内部错误"))
