@@ -31,6 +31,7 @@ def stopscan():
     id = request.args.get('id')
     pid = ""
     db.session.query(Target).filter(Target.id == id).update({'target_pid':0})
+    db.session.query(Target).filter(Target.id == id).update({'target_status':0})
     db.session.commit()
     try:
         target = db.session.query(Target).filter(Target.id == id).first()
