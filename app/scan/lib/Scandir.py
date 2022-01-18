@@ -47,6 +47,10 @@ def scan_dir(scanmethod_query, target_id, current_user):
         for j in threads:
             j.join()
 
+        sql = "DELETE FROM Celerytask WHERE celery_target= %s"
+        cursor.execute(sql,(target_id,))
+        conn.commit()
+
     if(scanmethod_query[11] == True):
         #12是字典
         wordlist = scanmethod_query[12]
@@ -58,6 +62,10 @@ def scan_dir(scanmethod_query, target_id, current_user):
             threads.append(thread)
         for j in threads:
             j.join()
+
+        sql = "DELETE FROM Celerytask WHERE celery_target= %s"
+        cursor.execute(sql,(target_id,))
+        conn.commit()
 
     #关闭数据库句柄
     cursor.close()
@@ -86,6 +94,11 @@ class tool_jsfinder(Thread):
             target = queue.get()
             scan_target = target[1] + '://' + target[2]
             dir_scan = task.send_task('jsfinder.run', args=(scan_target,), queue='jsfinder')
+            sql = "INSERT INTO Celerytask(celery_target, celery_id) VALUES(%s,%s)"
+            lock.acquire()
+            cursor.execute(sql,(target_id, dir_scan.id,))
+            conn.commit()
+            lock.release()
             while True:
                 if dir_scan.successful():
                     try:
@@ -96,6 +109,15 @@ class tool_jsfinder(Thread):
                     except Exception as e:
                         print(e)
                         break
+
+                sql = "SELECT * FROM Celerytask where celery_target = %s"
+                cursor.execute(sql,(target_id,))
+                celery_status = cursor.fetchone()[2]
+
+                if celery_status == False:
+                    task.control.revoke(dir_scan.id, terminate=True)
+                    break
+                time.sleep(2)
 
 
 class tool_fileleak(Thread):
@@ -122,6 +144,11 @@ class tool_fileleak(Thread):
             target = queue.get()
             scan_target = target[1] + '://' + target[2]
             dir_scan = task.send_task('fileleak.run', args=(scan_target,wordlist,), queue='fileleak')
+            sql = "INSERT INTO Celerytask(celery_target, celery_id) VALUES(%s,%s)"
+            lock.acquire()
+            cursor.execute(sql,(target_id, dir_scan.id,))
+            conn.commit()
+            lock.release()
             while True:
                 if dir_scan.successful():
                     try:
@@ -132,6 +159,15 @@ class tool_fileleak(Thread):
                     except Exception as e:
                         print(e)
                         break
+
+                sql = "SELECT * FROM Celerytask where celery_target = %s"
+                cursor.execute(sql,(target_id,))
+                celery_status = cursor.fetchone()[2]
+
+                if celery_status == False:
+                    task.control.revoke(dir_scan.id, terminate=True)
+                    break
+                time.sleep(2)
 
 #保存
 def save_result(target, target_id, result, cursor, conn, current_user): 

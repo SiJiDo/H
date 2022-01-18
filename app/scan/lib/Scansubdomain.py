@@ -1,11 +1,17 @@
+from distutils.command.clean import clean
 from celery import Celery
+from app.home.target.models import Celerytask
 from app.home.utils import *
 import time 
 import configparser
 from app.scan.conn import dbconn
+import queue
+from threading import *
 
 cfg = configparser.ConfigParser()
 cfg.read('config.ini')
+
+lock=Lock()
 
 def scan_subdomain(scanmethod_query, target_id, current_user):
     #初始化数据库连接
@@ -31,7 +37,7 @@ def scan_subdomain(scanmethod_query, target_id, current_user):
         tool_shuffledns(task, domain_query, target_id, conn, cursor, current_user)
     if(scanmethod_query[3] == True):
         sql = "SELECT * FROM Subdomain where subdomain_target = %s"
-        cursor.execute(sql,(target_id))
+        cursor.execute(sql,(target_id,))
         domain_query = cursor.fetchall()
         tool_second(task, domain_query, target_id, conn, cursor, current_user)
 
@@ -47,6 +53,10 @@ def tool_subfinder(task, domain_query, target_id, conn, cursor, current_user):
     for domain_info in domain_query:
         #发送celery,subfinder扫描
         subfinder_scan = task.send_task('subfinder.run', args=(domain_info[1],), queue='subfinder')
+        sql = "INSERT INTO Celerytask(celery_target, celery_id) VALUES(%s,%s)"
+        cursor.execute(sql,(target_id, subfinder_scan.id,))
+        conn.commit()
+
         while True:
             if subfinder_scan.successful():
                 try:
@@ -55,6 +65,13 @@ def tool_subfinder(task, domain_query, target_id, conn, cursor, current_user):
                 except Exception as e:
                     print(e)
                     break
+                finally:
+                    sql = "DELETE FROM WHERE celery_id= %s"
+                    cursor.execute(sql,(subfinder_scan.id,))
+                    conn.commit()
+    sql = "DELETE FROM Celerytask WHERE celery_target= %s"
+    cursor.execute(sql,(target_id,))
+    conn.commit()
     return
 
 #amass
@@ -62,6 +79,9 @@ def tool_amass(task, domain_query, target_id, conn, cursor, current_user):
 
     for domain_info in domain_query:
         amass_scan = task.send_task('amass.run', args=(domain_info[1],), queue='amass')
+        sql = "INSERT INTO Celerytask(celery_target, celery_id) VALUES(%s,%s)"
+        cursor.execute(sql,(target_id, amass_scan.id,))
+        conn.commit()
         while True:
             if amass_scan.successful():
                 try:
@@ -70,37 +90,62 @@ def tool_amass(task, domain_query, target_id, conn, cursor, current_user):
                 except Exception as e:
                     print(e)
                     break
+    sql = "DELETE FROM Celerytask WHERE celery_target= %s"
+    cursor.execute(sql,(target_id,))
+    conn.commit()
     return
 
 
 #shuffledns扫描
 def tool_shuffledns(task, domain_query, target_id, conn, cursor, current_user):
 
+    #爆破主域名
+    config = False
+    #初始化多线程
+    thread_count = 10
+    domain_queue = queue.Queue()
+    #开始扫描
     for domain_info in domain_query:
-        shuffledns_scan = task.send_task('shuffledns.run', args=(domain_info[1],), queue='shuffledns')
-        while True:
-            if shuffledns_scan.successful():
-                try:
-                    save_result(target_id, shuffledns_scan.result, conn, cursor, current_user)
-                    break
-                except Exception as e:
-                    print(e)
-                    break
+        domain_queue.put(domain_info[1])
+
+    # 使用多线程
+    threads = []
+    for i in range(0, thread_count):
+        thread = Shufflednsscan(domain_queue, config, task, target_id, cursor, conn, current_user )
+        thread.start()
+        threads.append(thread)
+    for j in threads:
+        j.join()
+
+    sql = "DELETE FROM Celerytask WHERE celery_target= %s"
+    cursor.execute(sql,(target_id,))
+    conn.commit()
     return
 
 #shuffledns 二级域名扫描扫描
 def tool_second(task, domain_query, target_id, conn, cursor, current_user):
-
+    
+    #爆破子域名的子域名
+    config = True
+    #初始化多线程
+    thread_count = 10
+    domain_queue = queue.Queue()
+    #开始扫描
     for domain_info in domain_query:
-        shuffledns_scan = task.send_task('shuffledns.run', args=(domain_info[1],'top100.txt',), queue='shuffledns')
-        while True:
-            if shuffledns_scan.successful():
-                try:
-                    save_result(target_id, shuffledns_scan.result, conn, cursor, current_user)
-                    break
-                except Exception as e:
-                    print(e)
-                    break
+        domain_queue.put(domain_info[1])
+
+    # 使用多线程
+    threads = []
+    for i in range(0, thread_count):
+        thread = Shufflednsscan(domain_queue, config, task, target_id, cursor, conn, current_user )
+        thread.start()
+        threads.append(thread)
+    for j in threads:
+        j.join()
+
+    sql = "DELETE FROM Celerytask WHERE celery_target= %s"
+    cursor.execute(sql,(target_id,))
+    conn.commit()
     return
 
 #domaininfo
@@ -146,6 +191,9 @@ def save_result(target_id, result, conn, cursor, current_user):
         
         sql = "SELECT * FROM Subdomain where subdomain_name = %s AND subdomain_tool = %s AND subdomain_new=1"
         sql2 = "SELECT * FROM Subdomain where subdomain_name = %s AND subdomain_tool = %s AND subdomain_new=0"
+        r = cursor.execute(sql2,(sub,result_tool,))
+        tmptime = cursor.fetchone()
+        
         if(cursor.execute(sql,(sub,result_tool,)) > 0):
             sql = "UPDATE Subdomain SET subdomain_ip='{}', subdomain_info='{}', subdomain_new={}  WHERE subdomain_name='{}'".format(
                 'nothing', 
@@ -154,8 +202,16 @@ def save_result(target_id, result, conn, cursor, current_user):
                 sub,
             )
             result = cursor.execute(sql)
-        elif(cursor.execute(sql2,(sub,result_tool,)) >0):
-            pass
+        elif(r >0 and str(time.strftime('%Y-%m-%d', time.localtime(time.time()))) not in str(tmptime[7])):
+
+            sql = "UPDATE Subdomain SET subdomain_ip='{}', subdomain_info='{}', subdomain_new={}  WHERE subdomain_name='{}'".format(
+                'nothing', 
+                'nothing', 
+                1,
+                sub,
+            )
+            result = cursor.execute(sql)
+
         else:
             sql = "REPLACE INTO Subdomain (subdomain_name,subdomain_ip,subdomain_info, subdomain_time, subdomain_target, subdomain_user, subdomain_tool, subdomain_new) VALUES('{}', '{}', '{}', '{}', '{}','{}','{}','{}')".format(
                 sub,    #域名
@@ -199,39 +255,48 @@ def save_result_domaininfo(target_id, result, cursor, conn):
     return
 
 
-        
-        # #先去重子域名结果
-        # all_result = list(set(all_result))
-        # #调用domaininfo 存储数据
-        # domaininfo_result = scan_domaininfo.domaininfo(all_result)
-        # for i in domaininfo_result:
-        #     #过滤掉解析不出来的域名
-        #     if(not i or '\\' in i['domain']):
-        #         continue
-        #     i['domain'] = i['domain'].strip()
-        #     if(not i['domain']):
-        #         continue
-        #     #黑名单过滤
-        #     if(utils.black_list_query_pro(target_id, i['domain'], ','.join(i['ips']),cursor,conn)):
-        #         continue
-        #     #ip个数大于5就pass
-        #     sql = "SELECT * FROM hhsrc_subdomain where subdomain_ip = %s"
-        #     ip_count = cursor.execute(sql,(','.join(i['ips'])))
-        #     if(ip_count > 5):
-        #         continue
-        #     #入库
-        #     print("开始入库:" + i['domain'])
-        #     i['domain'].replace("'","\'")
-        #     sql = "REPLACE INTO hhsrc_subdomain (subdomain_name,subdomain_ip,subdomain_info,subdomain_port_status, subdomain_http_status, subdomain_time, subdomain_target) VALUES('{}', '{}', '{}', {}, {}, '{}', '{}')".format(
-        #         i['domain'],
-        #         ','.join(i['ips'][:3]),
-        #         i['type'],
-        #         False,
-        #         False,
-        #         time.strftime('%Y-%m-%d  %H:%M:%S', time.localtime(time.time())), 
-        #         target_id,
-        #     )
-        #     result = cursor.execute(sql)
-        #     conn.commit()
+class Shufflednsscan(Thread):
+    def __init__(self, domain_query, config, task, target_id, cursor, conn, current_user):
+        Thread.__init__(self)
+        self.queue = domain_query
+        self.config = config
+        self.task = task
+        self.target_id = target_id
+        self.cursor = cursor
+        self.conn = conn
+        self.current_user = current_user
 
-    
+    def run(self):
+        queue = self.queue
+        config = self.config
+        task = self.task
+        target_id = self.target_id
+        cursor = self.cursor
+        conn = self.conn
+        current_user = self.current_user
+
+        while not queue.empty():
+            domain_info = queue.get()
+            #发送celery
+            #shuffledns
+            if(config == True):
+                shuffledns_scan = task.send_task('shuffledns.run', args=(domain_info,'top100.txt',), queue='shuffledns')
+            else:
+                shuffledns_scan = task.send_task('shuffledns.run', args=(domain_info,), queue='shuffledns')
+            sql = "INSERT INTO Celerytask(celery_target, celery_id) VALUES(%s,%s)"
+            lock.acquire()
+            cursor.execute(sql,(target_id, shuffledns_scan.id,))
+            conn.commit()
+            lock.release()
+            while True:
+                if shuffledns_scan.successful():
+                    
+                    lock.acquire()
+                    save_result(target_id, shuffledns_scan.result, conn, cursor, current_user)
+                    lock.release()
+                    break
+                        
+
+                #print("[-]host unknow")
+
+        return

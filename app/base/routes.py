@@ -99,7 +99,6 @@ def changepassword():
                 return render_template( 'accounts/changepassword.html', msg='新密码两次输入不一样', form=change_account_form)
 
             user_result = queryToDict(user)
-            print(user_result)
             user_result['password'] = hash_pass(request.form['newpassword1'])
             
             db.session.query(User).filter(User.username == str(current_user)).update(user_result)

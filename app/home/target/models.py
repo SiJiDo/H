@@ -23,3 +23,9 @@ class Blacklist(db.Model):
     black_name = Column(String(128), unique=True)   #黑名单内容，以domain,ip,title三类标志
     black_time = Column(String(128))   #修改时间
     black_target = Column(Integer) #隶属于的目标
+
+class Celerytask(db.Model):
+    __tablename__ = 'Celerytask'
+    id = Column(Integer, autoincrement=True, primary_key=True)
+    celery_target = Column(Integer)   #celery对应的项目id
+    celery_id = Column(String(128))   #是否是允许运行的

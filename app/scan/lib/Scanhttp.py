@@ -40,10 +40,10 @@ def scan_http(scanmethod_query, target_id, current_user):
     if(scanmethod_query[7] == True):
         tool_httpx(task, subdomain_list, target_id, conn, cursor, current_user)
     #截图     
-    if(scanmethod_query[8] == True):
+    if(scanmethod_query[9] == True):
         tool_screenshot(task, target_id, conn, cursor)
     #获取指纹
-    if(scanmethod_query[9] == True):
+    if(scanmethod_query[8] == True):
         tool_ehole(task, target_id, conn, cursor)
 
     cursor.close()
@@ -58,6 +58,9 @@ def tool_httpx(task, subdomain_list, target_id, conn, cursor, current_user):
     
     while(len(subdomain_list)):
         httpx_scan = task.send_task('httpx.run', args=(sub_list,), queue='httpx')
+        sql = "INSERT INTO Celerytask(celery_target, celery_id) VALUES(%s,%s)"
+        cursor.execute(sql,(target_id, httpx_scan.id,))
+        conn.commit()
         while True:
             if httpx_scan.successful():
                 try:
@@ -65,9 +68,10 @@ def tool_httpx(task, subdomain_list, target_id, conn, cursor, current_user):
                 except Exception as e:
                     print(e)
                 finally:
+                    sql = "DELETE FROM Celerytask WHERE celery_id= %s"
+                    cursor.execute(sql,(httpx_scan.id,))
+                    conn.commit()
                     break
-
-
         subdomain_list = subdomain_list[100:]
         sub_list = subdomain_list[0:100] if len(subdomain_list) > 100 else subdomain_list
 
@@ -85,6 +89,9 @@ def tool_screenshot(task, target_id, conn, cursor):
             http_list.append(http_info[1] + "://" + http_info[2])
             
         screenshot_scan = task.send_task('screenshot.run', args=(http_list,), queue='screenshot')
+        sql = "INSERT INTO Celerytask(celery_target, celery_id) VALUES(%s,%s)"
+        cursor.execute(sql,(target_id, screenshot_scan.id,))
+        conn.commit()
         while True:
             if screenshot_scan.successful():
                 try:
@@ -92,7 +99,11 @@ def tool_screenshot(task, target_id, conn, cursor):
                 except Exception as e:
                     print(e)
                 finally:
+                    sql = "DELETE FROM Celerytask WHERE celery_id= %s"
+                    cursor.execute(sql,(screenshot_scan.id,))
+                    conn.commit()
                     break
+
         screen_count = cursor.execute(sql,(target_id,'No','302','301'))
         http_query_all = cursor.fetchall()
     return
@@ -111,14 +122,21 @@ def tool_ehole(task, target_id, conn, cursor):
             conn.commit()
         
         finger_scan = task.send_task('ehole.run', args=(http_list,), queue='ehole')
+        sql = "INSERT INTO Celerytask(celery_target, celery_id) VALUES(%s,%s)"
+        cursor.execute(sql,(target_id, finger_scan.id,))
+        conn.commit()
         while True:
             if finger_scan.successful():
                 try:
                     save_result_finger(finger_scan.result['result'], cursor, conn)
                 except Exception as e:
-                    print(e)
+                    print(e) 
                 finally:
+                    sql = "DELETE FROM Celerytask WHERE celery_id= %s"
+                    cursor.execute(sql,(finger_scan.id,))
+                    conn.commit()
                     break
+
         finger_count = cursor.execute(sql,(target_id,'No',))
         http_query_all = cursor.fetchall()
 

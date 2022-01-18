@@ -17,7 +17,6 @@ def port(DynamicModel = Port):
 
     #查询
     search = request.args.get('search')
-    print(search)
     if search != 'None' and search and '=' in search:
         target = ""
         port_domain = ""

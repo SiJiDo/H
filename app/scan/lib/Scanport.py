@@ -54,6 +54,10 @@ def scan_port(scanmethod_query, target_id, current_user):
     for j in threads:
         j.join()
 
+    sql = "DELETE FROM Celerytask WHERE celery_target= %s"
+    cursor.execute(sql,(target_id,))
+    conn.commit()
+
     cursor.close()
     conn.close()
     
@@ -87,6 +91,11 @@ class portscan(Thread):
                 #发送celery
                 #naabu + nmap
                 naabu_scan = task.send_task('naabu.run', args=(target, config), queue='naabu')
+                sql = "INSERT INTO Celerytask(celery_target, celery_id) VALUES(%s,%s)"
+                lock.acquire()
+                cursor.execute(sql,(target_id, naabu_scan.id,))
+                conn.commit()
+                lock.release()
                 while True:
                     if naabu_scan.successful():
                         try:

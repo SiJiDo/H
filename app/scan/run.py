@@ -1,4 +1,5 @@
 from app.home.target.models import Target
+from app.home.target.models import Celerytask
 from app.scan.lib.Scansubdomain import scan_subdomain
 from app.scan.lib.Scanport import scan_port
 from app.scan.lib.Scanhttp import scan_http
@@ -6,7 +7,9 @@ from app.scan.lib.Scandir import scan_dir
 from app.scan.lib.Scanvuln import scan_vuln
 from app.home.vuln.models import Vuln
 from app.home.http.models import Http
+from app.schedulertasks.emailsend import Sendemail
 from time import sleep
+from celery import Celery
 from flask import request, redirect, url_for
 from flask_login import current_user
 from multiprocessing import Process
@@ -14,6 +17,11 @@ from app import db
 import os
 from app.scan.conn import dbconn
 import time
+import configparser
+
+cfg = configparser.ConfigParser()
+cfg.read('config.ini')
+
 
 #开始扫描
 def startscan():
@@ -22,6 +30,15 @@ def startscan():
     p = Process(target=startscan_process,args=(id, current, ))
     p.start()
     db.session.query(Target).filter(Target.id == id).update({'target_pid':p.pid, 'target_status': 1})
+    celerytask =  Celerytask()
+
+    if(db.session.query(Celerytask).filter(Celerytask.celery_target == id).count() == 0):
+        celerytask.celery_target = id
+        celerytask.celery_status = True
+        db.session.add(celerytask)
+    else:
+        db.session.query(Celerytask).filter(Celerytask.celery_target == id).update({'celery_status': True})
+
     db.session.commit()
 
     return redirect(url_for('home_blueprint.targetinforoute',id=id,message="开始扫描, 扫描进程为----" + str(p.pid)))
@@ -30,6 +47,15 @@ def startscan():
 def stopscan():
     id = request.args.get('id')
     pid = ""
+
+    result = db.session.query(Celerytask).filter(Celerytask.celery_target == id).all()
+    #杀掉celery任务
+    task = Celery(broker=cfg.get("CELERY_CONFIG", "CELERY_BROKER_URL"), backend=cfg.get("CELERY_CONFIG", "CELERY_RESULT_BACKEND"))
+    task.conf.update(CELERY_TASK_SERIALIZER = 'json',CELERY_RESULT_SERIALIZER = 'json',CELERY_ACCEPT_CONTENT=['json'],CELERY_TIMEZONE = 'Asia/Shanghai',CELERY_ENABLE_UTC = False,)
+    for r in result:
+        task.control.revoke(r.celery_id, terminate=True)
+    
+    [db.session.delete(r) for r in result]
     db.session.query(Target).filter(Target.id == id).update({'target_pid':0})
     db.session.query(Target).filter(Target.id == id).update({'target_status':0})
     db.session.commit()
@@ -86,6 +112,10 @@ def webhook():
     else:
         print("入库:" + v.vuln_poc)
         db.session.add(v)
+        #邮件实时通知
+        # if(v.vuln_info != 'low'):
+        Sendemail(isdaliy=False, tool=v.vuln_tool, url=v.vuln_name, info=v.vuln_info, poc=v.vuln_poc, level=v.vuln_level,scantime=time.strftime('%Y-%m-%d  %H:%M:%S', time.localtime(time.time())) )
+
     db.session.commit()
 
     return 'ok'
@@ -171,14 +201,6 @@ def scan_over(id):
     conn, cursor = dbconn()
 
     #关闭该项目-设置pid为0， 设置项目状态为完成(7)
-    sql = "SELECT target_pid from Target WHERE id=%s"
-    cursor.execute(sql,(id))
-    pid = cursor.fetchone()[0]
-    try:
-        os.system("kill " + str(pid))
-    except:
-        pass
-
     sql = "UPDATE Target SET target_pid=%s, target_status=%s WHERE id=%s"
     cursor.execute(sql,(0,7,id))
     conn.commit()
@@ -189,8 +211,15 @@ def scan_over(id):
     conn.commit()
 
     #关闭连接
+    sql = "SELECT target_pid from Target WHERE id=%s"
+    cursor.execute(sql,(id,))
+    pid = cursor.fetchone()()[0]
     cursor.close()
-    conn.close()
+    conn.close() 
+    try:
+        os.system("kill " + str(pid))
+    except:
+        pass
     return
 
 def changestatus(setid,id):

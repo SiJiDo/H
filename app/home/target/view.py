@@ -121,7 +121,6 @@ def target(DynamicModel = Target):
 
     #查询
     search = request.args.get('search')
-    print(search)
     if search != 'None' and search and '=' in search:
         target = ""
         start_time = "2021-01-01 00:00:00"
@@ -137,7 +136,6 @@ def target(DynamicModel = Target):
                 end_time = i.split("=")[1]
             if('user' in i):
                 user = i.split("=")[1]
-            print(i)
 
         search = search.replace("&&", "%26%26")
         if(is_admin()):
@@ -230,7 +228,6 @@ def targetadd(DynamicModel = Target, form = TargetForm):
 
     #处理发送添加请求
     if request.method == 'POST':
-        print()
         tmpform = request.form.to_dict()
         target = form_to_model(tmpform, DynamicModel())
         
@@ -331,8 +328,8 @@ def targetinfo(DynamicModel = Target, DynamicFrom = TargetForm):
 
     vuln_count = Vuln.query.filter(Vuln.vuln_target == id).count()
     web_count = Http.query.filter(Http.http_target == id).count()
-    old_domain = Subdomain.query.filter(Subdomain.subdomain_new == 1).count()
-    new_domain = Subdomain.query.filter(Subdomain.subdomain_new == 0).count()
+    old_domain = Subdomain.query.filter(Subdomain.subdomain_new == 1, Subdomain.subdomain_target == id).count()
+    new_domain = Subdomain.query.filter(Subdomain.subdomain_new == 0, Subdomain.subdomain_target == id).count()
     status_200 = Http.query.filter(Http.http_target == id, Http.http_status == '200').count()
     status_30x = Http.query.filter(Http.http_target == id, Http.http_status.like('%30%')).count()
     status_50x = Http.query.filter(Http.http_target == id, Http.http_status.like('%50%')).count()
@@ -408,7 +405,6 @@ def targetedit(DynamicModel = Target, DynamicFrom = TargetForm):
 
     #处理发送添加请求
     if request.method == 'POST':
-        print()
         tmpform = request.form.to_dict()
         target = form_to_model(tmpform, DynamicModel())
         

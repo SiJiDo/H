@@ -173,6 +173,17 @@ CREATE TABLE `Runlog` (
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
+-- Table structure for Celerytask
+-- ----------------------------
+DROP TABLE IF EXISTS `Celerytask`;
+CREATE TABLE `Celerytask` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `celery_target` int DEFAULT NULL,
+  `celery_id` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
 -- Table structure for Scancron
 -- ----------------------------
 DROP TABLE IF EXISTS `Scancron`;

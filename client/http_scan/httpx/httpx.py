@@ -66,8 +66,8 @@ def run(target):
     #当httpx出错，导致生成不了文件时，抛出异常
     try:
         pass
-        # os.system('rm -rf {}/{}'.format(work_dir, target_file))
-        # os.system('rm -rf {}/{}'.format(work_dir, out_file_name))
+        os.system('rm -rf {}/{}'.format(work_dir, target_file))
+        os.system('rm -rf {}/{}'.format(work_dir, out_file_name))
     except:
         pass
     return {'tool': 'httpx', 'result': result}

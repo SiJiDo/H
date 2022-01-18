@@ -63,7 +63,6 @@ def scancron(DynamicModel = Scancron, DynamicFrom = ScancronFrom):
     if request.method == 'POST':
         tmpform = request.form.to_dict()
         scancron = utils.form_to_model(tmpform, DynamicModel())
-        print(scancron)
         if(id):
             if('delete' in tmpform):
                 db.session.query(DynamicModel).filter(DynamicModel.id == id).delete()

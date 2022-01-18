@@ -59,7 +59,6 @@ def http(DynamicModel = Http):
             if('new' in i):
                 new = 0 if i.split("=")[1] == 'true' else 2
 
-        print(new)
         search = search.replace("&&", "%26%26")
         if(is_admin()):
             query = db.session.query(

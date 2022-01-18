@@ -17,7 +17,6 @@ def subdomain(DynamicModel = Subdomain):
 
     #查询
     search = request.args.get('search')
-    print(search)
     if search != 'None' and search and '=' in search:
         target = ""
         start_time = "2021-01-01 00:00:00"
@@ -42,7 +41,6 @@ def subdomain(DynamicModel = Subdomain):
                 subdomain_ip = i.split("=")[1]
             if('new' in i):
                 new = 0 if i.split("=")[1] == 'true' else 1
-            print(i)
 
         search = search.replace("&&", "%26%26")
         if(is_admin()):

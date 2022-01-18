@@ -58,6 +58,10 @@ def scan_vuln(scanmethod_query, target_id, current_user):
         for j in threads:
             j.join()
 
+        sql = "DELETE FROM Celerytask WHERE celery_target= %s"
+        cursor.execute(sql,(target_id,))
+        conn.commit()
+
     #nuclei 自定义
     if(scanmethod_query[15] == True):
         sql = "SELECT config_vuln_github FROM Sysconfig"
@@ -73,13 +77,19 @@ def scan_vuln(scanmethod_query, target_id, current_user):
             threads.append(thread)
         for j in threads:
             j.join()
+
+        sql = "DELETE FROM Celerytask WHERE celery_target= %s"
+        cursor.execute(sql,(target_id,))
+        conn.commit()
         
     #xray
     if(scanmethod_query[13] == True):
-        tool_xray(task, http_query, conn, cursor)
+        tool_xray(task, http_query, conn, cursor, target_id)
 
     cursor.close()
     conn.close()
+
+
     return
 
 class tool_nuclei(Thread):
@@ -109,16 +119,26 @@ class tool_nuclei(Thread):
             scan_target = target[1] + '://' + target[2]
             #发送celery
             vuln_scan = task.send_task('nuclei.run', args=(scan_target,daily,github,), queue='nuclei')
+            sql = "INSERT INTO Celerytask(celery_target, celery_id) VALUES(%s,%s)"
+            lock.acquire()
+            cursor.execute(sql,(target_id, vuln_scan.id,))
+            conn.commit()
+            lock.release()
 
             while True:
                 if vuln_scan.successful():
-                    lock.acquire()
-                    save_result(target, target_id, vuln_scan.result, cursor, conn, current_user)
-                    lock.release()
-                    break
+                    try:
+                        lock.acquire()
+                        save_result(target, target_id, vuln_scan.result, cursor, conn, current_user)
+                        lock.release()
+                        break
+                    except Exception as e:
+                        print(e)
+                        break
+
 
 # xray单线程
-def tool_xray(task,http_query, conn, cursor):
+def tool_xray(task,http_query, conn, cursor, target_id):
     for target in http_query:
         scan_target = target[1] + '://' + target[2]
         httpx_list = []
@@ -129,18 +149,27 @@ def tool_xray(task,http_query, conn, cursor):
             httpx_list.append(r[0])
 
         xray_scan = task.send_task('xray.run', args=(scan_target,httpx_list,), queue='xray')
-        
+        sql = "INSERT INTO Celerytask(celery_target, celery_id) VALUES(%s,%s)"
+        cursor.execute(sql,(target_id, xray_scan.id,))
+        conn.commit()
         starttime = time.time()
         nowtime = starttime
 
         while True:
             if xray_scan.successful():
+                sql = "DELETE FROM Celerytask WHERE celery_id= %s"
+                cursor.execute(sql,(xray_scan.id,))
+                conn.commit()
                 break
+
             if(nowtime > starttime + 630):
                 task.control.revoke(xray_scan.id, terminate=True)
                 print(scan_target + "目标超时")
                 nowtime = time.time()
-        
+                sql = "DELETE FROM Celerytask WHERE celery_id= %s"
+                cursor.execute(sql,(xray_scan.id,))
+                conn.commit()
+                break
     return
 
 def save_result(target, target_id, vuln_result, cursor, conn, current_user): 

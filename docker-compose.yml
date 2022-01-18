@@ -7,7 +7,6 @@ services:
       - "5005:5005"
       - "5004:5004"
     tty: true
-    restart: always
     networks:
       - H_network
   
