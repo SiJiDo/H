@@ -66,7 +66,7 @@ def tool_subfinder(task, domain_query, target_id, conn, cursor, current_user):
                     print(e)
                     break
                 finally:
-                    sql = "DELETE FROM WHERE celery_id= %s"
+                    sql = "DELETE FROM Celerytask WHERE celery_id= %s"
                     cursor.execute(sql,(subfinder_scan.id,))
                     conn.commit()
     sql = "DELETE FROM Celerytask WHERE celery_target= %s"
