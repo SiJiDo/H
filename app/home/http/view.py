@@ -56,6 +56,8 @@ def http(DynamicModel = Http):
                 http_status = i.split("=")[1]
             if('user' in i):
                 user = i.split("=")[1]
+            if('finger' in i):
+                finger = i.split("=")[1]
             if('new' in i):
                 new = 0 if i.split("=")[1] == 'true' else 2
 
@@ -83,6 +85,7 @@ def http(DynamicModel = Http):
                     DynamicModel.http_name.like("%{}%".format(http_url)),
                     DynamicModel.http_title.like("%{}%".format(http_title)),
                     DynamicModel.http_status.like("%{}%".format(http_status)),
+                    DynamicModel.http_finger.like("%{}%".format(finger)),
                     
                     DynamicModel.http_new >= 0,
                     DynamicModel.http_new <= new,
@@ -99,6 +102,7 @@ def http(DynamicModel = Http):
                     DynamicModel.http_name.like("%{}%".format(http_url)),
                     DynamicModel.http_title.like("%{}%".format(http_title)),
                     DynamicModel.http_status.like("%{}%".format(http_status)),
+                    DynamicModel.http_finger.like("%{}%".format(finger)),
                     DynamicModel.http_new >= 0,
                     DynamicModel.http_new <= new,
                     DynamicModel.http_time <= end_time, 
@@ -128,6 +132,7 @@ def http(DynamicModel = Http):
                     DynamicModel.http_name.like("%{}%".format(http_url)),
                     DynamicModel.http_title.like("%{}%".format(http_title)),
                     DynamicModel.http_status.like("%{}%".format(http_status)),
+                    DynamicModel.http_finger.like("%{}%".format(finger)),
                     DynamicModel.http_new >= new,
                     DynamicModel.http_new <= 2,
                     DynamicModel.http_time <= end_time, 
@@ -143,6 +148,7 @@ def http(DynamicModel = Http):
                     DynamicModel.http_name.like("%{}%".format(http_url)),
                     DynamicModel.http_title.like("%{}%".format(http_title)),
                     DynamicModel.http_status.like("%{}%".format(http_status)),
+                    DynamicModel.http_finger.like("%{}%".format(finger)),
                     DynamicModel.http_new >= new,
                     DynamicModel.http_new <= 2,
                     DynamicModel.http_time <= end_time, 

@@ -89,8 +89,8 @@ def tool_screenshot(task, target_id, conn, cursor):
             http_list.append(http_info[1] + "://" + http_info[2])
             
         screenshot_scan = task.send_task('screenshot.run', args=(http_list,), queue='screenshot')
-        sql = "INSERT INTO Celerytask(celery_target, celery_id) VALUES(%s,%s)"
-        cursor.execute(sql,(target_id, screenshot_scan.id,))
+        in_sql = "INSERT INTO Celerytask(celery_target, celery_id) VALUES(%s,%s)"
+        cursor.execute(in_sql,(target_id, screenshot_scan.id,))
         conn.commit()
         while True:
             if screenshot_scan.successful():
@@ -99,8 +99,8 @@ def tool_screenshot(task, target_id, conn, cursor):
                 except Exception as e:
                     print(e)
                 finally:
-                    sql = "DELETE FROM Celerytask WHERE celery_id= %s"
-                    cursor.execute(sql,(screenshot_scan.id,))
+                    in_sql = "DELETE FROM Celerytask WHERE celery_id= %s"
+                    cursor.execute(in_sql,(screenshot_scan.id,))
                     conn.commit()
                     break
 
@@ -117,13 +117,13 @@ def tool_ehole(task, target_id, conn, cursor):
         http_list = []
         for http_info in http_query_all:
             http_list.append(http_info[1] + "://" + http_info[2])
-            sql = "UPDATE Http set http_finger='' WHERE http_target=%s AND http_name=%s "
-            cursor.execute(sql,(target_id, http_info[2]))
+            in_sql = "UPDATE Http set http_finger='' WHERE http_target=%s AND http_name=%s "
+            cursor.execute(in_sql,(target_id, http_info[2]))
             conn.commit()
         
         finger_scan = task.send_task('ehole.run', args=(http_list,), queue='ehole')
-        sql = "INSERT INTO Celerytask(celery_target, celery_id) VALUES(%s,%s)"
-        cursor.execute(sql,(target_id, finger_scan.id,))
+        in_sql = "INSERT INTO Celerytask(celery_target, celery_id) VALUES(%s,%s)"
+        cursor.execute(in_sql,(target_id, finger_scan.id,))
         conn.commit()
         while True:
             if finger_scan.successful():
@@ -132,8 +132,8 @@ def tool_ehole(task, target_id, conn, cursor):
                 except Exception as e:
                     print(e) 
                 finally:
-                    sql = "DELETE FROM Celerytask WHERE celery_id= %s"
-                    cursor.execute(sql,(finger_scan.id,))
+                    in_sql = "DELETE FROM Celerytask WHERE celery_id= %s"
+                    cursor.execute(in_sql,(finger_scan.id,))
                     conn.commit()
                     break
 
