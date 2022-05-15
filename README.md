@@ -147,9 +147,14 @@ DB_PORT = 3306
 
 如果是下载的main包，docker镜像名字可能就是`hmain_server_1`因此这里配置时要正确，xray才会工作
 
+反链地址同理的，反链地址为server的5004端口
 ```
 #配置位置 client/config.ini
 vuln_xray_webhook = h_server_1:5005
+
+#配置反链平台位置：
+client/vuln_scan/xray_scan/tools/xray/config.yaml
+123行:    http_base_url: "http://h_server_1:5004"  
 
 ```
 
