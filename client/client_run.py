@@ -18,7 +18,7 @@ def run():
     #启动shuffledns的celery
     if(cfg.get("WORKER_CONFIG", "subdomain_shuffledns") == 'True'):
         os.chdir("{}/subdomain_scan/shuffledns".format(FILEPATH))
-        os.system("nohup celery -A shuffledns worker -l info -Q shuffledns -n shuffledns_{} -c {} &".format(time(),cfg.get("WORKER_CONFIG", "dir_fileleak_count")))
+        os.system("nohup celery -A shuffledns worker -l info -Q shuffledns -n shuffledns_{} -c {} &".format(time(),cfg.get("WORKER_CONFIG", "subdomain_shufflends_count")))
     #启动domaininfo的celery
     if(cfg.get("WORKER_CONFIG", "subdomain_domaininfo") == 'True'):
         os.chdir("{}/subdomain_scan/domaininfo".format(FILEPATH))
