@@ -31,22 +31,56 @@ def scan_vuln(scanmethod_query, target_id, current_user):
     cursor.execute(sql,(target_id))
     http_query = cursor.fetchall()
 
+    sql = "SELECT port_domain,port_port FROM Port WHERE Port_target=%s"
+    cursor.execute(sql,(target_id))
+    port_query = cursor.fetchall()
+
     #初始化多线程
     thread_count = 10
     nuclei_queue = queue.Queue()
+    fscan_queue = queue.Queue()
 
     #整理队列
     for nuclei_target in http_query:
         nuclei_queue.put(nuclei_target)
 
-    #更新nuclei的poc
-    vuln_scan = task.send_task('nuclei.run', args=("",False,"",True,), queue='nuclei')
-    while True:
-        if vuln_scan.successful():
-            break
+    #fscan的ip和端口获取
+    iplist = set()
+    for portlist in port_query:
+        iplist.add(portlist[0])
+    iplist = list(iplist)
+    #对一个ip或域名的扫描出的端口进行查询
+    for target in iplist:
+        port_final = ""
+        for port in port_query:
+            if(port[0] == target):
+                port_final = port_final + port[1] + ","
+        fscan_queue.put((target,port_final))
+
+    #fscan扫描
+    if(scanmethod_query[16] == True):
+        print("进入fscan")
+        threads = []
+        for i in range(0, thread_count):
+            thread = tool_fscan(fscan_queue, task, target_id, conn, cursor, current_user)
+            thread.start()
+            threads.append(thread)
+        for j in threads:
+            j.join()
+
+        sql = "DELETE FROM Celerytask WHERE celery_target= %s"
+        cursor.execute(sql,(target_id,))
+        conn.commit()
 
     #nuclei --多线程
     if(scanmethod_query[14] == True):
+
+        #更新nuclei的poc
+        vuln_scan = task.send_task('nuclei.run', args=("",False,"",True,), queue='nuclei')
+        while True:
+            if vuln_scan.successful():
+                break
+
         github = ""
         daily = False
         # 使用多线程
@@ -93,7 +127,7 @@ def scan_vuln(scanmethod_query, target_id, current_user):
     return
 
 class tool_nuclei(Thread):
-    def __init__(self, nuclei_queue, task, daily, github, target_id, conn, cursor, current_user):
+    def __init__(self, nuclei_queue, task, target_id, conn, cursor, current_user):
         Thread.__init__(self)
         self.queue = nuclei_queue
         self.task = task
@@ -124,6 +158,42 @@ class tool_nuclei(Thread):
             cursor.execute(sql,(target_id, vuln_scan.id,))
             conn.commit()
             lock.release()
+
+            while True:
+                if vuln_scan.successful():
+                    try:
+                        lock.acquire()
+                        save_result(target, target_id, vuln_scan.result, cursor, conn, current_user)
+                        lock.release()
+                        break
+                    except Exception as e:
+                        print(e)
+                        break
+
+class tool_fscan(Thread):
+    def __init__(self, fscan_queue, task, target_id, conn, cursor, current_user):
+        Thread.__init__(self)
+        self.queue = fscan_queue
+        self.task = task
+        self.target_id = target_id
+        self.cursor = cursor
+        self.conn = conn
+        self.current_user = current_user
+
+    def run(self):
+        queue = self.queue
+        task = self.task
+        target_id = self.target_id
+        cursor = self.cursor
+        conn = self.conn
+        current_user = self.current_user
+
+        while not queue.empty():
+            target,port = queue.get()
+            print(target)
+            print(port)
+            #发送celery
+            vuln_scan = task.send_task('fscan.run', args=(target,port,), queue='fscan')
 
             while True:
                 if vuln_scan.successful():

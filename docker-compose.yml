@@ -1,14 +1,14 @@
 version: '3'
 services:
-  server:
-    restart: always
-    build: .
-    ports:
-      - "5005:5005"
-      - "5004:5004"
-    tty: true
-    networks:
-      - H_network
+  # server:
+  #   restart: always
+  #   build: .
+  #   ports:
+  #     - "5005:5005"
+  #     - "5004:5004"
+  #   tty: true
+  #   networks:
+  #     - H_network
   
   rabbitmq:
     image: rabbitmq:3.8.3-management
@@ -19,33 +19,35 @@ services:
       - 15672:15672
     environment:
       - RABBITMQ_DEFAULT_VHOST=H_broker
-      - RABBITMQ_DEFAULT_USER=H245245111
-      - RABBITMQ_DEFAULT_PASS=H245245111
+      # - RABBITMQ_DEFAULT_USER=H245245111
+      # - RABBITMQ_DEFAULT_PASS=H245245111
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
       - RABBITMQ_VM_MEMORY_HIGH_WATERMARK=2147483648
     networks:
       - H_network
 
-  redis:
-    image: redis
-    container_name: redis
-    command: redis-server --requirepass H245245111
-    restart: always
-    ports:
-      - 6379:6379
-    networks:
-      - H_network
+  # redis:
+  #   image: redis
+  #   container_name: redis
+  #   command: redis-server --requirepass H245245111
+  #   restart: always
+  #   ports:
+  #     - 6379:6379
+  #   networks:
+  #     - H_network
 
-  worker:
-    build: client/.
-    tty: true
-    environment:
-      DEBUG: 'False'
-      BROKER: 'amqp://H245245111:H245245111@rabbitmq:5672/H_broker'
-      BACKEND: 'redis://:H245245111@redis:6379/2'
-      TZ: Asia/Shanghai
-    restart: always
-    networks:
-      - H_network
+  # worker:
+  #   build: client/.
+  #   tty: true
+  #   environment:
+  #     DEBUG: 'False'
+  #     BROKER: 'amqp://H245245111:H245245111@rabbitmq:5672/H_broker'
+  #     BACKEND: 'redis://:H245245111@redis:6379/2'
+  #     TZ: Asia/Shanghai
+  #   restart: always
+  #   networks:
+  #     - H_network
 
 networks:
   H_network:

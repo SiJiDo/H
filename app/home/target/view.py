@@ -179,7 +179,11 @@ def target(DynamicModel = Target):
     content = []
     #转换成dict
     for q in query.items:
-        content.append(queryToDict(q))
+        dict = queryToDict(q)
+        dict['domain_total_count'] =  db.session.query(Domain).filter(Domain.domain_target == dict['id']).count()
+        dict['http_total_count'] = db.session.query(Http).filter(Http.http_target == dict['id']).count()
+        print(dict)
+        content.append(dict)
     for i in content:
         if(i['target_status'] == 0):
             i['target_status_info'] = '未扫描'
@@ -198,8 +202,6 @@ def target(DynamicModel = Target):
         if(i['target_status'] == 7):
             i['target_status_info'] = '扫描完成'
 
-        i['domain_total_count'] = 0
-        i['http_total_count'] = 0
     dict = {'content': content, 'total_count': total_count,
             'total_page': math.ceil(total_count / length), 'page': page, 'length': length, 'search': search}
     return render_template('target.html',form = dict,segment=get_segment(request))

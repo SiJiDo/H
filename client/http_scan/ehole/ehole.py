@@ -56,7 +56,9 @@ def run(target):
                         dic["http_finger"] = json.loads(line)['cms']
                     except:
                         dic["http_name"] = json.loads(line)['url']
-                        dic["http_finger"] = ""
+                        dic["http_finger"] = "None"
+                    if not dic["http_finger"]:
+                        dic["http_finger"] = "None"
                     result.append(dic)
     except Exception as e:
         print(e)

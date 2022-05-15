@@ -163,7 +163,8 @@ def startscan_process(id, current_user):
                 scanmethod_dirb_wordlist,
                 scanmethod_xray,
                 scanmethod_nuclei,
-                scanmethod_nuclei_my 
+                scanmethod_nuclei_my,
+                scanmethod_fscan
                 FROM Scanmethod,Target where Scanmethod.id = Target.target_method and Target.id = %s'''             
     cursor.execute(sql,(id))
     scanmethod_query = cursor.fetchone()
@@ -188,6 +189,7 @@ def startscan_process(id, current_user):
     changestatus(5,id)
     scan_dir(scanmethod_query, id, current_user)
     #开始扫描漏洞 --- 6
+    print("开始扫漏洞")
     changestatus(6,id)
     scan_vuln(scanmethod_query, id, current_user)
     #结束 --- 7
@@ -212,14 +214,14 @@ def scan_over(id):
 
     #关闭连接
     sql = "SELECT target_pid from Target WHERE id=%s"
-    cursor.execute(sql,(id,))
-    pid = cursor.fetchone()()[0]
-    cursor.close()
-    conn.close() 
+    cursor.execute(sql,(id,))    
     try:
+        pid = cursor.fetchone()()[0]
         os.system("kill " + str(pid))
     except:
         pass
+    cursor.close()
+    conn.close() 
     return
 
 def changestatus(setid,id):

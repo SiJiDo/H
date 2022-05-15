@@ -46,6 +46,7 @@ class ScanmethodForm(FlaskForm):
     scanmethod_nuclei = BooleanField('nuclei扫描',default=False)
     scanmethod_nuclei_my = BooleanField('nuclei(自定义扫描)',default=False)
     scanmethod_time = StringField('目标修改时间', default=time.strftime('%Y-%m-%d  %H:%M:%S', time.localtime(time.time())))
+    scanmethod_fscan = BooleanField('fscan扫描',default=False)
     submit = SubmitField('创建')
 
 class ScancronFrom(FlaskForm):

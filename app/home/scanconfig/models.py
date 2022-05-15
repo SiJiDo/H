@@ -23,6 +23,7 @@ class Scanmethod(db.Model):
     scanmethod_nuclei = db.Column(db.Boolean, default=False)    #是否nuclei扫描漏洞
     scanmethod_nuclei_my = db.Column(db.Boolean, default=False)    #是否nuclei自定义脚本扫描漏洞
     scanmethod_time = db.Column(db.String(128))   #修改时间
+    scanmethod_fscan = db.Column(db.Boolean, default=False) #是否使用fscan扫描
 
 
 # 定时引擎模式

@@ -36,6 +36,7 @@ def http(DynamicModel = Http):
         http_url = ""
         http_title = ""
         http_status = ""
+        finger = ""
         user = ""
         new = 2
         start_time = "2021-01-01 00:00:00"

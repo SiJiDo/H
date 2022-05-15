@@ -26,7 +26,7 @@ app.config_from_object('config')
 def run(target, wordlist = 'top100'):
     work_dir = FILEPATH + '/tools'
     nmap_file = 'naabu_result_{}.xml'.format(time())
-    naabu_nmap_cmd = 'nmap -sV --version-all -n -Pn -T4 -oX {}'.format(nmap_file)
+    naabu_nmap_cmd = 'nmap --version-all -n -Pn -T4 -oX {}'.format(nmap_file)
     out_file_name = '{}_{}.json'.format(target, time())
     flag =False
 
