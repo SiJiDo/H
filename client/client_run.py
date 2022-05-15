@@ -59,7 +59,11 @@ def run():
     #启动icp备案的celery
     if(cfg.get("WORKER_CONFIG", "plugin_icpget") == 'True'):
         os.chdir("{}/icp_scan".format(FILEPATH))
-        os.system("nohup celery -A icpget worker -l info -Q icpget -n icpget_{} -c {} &".format(time(),cfg.get("WORKER_CONFIG", "vuln_nuclei_count")))
+        os.system("nohup celery -A icpget worker -l info -Q icpget -n icpget_{} &".format(time()))
+    #启动fscan备案的celery
+    if(cfg.get("WORKER_CONFIG", "vuln_fscan") == 'True'):
+        os.chdir("{}/vuln_scan/fscan".format(FILEPATH))
+        os.system("nohup celery -A fscan worker -l info -Q fscan -n fscan_{} -c {} &".format(time(),cfg.get("WORKER_CONFIG", "vuln_fscan_count")))
 
 if __name__ == '__main__':
     run()

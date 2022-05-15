@@ -169,6 +169,8 @@ docker-compose up -d
 
 docker exec -it h_server_1 bash
 cd /app && nohup python3 run.py &
+cd /app/app/scan/lib/tools && chmod 755 xray
+nohup ./xray reverse &
 ```
 
 
