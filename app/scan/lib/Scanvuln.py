@@ -127,7 +127,7 @@ def scan_vuln(scanmethod_query, target_id, current_user):
     return
 
 class tool_nuclei(Thread):
-    def __init__(self, nuclei_queue, task, target_id, conn, cursor, current_user):
+    def __init__(self, nuclei_queue, task, daily, github, target_id, conn, cursor, current_user):
         Thread.__init__(self)
         self.queue = nuclei_queue
         self.task = task
