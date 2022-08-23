@@ -11,6 +11,7 @@ cd /tmp
 service mysql start
 mysqladmin 
 mysql -uroot -proot < H.sql --default-character-set=utf8
+rm H.sql
 service mysql restart
 
 cd /app/app/scan/lib/tools/ && ./xray genca && cp ca.crt /usr/local/share/ca-certificates/xray.crt && update-ca-certificates && nohup ./xray reverse &

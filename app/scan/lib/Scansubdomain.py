@@ -174,7 +174,7 @@ def tool_domaininfo(task, target_id, conn, cursor):
         ip_count = cursor.execute(sql,('nothing','nothing',target_id,))
         subdomain_result = cursor.fetchall()
 
-    sql = "DELETE FROM Subdomain where subdomain_ip='nothing' AND subdomain_info='nothing'"
+    sql = "DELETE FROM Subdomain where subdomain_ip='nothing' AND subdomain_info='nothing"
     cursor.execute(sql)
     conn.commit()
     return

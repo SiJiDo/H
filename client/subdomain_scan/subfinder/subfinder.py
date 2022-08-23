@@ -37,7 +37,10 @@ def run(domain):
         with open('{}/{}'.format(work_dir, out_file_name), 'r') as f:
             subdomains = f.readlines()
             for line in subdomains:
-                result.append(json.loads(line)['host'])
+                if('\\n' in json.loads(line)['host']):
+                    continue
+                else:
+                    result.append(json.loads(line)['host'])
         os.system('rm -rf {}/{}'.format(work_dir, out_file_name))
         return {'tool': 'subfinder', 'result': result}
 

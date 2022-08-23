@@ -107,4 +107,4 @@ class domaininfo(Thread):
 
 
 if __name__ == '__main__':
-    print(run(["kr00.niubi.com"]))
+    print(run(["wave.neutrogena.com.cn www.babysleep.com.cn www.cleanandclear.com.cn www.dabao.com.cn www.johnsonsbaby.com.cn"]))
